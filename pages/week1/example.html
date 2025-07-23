@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanila JS - Week1</title>
+    <link rel="stylesheet" href="/styles/font.css">    
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <!-- https://claude.ai/chat/2c5f0205-89c0-4115-bb92-fafdb5ec1bd1 -->
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">변수</h2>
+                        <p class="int-sec__desc">
+                            변수 안에 담겨있는 데이터를 변경해보자 <br>                            
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">var, let, const에 대해 알아보기</li>
+                            <li class="int-sec__desc int-sec__desc--item">문자열 방식과 템플릿 리터럴 방식으로 시도해보기</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">var의 호이스팅 개념에 대해 공부해보기</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">var, let, const에 문자열을 담아 HTML로 삽입해보기</h3>                                
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">var의 데이터를 HTML에 삽입시키기</h4>
+                                        <div id="testA" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">let의 데이터를 HTML에 삽입시키기</h4>
+                                        <div id="testB" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">const의 데이터를 HTML에 삽입시키기</h4>
+                                        <div id="testC" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">var, let, const에 문자열의 내용을 변환한 후 HTML로 삽입해보기</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">var의 데이터를 변환하여 HTML에 삽입시키기</h4>
+                                        <div id="testD" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">let의 데이터를 변환하여 HTML에 삽입시키기</h4>
+                                        <div id="testE" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">const의 변환하여 데이터를 HTML에 삽입시키기</h4>
+                                        <div id="testF" class="test__area">
+                                            const 변수는 const로 재선언할 수도 없고 값을 재할당 할 수도 없습니다. <br>
+                                            script가 아닌 HTML로 직접 적은 문구입니다.
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">변수들에 담긴 값을 합친 후 HTML로 삽입해보기</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 + 문자열 변수값 합치기 (var 재선언 & 재할당 + let 재할당)</h4>
+                                        <div id="testG" class="test__area"></div>
+                                    </section>            
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 + 문자열 변수값 합치기 (var 재할당 + let 재할당)</h4>
+                                        <div id="testH" class="test__area"></div>
+                                    </section>                           
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 + 문자열 변수값 합치기 (새로운 const 변수에 var 재할당 + let 재할당)</h4>
+                                        <div id="testI" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 + 숫자열 변수값 합치기</h4>
+                                        <div id="testJ" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>                       
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanila JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

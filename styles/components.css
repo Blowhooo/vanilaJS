@@ -1,0 +1,8 @@
+.danger {font-weight: 700; color: #ff000f;}
+
+.btn {padding:0.5em 0.75em; display: flex; justify-content: center; align-items: center; text-align: center; font-weight: 500; border:1px solid #ddd; border-radius:0.25em; transition: .3s ease-in-out background-color, .3s ease-in-out color, .3s ease-in-out box-shadow;}
+.btn--full {width: 100%;}
+.btn--small {padding:0.275em 0.65em; font-size: 0.875em;}
+@media(hover:hover){
+    .btn:hover {background-color: var(--prm); border-color:var(--prm); box-shadow:var(--shadow)}
+}
