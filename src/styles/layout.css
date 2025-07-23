@@ -2,7 +2,8 @@
 #main {flex:1; padding:2em 0;}
 
 .header {height: var(--hd-gap);}
-.header__fix {position: fixed; top: 0; right: 0; left: 0; height: inherit; border-bottom:1px solid #ddd; background-color: #fff;}
+.header__fix {position: fixed; top: 0; right: 0; left: 0; height: inherit; border-bottom:1px solid #ddd; background-color: #fff; transition:.3s ease-in-out transform}
+.header__fix--hide {transform:translateY(-100%);}
 .header__inner {display: flex; align-items: center; justify-content: space-between; height: 100%;}
 .header__logo {display: inline-block;}
 .header__link {display: flex; justify-content: flex-end; align-items: flex-end; width: 2.5rem; height: 2.5rem; padding:0.125em 0.375em; background-color: #f7e018; border-radius:0.25em; font-weight: 900; transition: .3s ease-in-out color, .3s ease-in-out background-color;}
