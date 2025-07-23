@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="/src/styles/components.css">
     <link rel="stylesheet" href="./styles/style.css">
     <script src="/src/scripts/layout/header.js" defer></script>
+    <script type="module" src="/src/scripts/utility/mentor/utiliExport.js" defer></script>
     <script src="./js/example.js" defer></script>
 </head>
 <body>
-    <!-- https://claude.ai/chat/2c5f0205-89c0-4115-bb92-fafdb5ec1bd1 -->
     <div id="container">
         <div id="wrapper">
             <header id="header" class="header">
@@ -24,6 +24,10 @@
                     </div>
                 </div>
             </header>
+            <nav class="local-nav">
+                <button type="button" class="local-nav__btn" aria-haspopup="true" aria-expanded="false" aria-controls="local-depth2">예시</button>
+                <ul id="local-depth2" class="local-nav__list" hidden></ul>
+            </nav>
             <main id="main" class="main">
                 <div class="inner">
                     <div class="int-sec">
@@ -33,12 +37,12 @@
                         </p>
                         <ul class="int-sec__list">
                             <li class="int-sec__desc int-sec__desc--item">var, let, const에 대해 알아보기</li>
-                            <li class="int-sec__desc int-sec__desc--item">문자열 방식과 템플릿 리터럴 방식으로 시도해보기</li>
+                            <li class="int-sec__desc int-sec__desc--item">문자열 방식, 숫자열 방식, 템플릿 리터럴 방식으로 시도해보기</li>
                             <li class="int-sec__desc int-sec__desc--item"><span class="danger">var의 호이스팅 개념에 대해 공부해보기</span></li>
                         </ul>
                     </div>
                     <div class="main__container">
-                        <section class="main__sec">
+                        <section id="edu-1" class="main__sec" data-skip="변수에 문자열을 담아 HTML로 삽입해보기">
                             <div class="int-sec">
                                 <h3 class="int-sec__st">var, let, const에 문자열을 담아 HTML로 삽입해보기</h3>
                                 <div class="test">
@@ -57,9 +61,9 @@
                                 </div>
                             </div>
                         </section>
-                        <section class="main__sec">
+                        <section id="edu-2" class="main__sec" data-skip="변수의 문자열 값을 변환 후 HTML로 삽입해보기">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">var, let, const에 문자열의 내용을 변환한 후 HTML로 삽입해보기</h3>
+                                <h3 class="int-sec__st">var, let, const에 문자열의 값을 변환한 후 HTML로 삽입해보기</h3>
                                 <div class="test">
                                     <section class="test__sec">
                                         <h4 class="test__sbj">var의 데이터를 변환하여 HTML에 삽입시키기</h4>
@@ -79,7 +83,7 @@
                                 </div>
                             </div>
                         </section>
-                        <section class="main__sec">
+                        <section id="edu-3" class="main__sec" data-skip="변수들에 담긴 값을 합친후 HTML로 삽입해보기">
                             <div class="int-sec">
                                 <h3 class="int-sec__st">변수들에 담긴 값을 합친 후 HTML로 삽입해보기</h3>
                                 <div class="test">
@@ -95,13 +99,65 @@
                                         <h4 class="test__sbj">문자열 + 문자열 변수값 합치기 (새로운 const 변수에 var 재할당 + let 재할당)</h4>
                                         <div id="testI" class="test__area"></div>
                                     </section>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="edu-4" class="main__sec" data-skip="변수에 숫자열을 담아 HTML로 삽입해보기">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">var, let, const에 숫자열을 담아 HTML로 삽입해보기</h3>
+                                <div class="test">
                                     <section class="test__sec">
-                                        <h4 class="test__sbj">문자열 + 숫자열 변수값 합치기</h4>
+                                        <h4 class="test__sbj">숫자열과 숫자열을 더해보기</h4>
                                         <div id="testJ" class="test__area"></div>
                                     </section>
                                 </div>
                             </div>
-                        </section>                       
+                        </section>
+                        <section id="edu-5" class="main__sec" data-skip="문자열이 담긴 변수와 숫자열이 담긴 변수를 합쳐 HTML로 삽입해보기">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">문자열이 담긴 변수와 숫자열이 담긴 변수를 합쳐 HTML로 삽입해보기</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 변수 + 문자열로 치환하지 않은 숫자열 변수 + 문자열로 치환하지 않은 숫자열 변수</h4>
+                                        <div id="testK" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 변수 + 문자열로 치환한 숫자열 변수 + 문자열로 치환한 숫자열 변수</h4>
+                                        <div id="testL" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 변수 + 숫자열 변수끼리 합친 값</h4>
+                                        <div id="testM" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="edu-6" class="main__sec" data-skip="문자열을 숫자열로 치환해보기">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">문자열을 숫자열로 치환해보기</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">숫자열로 치환한 문자</h4>
+                                        <div id="testN" class="test__area"></div>
+                                    </section>
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 타입인 숫자를 숫자열 타입인 숫자로 치환하기</h4>
+                                        <div id="testO" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="edu-7" class="main__sec" data-skip="문자열 소수를 치환해보기">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">문자열 소수를 숫자열로 치환해보기</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">문자열 소수을 숫자열로 치환한 값</h4>
+                                        <div id="testP" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </main>
