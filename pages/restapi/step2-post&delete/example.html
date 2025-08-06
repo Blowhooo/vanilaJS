@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS - REST API POST & DELETE</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script type="module" src="../../../src/scripts/utility/mentor/utiliExport.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <nav class="local-nav">
+                <button type="button" class="local-nav__btn" aria-haspopup="true" aria-expanded="false" aria-controls="local-depth2">예시</button>
+                <ul id="local-depth2" class="local-nav__list" hidden></ul>
+            </nav>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">REST API - POST & DELETE 완전 정복</h2>
+                        <p class="int-sec__desc">
+                            JSON Server를 활용하여 데이터 생성(POST)과 삭제(DELETE)를 마스터해보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">POST 요청으로 새 데이터 생성하기</li>
+                            <li class="int-sec__desc int-sec__desc--item">DELETE 요청으로 데이터 삭제하기</li>
+                            <li class="int-sec__desc int-sec__desc--item">실무적인 에러 처리와 사용자 피드백</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">비동기 처리와 UI 상태 관리의 핵심 패턴</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        
+                        <!-- 1. 기본 POST 요청 -->
+                        <section id="edu-1" class="main__sec" data-skip="기본 게시글 작성 (POST)">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">1. 기본 게시글 작성 (POST)</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">간단한 게시글 작성</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <input type="text" id="post-title-1" class="frm-input frm-input--small" placeholder="게시글 제목">
+                                            <textarea id="post-body-1" class="frm-input frm-input--small" placeholder="게시글 내용" rows="3"></textarea>
+                                            <input type="number" id="post-user-id-1" class="frm-input frm-input--small" placeholder="작성자 ID (1-10)" min="1" max="10">
+                                            <button type="button" class="btn btn--small" id="create-post-1">게시글 작성</button>
+                                        </div>
+                                        <div id="create-status-1" class="status status--hidden"></div>
+                                        <div id="create-result-1" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 2. 유효성 검증이 포함된 POST -->
+                        <section id="edu-2" class="main__sec" data-skip="유효성 검증 포함 게시글 작성">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">2. 유효성 검증 포함 게시글 작성</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">제목 길이, 내용 검증, 사용자 존재 확인</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <input type="text" id="post-title-2" class="frm-input frm-input--small" placeholder="게시글 제목 (5글자 이상)" minlength="5">
+                                            <textarea id="post-body-2" class="frm-input frm-input--small" placeholder="게시글 내용 (10글자 이상)" rows="3" minlength="10"></textarea>
+                                            <select id="post-user-id-2" class="frm-input frm-input--small">
+                                                <option value="">작성자 선택</option>
+                                            </select>
+                                            <button type="button" class="btn btn--small" id="create-post-2">유효성 검증 후 작성</button>
+                                        </div>
+                                        <div id="create-status-2" class="status status--hidden"></div>
+                                        <div id="create-result-2" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 3. 연속 POST 요청 (배치 처리) -->
+                        <section id="edu-3" class="main__sec" data-skip="여러 게시글 한번에 작성">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">3. 여러 게시글 한번에 작성 (배치 처리)</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">Promise.all을 활용한 병렬 처리</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <textarea id="batch-posts" class="frm-input frm-input--small" placeholder="게시글들을 한 줄씩 입력 (제목|내용|작성자ID)" rows="5">첫 번째 게시글|첫 번째 내용입니다|1
+두 번째 게시글|두 번째 내용입니다|2
+세 번째 게시글|세 번째 내용입니다|3</textarea>
+                                            <button type="button" class="btn btn--small" id="create-batch-posts">한번에 작성</button>
+                                        </div>
+                                        <div id="batch-status" class="status status--hidden"></div>
+                                        <div id="batch-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 4. 기본 DELETE 요청 -->
+                        <section id="edu-4" class="main__sec" data-skip="기본 게시글 삭제 (DELETE)">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">4. 기본 게시글 삭제 (DELETE)</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">게시글 ID로 삭제하기</h4>
+                                        <div class="form-row form-row--mb">
+                                            <input type="number" id="delete-post-id-1" class="frm-input frm-input--small" placeholder="삭제할 게시글 ID" min="1">
+                                            <button type="button" class="btn btn--small" id="delete-post-1">게시글 삭제</button>
+                                        </div>
+                                        <div id="delete-status-1" class="status status--hidden"></div>
+                                        <div id="delete-result-1" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 5. 조건부 DELETE (존재 확인 후 삭제) -->
+                        <section id="edu-5" class="main__sec" data-skip="안전한 게시글 삭제">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">5. 안전한 게시글 삭제 (존재 확인 후 삭제)</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">GET으로 존재 확인 → DELETE 실행</h4>
+                                        <div class="form-row form-row--mb">
+                                            <input type="number" id="delete-post-id-2" class="frm-input frm-input--small" placeholder="삭제할 게시글 ID" min="1">
+                                            <button type="button" class="btn btn--small" id="delete-post-2">안전하게 삭제</button>
+                                        </div>
+                                        <div id="delete-status-2" class="status status--hidden"></div>
+                                        <div id="delete-result-2" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 6. 여러 게시글 삭제 -->
+                        <section id="edu-6" class="main__sec" data-skip="여러 게시글 한번에 삭제">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">6. 여러 게시글 한번에 삭제</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">체크박스로 선택된 게시글들 삭제</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <button type="button" class="btn btn--small" id="load-posts-for-delete">게시글 목록 불러오기</button>
+                                            <div id="posts-list" class="posts-list"></div>
+                                            <button type="button" class="btn btn--small" id="delete-selected-posts" disabled>선택된 게시글 삭제</button>
+                                        </div>
+                                        <div id="delete-status-3" class="status status--hidden"></div>
+                                        <div id="delete-result-3" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 7. 사용자별 게시글 삭제 -->
+                        <section id="edu-7" class="main__sec" data-skip="사용자별 게시글 모두 삭제">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">7. 사용자별 게시글 모두 삭제</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">특정 사용자의 모든 게시글 삭제</h4>
+                                        <div class="form-row form-row--mb">
+                                            <select id="delete-user-id" class="frm-input frm-input--small">
+                                                <option value="">사용자 선택</option>
+                                            </select>
+                                            <button type="button" class="btn btn--small" id="delete-user-posts">해당 사용자 게시글 모두 삭제</button>
+                                        </div>
+                                        <div id="delete-user-status" class="status status--hidden"></div>
+                                        <div id="delete-user-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 8. 에러 처리 시연 -->
+                        <section id="edu-8" class="main__sec" data-skip="에러 처리 시연">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">8. 다양한 에러 상황 처리</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">네트워크 오류, 서버 오류, 유효성 오류 등</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <button type="button" class="btn btn--small" id="test-network-error">네트워크 에러 시뮬레이션</button>
+                                            <button type="button" class="btn btn--small" id="test-server-error">서버 에러 시뮬레이션</button>
+                                            <button type="button" class="btn btn--small" id="test-validation-error">유효성 검증 에러</button>
+                                            <button type="button" class="btn btn--small" id="test-not-found-error">404 에러 시뮬레이션</button>
+                                        </div>
+                                        <div id="error-status" class="status status--hidden"></div>
+                                        <div id="error-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 9. 실시간 상태 모니터링 -->
+                        <section id="edu-9" class="main__sec" data-skip="실시간 상태 모니터링">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">9. 실시간 상태 모니터링</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">현재 게시글 수, 최근 활동 등 실시간 업데이트</h4>
+                                        <div class="form-row--column form-row--mb">
+                                            <div class="stats-board">
+                                                <div class="stat-item">
+                                                    <span class="stat-label">총 게시글 수:</span>
+                                                    <span id="total-posts" class="stat-value">-</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">최근 작성:</span>
+                                                    <span id="latest-post" class="stat-value">-</span>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <span class="stat-label">마지막 활동:</span>
+                                                    <span id="last-activity" class="stat-value">-</span>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn--small" id="refresh-stats">통계 새로고침</button>
+                                            <button type="button" class="btn btn--small" id="toggle-auto-refresh">자동 새로고침 켜기</button>
+                                        </div>
+                                        <div id="stats-status" class="status status--hidden"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 10. 종합 실습 -->
+                        <section id="edu-10" class="main__sec" data-skip="종합 실습 - 게시판 시뮬레이션">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">10. 종합 실습 - 간단한 게시판 시뮬레이션</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">CRUD 모든 기능이 포함된 미니 게시판</h4>
+                                        <div class="mini-board">
+                                            <div class="board-header">
+                                                <h5>미니 게시판</h5>
+                                                <button type="button" class="btn btn--small" id="show-write-form">글쓰기</button>
+                                            </div>
+                                            
+                                            <div id="write-form" class="write-form" style="display: none;">
+                                                <input type="text" id="board-title" class="frm-input frm-input--small" placeholder="제목">
+                                                <textarea id="board-content" class="frm-input frm-input--small" placeholder="내용" rows="3"></textarea>
+                                                <select id="board-author" class="frm-input frm-input--small">
+                                                    <option value="">작성자 선택</option>
+                                                </select>
+                                                <div class="form-buttons">
+                                                    <button type="button" class="btn btn--small" id="submit-post">등록</button>
+                                                    <button type="button" class="btn btn--small" id="cancel-write">취소</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div id="board-list" class="board-list"></div>
+                                        </div>
+                                        <div id="board-status" class="status status--hidden"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

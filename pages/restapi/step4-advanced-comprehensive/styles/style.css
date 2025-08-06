@@ -1,0 +1,516 @@
+/* STEP 4: 고급 종합 실습 전용 스타일 */
+
+/* 프로젝트 개요 */
+.project-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.overview-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.overview-card h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.overview-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.overview-card li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.overview-card strong {
+    color: #007bff;
+}
+
+/* 프로젝트 카드 */
+.project-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* 프로젝트 헤더 */
+.project-header {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #e9ecef;
+}
+
+.project-icon {
+    font-size: 48px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.project-subtitle {
+    margin: 0;
+    font-size: 16px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* 레벨 배지 */
+.project-level {
+    margin-left: auto;
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.level-badge.level-intermediate {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.level-badge.level-advanced {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.level-badge.level-expert {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 프로젝트 콘텐츠 */
+.project-content {
+    padding: 25px;
+}
+
+.project-description {
+    margin-bottom: 25px;
+}
+
+.project-description p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* 스킬 섹션 */
+.project-skills {
+    margin-bottom: 25px;
+}
+
+.project-skills h4 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #495057;
+    font-weight: 600;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    margin: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.skill-tag {
+    display: inline-block;
+    background: #007bff;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+/* 프로젝트 액션 */
+.project-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn--primary:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+.project-duration {
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* 학습 가이드 */
+.learning-guide {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.learning-guide h3 {
+    margin: 0 0 25px 0;
+    font-size: 24px;
+    color: #495057;
+    text-align: center;
+}
+
+.guide-section {
+    margin-bottom: 30px;
+}
+
+.guide-section:last-child {
+    margin-bottom: 0;
+}
+
+.guide-section h4 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #495057;
+    font-weight: 600;
+}
+
+/* 학습 경로 */
+.learning-path {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0;
+    counter-reset: step-counter;
+}
+
+.learning-path li {
+    position: relative;
+    padding: 15px 0 15px 50px;
+    border-bottom: 1px solid #e9ecef;
+    counter-increment: step-counter;
+}
+
+.learning-path li:last-child {
+    border-bottom: none;
+}
+
+.learning-path li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.learning-path li strong {
+    color: #007bff;
+}
+
+/* 학습 팁 */
+.learning-tips {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0;
+    list-style: none;
+}
+
+.learning-tips li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.learning-tips li:last-child {
+    border-bottom: none;
+}
+
+.learning-tips li::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+
+.learning-tips strong {
+    color: #007bff;
+}
+
+/* 설정 안내 */
+.setup-instructions {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.setup-instructions p {
+    margin: 15px 0 5px 0;
+    font-weight: 600;
+    color: #495057;
+}
+
+.setup-instructions p:first-child {
+    margin-top: 0;
+}
+
+.setup-instructions code {
+    display: block;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    margin: 8px 0 15px 0;
+    color: #495057;
+}
+
+.setup-instructions ul {
+    margin: 8px 0 15px 20px;
+}
+
+.setup-instructions li {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .project-overview {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .overview-card {
+        padding: 20px;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .project-icon {
+        margin: 0;
+        width: 60px;
+        height: 60px;
+        font-size: 36px;
+    }
+    
+    .project-title {
+        font-size: 20px;
+    }
+    
+    .project-subtitle {
+        font-size: 14px;
+    }
+    
+    .project-level {
+        margin: 0;
+    }
+    
+    .project-content {
+        padding: 20px;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .btn--primary {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .project-duration {
+        text-align: center;
+    }
+    
+    .skills-list li {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    
+    .learning-path li {
+        padding-left: 40px;
+    }
+    
+    .learning-path li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .learning-tips li {
+        padding-left: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-card,
+    .project-content,
+    .learning-guide {
+        padding: 15px;
+    }
+    
+    .project-header {
+        padding: 15px;
+    }
+    
+    .project-title {
+        font-size: 18px;
+    }
+    
+    .learning-guide h3 {
+        font-size: 20px;
+    }
+    
+    .guide-section h4 {
+        font-size: 16px;
+    }
+    
+    .learning-path,
+    .learning-tips,
+    .setup-instructions {
+        padding: 15px;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* 호버 효과 강화 */
+.skill-tag {
+    transition: all 0.2s ease;
+}
+
+.skills-list li:hover .skill-tag {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.learning-path li {
+    transition: all 0.2s ease;
+}
+
+.learning-path li:hover {
+    background: #f8f9fa;
+    padding-left: 55px;
+}
+
+.learning-path li:hover::before {
+    background: #28a745;
+    transform: translateY(-50%) scale(1.1);
+}

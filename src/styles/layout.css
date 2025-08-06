@@ -48,6 +48,8 @@ body:has(.header__fix--hide) .local-nav__list {box-shadow:var(--shadow);}
 .test__sec {margin-bottom: 1em; padding:1.25rem; background-color: #f9f9f9; border:1px solid #ddd; border-radius:0.5rem;}
 .test__sec:last-of-type {margin-bottom: 0;}
 .test__area {padding:1.25rem; background-color: #fff; border:1px solid #ccc; border-radius:0.5rem;}
+.test__area--flex {display: flex; gap:0.5em;} 
+.test__area--col {flex-direction:column;}
 .test__sbj + .test__area {margin-top: 1rem;}
 
 .footer {padding:0.5rem 0; background-color: #f9f9f9; font-weight: 700; text-align: center; border-top:1px solid #ddd;}

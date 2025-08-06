@@ -1,0 +1,198 @@
+/* JavaScript 기초 계산기 - 실습용 스타일 */
+
+.calculator {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.display {
+    margin-bottom: 20px;
+}
+
+#display {
+    width: 100%;
+    height: 70px;
+    font-size: 28px;
+    text-align: right;
+    padding: 0 20px;
+    border: 3px solid #dee2e6;
+    border-radius: 10px;
+    background: white;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.1);
+    font-family: 'Courier New', monospace;
+    color: #333;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn-calc {
+    height: 65px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-calc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-calc:hover::before {
+    left: 100%;
+}
+
+.btn-calc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.btn-calc:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-calc.number {
+    background: linear-gradient(145deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+    border: 2px solid #90caf9;
+}
+
+.btn-calc.number:hover {
+    background: linear-gradient(145deg, #bbdefb, #90caf9);
+}
+
+.btn-calc.operator {
+    background: linear-gradient(145deg, #fff8e1, #ffcc02);
+    color: #e65100;
+    border: 2px solid #ffa726;
+}
+
+.btn-calc.operator:hover {
+    background: linear-gradient(145deg, #ffcc02, #ffa726);
+}
+
+.btn-calc.equals {
+    background: linear-gradient(145deg, #e8f5e8, #81c784);
+    color: #2e7d32;
+    border: 2px solid #66bb6a;
+    grid-row: span 2;
+}
+
+.btn-calc.equals:hover {
+    background: linear-gradient(145deg, #81c784, #66bb6a);
+}
+
+.btn-calc.clear {
+    background: linear-gradient(145deg, #ffebee, #ef5350);
+    color: #c62828;
+    border: 2px solid #e57373;
+}
+
+.btn-calc.clear:hover {
+    background: linear-gradient(145deg, #ef5350, #e57373);
+}
+
+.btn-calc.delete {
+    background: linear-gradient(145deg, #fce4ec, #f06292);
+    color: #ad1457;
+    border: 2px solid #f48fb1;
+}
+
+.btn-calc.delete:hover {
+    background: linear-gradient(145deg, #f06292, #f48fb1);
+}
+
+.btn-calc.zero {
+    grid-column: span 2;
+}
+
+/* 개념 설명 그리드 */
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.concept-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #007bff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.concept-item h4 {
+    color: #007bff;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.concept-item p {
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .btn-calc {
+        height: 55px;
+        font-size: 18px;
+    }
+    
+    #display {
+        height: 60px;
+        font-size: 24px;
+        padding: 0 15px;
+    }
+    
+    .concept-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 포커스 스타일 */
+#display:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.1), 0 0 0 3px rgba(0,123,255,0.25);
+}
+
+/* 애니메이션 */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,123,255,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0,123,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,123,255,0); }
+}
+
+.btn-calc.equals:active {
+    animation: pulse 0.4s;
+}

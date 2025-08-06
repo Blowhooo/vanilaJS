@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 조건문 - Conditionals</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 조건문 (Conditionals)</h2>
+                        <p class="int-sec__desc">
+                            조건에 따라 코드의 실행 흐름을 제어하는 방법을 알아보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">if, else if, else 문의 사용법</li>
+                            <li class="int-sec__desc int-sec__desc--item">switch 문과 fall-through 현상</li>
+                            <li class="int-sec__desc int-sec__desc--item">삼항 연산자와 단축 표현</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">중첩 조건문과 복잡한 조건 처리</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">if, else if, else 문</h3>
+                                <p class="int-sec__desc">가장 기본적인 조건문의 사용법을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">조건문 기본 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runIfElseExamples()">예제 실행</button>
+                                        <div id="ifElseOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">switch 문</h3>
+                                <p class="int-sec__desc">여러 경우의 수를 깔끔하게 처리하는 switch 문을 알아보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">switch 문 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runSwitchExamples()">예제 실행</button>
+                                        <div id="switchOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">삼항 연산자 (Ternary Operator)</h3>
+                                <p class="int-sec__desc">간단한 조건문을 한 줄로 표현하는 삼항 연산자를 사용해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">삼항 연산자 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runTernaryExamples()">예제 실행</button>
+                                        <div id="ternaryOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">인터랙티브 예제</h3>
+                                <p class="int-sec__desc">직접 값을 입력하여 조건문의 동작을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">나이 확인기</h4>
+                                        <div class="form-row form-row--mb">
+                                            <input type="number" id="ageInput" class="frm-input frm-input--small" placeholder="나이를 입력하세요" min="0" max="150">
+                                            <button type="button" class="btn btn--small" onclick="checkAge()">나이 확인</button>
+                                        </div>
+                                        <div id="ageResult" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

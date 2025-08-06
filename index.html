@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanila JS</title>
-    <link rel="stylesheet" href="/src/styles/fonts.css">    
-    <link rel="stylesheet" href="/src/styles/global.css">
-    <link rel="stylesheet" href="/src/styles/layout.css">
-    <link rel="stylesheet" href="/src/styles/components.css">    
-    <script src="/src/scripts/layout/header.js" defer></script>
+    <title>Vanilla JS 학습 플랫폼</title>
+    <link rel="stylesheet" href="./src/styles/fonts.css">    
+    <link rel="stylesheet" href="./src/styles/global.css">
+    <link rel="stylesheet" href="./src/styles/layout.css">
+    <link rel="stylesheet" href="./src/styles/components.css">    
+    <script src="./src/scripts/layout/header.js" defer></script>
+
 </head>
 <body>
     <div id="container">
@@ -16,49 +17,123 @@
             <header id="header" class="header">
                 <div class="header__fix">
                     <div class="header__inner inner">
-                        <h1 class="header__logo"><a href="/" class="header__link">JS</a></h1>                        
+                        <h1 class="header__logo"><a href="./index.html" class="header__link">JS</a></h1>                       
                     </div>
                 </div>
             </header>
-            <nav id="main" class="main">
+            <main id="main" class="main">
                 <div class="inner">
-                    <section class="main__sec">
-                        <div class="int-sec">
-                            <h3 class="int-sec__st">개념 정리</h3>                            
-                        </div>
-                        <ul class="main__list">
-                            <li class="main__item">
-                                <a href="/pages/concept/week1/page.html" class="btn btn--full">변수명 (week 1)</a>
-                            </li>
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">Vanilla JS 학습 플랫폼</h2>
+                        <p class="int-sec__desc">
+                            JavaScript의 핵심 개념을 단계별로 학습하세요.<br>
+                            체계적인 커리큘럼으로 실무 능력을 키워보세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">기초 문법부터 실무 프로젝트까지</li>
+                            <li class="int-sec__desc int-sec__desc--item">인터랙티브 예제와 실습 중심 학습</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">추천 학습 순서: 기초 문법 → 개념 정리 → 토이 프로젝트</span></li>
                         </ul>
-                    </section>
-                    <section class="main__sec">
-                        <div class="int-sec">
-                            <h3 class="int-sec__st">토이 프로젝트</h3>                            
-                        </div>
-                        <ul class="main__list">
-                            <li class="main__item">
-                                <a href="/pages/toy/variable/page.html" class="btn btn--full">변수명 (week 1)</a>
-                            </li>
-                            <li class="main__item">
-                                <a href="/pages/toy/restapi/step1-get/page.html" class="btn btn--full">REST API - GET</a>
-                            </li>
-                            <li class="main__item">
-                                <a href="/pages/toy/restapi/step2-post&delete/page.html" class="btn btn--full">REST API - POST & DELETE</a>
-                            </li>
-                            <!-- <li class="main__item">
-                                <a href="/pages/toy/restapi/step3-update/page.html" class="btn btn--full">REST API - UPDATE</a>
-                            </li> -->
-                        </ul>
-                    </section>
+                    </div>
+                    <div class="main__container">
+
+                        <!-- 개념 정리 섹션 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">개념 정리</h3>
+                                <p class="int-sec__desc">JavaScript의 핵심 개념들을 체계적으로 학습합니다.</p>
+                            </div>
+                            <ul class="main__list">
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/index.html" class="btn btn--full btn--high">
+                                        📖 JavaScript 기초 문법 학습
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/01-variables/page.html" class="btn btn--full btn--high">
+                                        📝 변수 (Variables) - var, let, const
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/02-types/page.html" class="btn btn--full btn--high">
+                                        🏷️ 타입 (Types) - 원시타입 & 참조타입
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/03-operators/page.html" class="btn btn--full btn--high">
+                                        ⚡ 연산자 (Operators) - 산술, 비교, 논리
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/04-conditionals/page.html" class="btn btn--full btn--high">
+                                        🔀 조건문 (Conditionals) - if, switch, 삼항연산자
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/05-loops/page.html" class="btn btn--full btn--high">
+                                        🔄 반복문 (Loops) - for, while, for...of
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <!-- 토이 프로젝트 섹션 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">토이 프로젝트</h3>
+                                <p class="int-sec__desc">실제 프로젝트를 통해 JavaScript를 실습하고 응용력을 기릅니다.</p>
+                            </div>
+                            <ul class="main__list">
+                                <li class="main__item">
+                                    <a href="./pages/javascript-basics/01-variables/page.html" class="btn btn--full btn--high">
+                                        📝 변수 실습 - 변수명과 스코프 연습
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/basic/page.html" class="btn btn--full btn--high">
+                                        🧮 JavaScript 기초 계산기 - 기본 문법 종합 실습
+                                    </a>
+                                </li>
+                                <!-- <li class="main__item">
+                                    <a href="./pages/restapi/step1-get/page.html" class="btn btn--full btn--high">
+                                        📥 REST API Step 1: GET 요청 - 데이터 가져오기
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/restapi/step2-post&delete/page.html" class="btn btn--full btn--high">
+                                        📤 REST API Step 2: POST & DELETE - 데이터 생성/삭제
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/restapi/step3-update/page.html" class="btn btn--full btn--high">
+                                        ✏️ REST API Step 3: PUT & PATCH - 데이터 수정
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/restapi/step4-advanced-comprehensive/index.html" class="btn btn--full btn--high">
+                                        🚀 REST API Step 4: 고급 종합 실습 - 실무 수준 구현
+                                    </a>
+                                </li>
+                                <li class="main__item">
+                                    <a href="./pages/todolist/list.html" class="btn btn--full btn--high">
+                                        ✅ TodoList - 완전한 CRUD 구현
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </section>
+                    </div>
+
+
                 </div>
-            </nav>
+            </main>
             <footer id="footer" class="footer">
                 <div class="inner">
-                    <p class="foote__cprt">Vanila JavaScript</p>
+                    <p class="foote__cprt">Vanilla JavaScript</p>
                 </div>
             </footer>
         </div>
     </div>
+
+
 </body>
 </html>

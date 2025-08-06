@@ -1,0 +1,496 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "대표이사",
+      "parentId": null,
+      "managerId": 100,
+      "budget": 200000000,
+      "location": "서울 강남구 테헤란로 123",
+      "description": "회사 최고 경영진"
+    },
+    {
+      "id": 2,
+      "name": "기술본부",
+      "parentId": 1,
+      "managerId": 101,
+      "budget": 150000000,
+      "location": "서울 강남구 테헤란로 123 3층",
+      "description": "기술 개발 및 연구"
+    },
+    {
+      "id": 3,
+      "name": "프론트엔드팀",
+      "parentId": 2,
+      "managerId": 102,
+      "budget": 50000000,
+      "location": "서울 강남구 테헤란로 123 3층 A구역",
+      "description": "웹 UI/UX 개발"
+    },
+    {
+      "id": 4,
+      "name": "백엔드팀",
+      "parentId": 2,
+      "managerId": 103,
+      "budget": 60000000,
+      "location": "서울 강남구 테헤란로 123 3층 B구역",
+      "description": "서버 및 API 개발"
+    },
+    {
+      "id": 5,
+      "name": "DevOps팀",
+      "parentId": 2,
+      "managerId": 104,
+      "budget": 40000000,
+      "location": "서울 강남구 테헤란로 123 3층 C구역",
+      "description": "인프라 및 배포 관리"
+    },
+    {
+      "id": 6,
+      "name": "영업본부",
+      "parentId": 1,
+      "managerId": 105,
+      "budget": 80000000,
+      "location": "서울 강남구 테헤란로 123 2층",
+      "description": "영업 및 마케팅"
+    },
+    {
+      "id": 7,
+      "name": "국내영업팀",
+      "parentId": 6,
+      "managerId": 106,
+      "budget": 30000000,
+      "location": "서울 강남구 테헤란로 123 2층 A구역",
+      "description": "국내 시장 영업"
+    },
+    {
+      "id": 8,
+      "name": "해외영업팀",
+      "parentId": 6,
+      "managerId": 107,
+      "budget": 50000000,
+      "location": "서울 강남구 테헤란로 123 2층 B구역",
+      "description": "해외 시장 진출"
+    },
+    {
+      "id": 9,
+      "name": "인사총무팀",
+      "parentId": 1,
+      "managerId": 108,
+      "budget": 30000000,
+      "location": "서울 강남구 테헤란로 123 1층",
+      "description": "인사 및 총무 업무"
+    },
+    {
+      "id": 10,
+      "name": "QA팀",
+      "parentId": 2,
+      "managerId": 109,
+      "budget": 35000000,
+      "location": "서울 강남구 테헤란로 123 3층 D구역",
+      "description": "품질 보증 및 테스트"
+    }
+  ],
+  "employees": [
+    {
+      "id": 100,
+      "name": "김대표",
+      "departmentId": 1,
+      "position": "대표이사",
+      "salary": 15000000,
+      "hireDate": "2018-01-01",
+      "email": "ceo@company.com",
+      "phone": "010-1234-5678",
+      "skills": ["경영", "전략기획", "리더십"],
+      "projects": []
+    },
+    {
+      "id": 101,
+      "name": "박기술",
+      "departmentId": 2,
+      "position": "기술이사",
+      "salary": 12000000,
+      "hireDate": "2018-03-15",
+      "email": "cto@company.com",
+      "phone": "010-2345-6789",
+      "skills": ["시스템설계", "기술전략", "팀관리"],
+      "projects": []
+    },
+    {
+      "id": 102,
+      "name": "이프론트",
+      "departmentId": 3,
+      "position": "프론트엔드팀장",
+      "salary": 9000000,
+      "hireDate": "2019-06-01",
+      "email": "frontend.lead@company.com",
+      "phone": "010-3456-7890",
+      "skills": ["React", "Vue.js", "JavaScript", "TypeScript", "CSS"],
+      "projects": [201, 203]
+    },
+    {
+      "id": 103,
+      "name": "최백엔드",
+      "departmentId": 4,
+      "position": "백엔드팀장",
+      "salary": 9500000,
+      "hireDate": "2019-04-15",
+      "email": "backend.lead@company.com",
+      "phone": "010-4567-8901",
+      "skills": ["Node.js", "Python", "Java", "MongoDB", "MySQL"],
+      "projects": [201, 202]
+    },
+    {
+      "id": 104,
+      "name": "정데브옵스",
+      "departmentId": 5,
+      "position": "DevOps팀장",
+      "salary": 9200000,
+      "hireDate": "2019-08-20",
+      "email": "devops.lead@company.com",
+      "phone": "010-5678-9012",
+      "skills": ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"],
+      "projects": [202, 204]
+    },
+    {
+      "id": 105,
+      "name": "강영업",
+      "departmentId": 6,
+      "position": "영업이사",
+      "salary": 11000000,
+      "hireDate": "2018-07-10",
+      "email": "sales.director@company.com",
+      "phone": "010-6789-0123",
+      "skills": ["영업전략", "고객관리", "계약협상"],
+      "projects": []
+    },
+    {
+      "id": 106,
+      "name": "오국내",
+      "departmentId": 7,
+      "position": "국내영업팀장",
+      "salary": 7500000,
+      "hireDate": "2020-02-15",
+      "email": "domestic.sales@company.com",
+      "phone": "010-7890-1234",
+      "skills": ["B2B영업", "제안서작성", "프레젠테이션"],
+      "projects": [205]
+    },
+    {
+      "id": 107,
+      "name": "윤해외",
+      "departmentId": 8,
+      "position": "해외영업팀장",
+      "salary": 8000000,
+      "hireDate": "2020-01-20",
+      "email": "global.sales@company.com",
+      "phone": "010-8901-2345",
+      "skills": ["해외영업", "영어", "중국어", "수출입"],
+      "projects": [206]
+    },
+    {
+      "id": 108,
+      "name": "임인사",
+      "departmentId": 9,
+      "position": "인사팀장",
+      "salary": 7000000,
+      "hireDate": "2019-11-01",
+      "email": "hr@company.com",
+      "phone": "010-9012-3456",
+      "skills": ["인사관리", "채용", "교육기획", "노무"],
+      "projects": []
+    },
+    {
+      "id": 109,
+      "name": "조품질",
+      "departmentId": 10,
+      "position": "QA팀장",
+      "salary": 8500000,
+      "hireDate": "2020-03-10",
+      "email": "qa.lead@company.com",
+      "phone": "010-0123-4567",
+      "skills": ["테스트설계", "자동화테스트", "성능테스트", "보안테스트"],
+      "projects": [201, 202, 203]
+    },
+    {
+      "id": 110,
+      "name": "한주니어",
+      "departmentId": 3,
+      "position": "주니어 개발자",
+      "salary": 4500000,
+      "hireDate": "2023-03-01",
+      "email": "junior.dev1@company.com",
+      "phone": "010-1111-2222",
+      "skills": ["HTML", "CSS", "JavaScript", "React"],
+      "projects": [203]
+    },
+    {
+      "id": 111,
+      "name": "신개발",
+      "departmentId": 3,
+      "position": "개발자",
+      "salary": 6000000,
+      "hireDate": "2021-08-15",
+      "email": "dev1@company.com",
+      "phone": "010-2222-3333",
+      "skills": ["React", "TypeScript", "Next.js", "Styled-components"],
+      "projects": [201, 203]
+    },
+    {
+      "id": 112,
+      "name": "김백엔드",
+      "departmentId": 4,
+      "position": "시니어 개발자",
+      "salary": 8000000,
+      "hireDate": "2020-05-20",
+      "email": "senior.backend@company.com",
+      "phone": "010-3333-4444",
+      "skills": ["Node.js", "Express", "MongoDB", "Redis", "GraphQL"],
+      "projects": [201, 202]
+    },
+    {
+      "id": 113,
+      "name": "박데이터",
+      "departmentId": 4,
+      "position": "데이터베이스 전문가",
+      "salary": 7800000,
+      "hireDate": "2020-09-10",
+      "email": "db.expert@company.com",
+      "phone": "010-4444-5555",
+      "skills": ["MySQL", "PostgreSQL", "MongoDB", "Redis", "데이터모델링"],
+      "projects": [202, 204]
+    },
+    {
+      "id": 114,
+      "name": "송클라우드",
+      "departmentId": 5,
+      "position": "클라우드 엔지니어",
+      "salary": 7500000,
+      "hireDate": "2021-02-01",
+      "email": "cloud.engineer@company.com",
+      "phone": "010-5555-6666",
+      "skills": ["AWS", "Azure", "Docker", "Kubernetes", "모니터링"],
+      "projects": [202, 204]
+    },
+    {
+      "id": 115,
+      "name": "류테스터",
+      "departmentId": 10,
+      "position": "QA 엔지니어",
+      "salary": 6500000,
+      "hireDate": "2021-07-15",
+      "email": "qa.engineer@company.com",
+      "phone": "010-6666-7777",
+      "skills": ["테스트케이스작성", "Selenium", "Jest", "부하테스트"],
+      "projects": [201, 203]
+    }
+  ],
+  "projects": [
+    {
+      "id": 201,
+      "name": "E-커머스 플랫폼 구축",
+      "description": "새로운 온라인 쇼핑몰 플랫폼 개발",
+      "departmentId": 2,
+      "managerId": 102,
+      "memberIds": [102, 103, 109, 111, 112, 115],
+      "startDate": "2024-01-15",
+      "endDate": "2024-08-31",
+      "budget": 80000000,
+      "status": "진행중",
+      "priority": "높음",
+      "technologies": ["React", "Node.js", "MongoDB", "AWS"],
+      "milestones": [
+        {
+          "name": "요구사항 분석 완료",
+          "date": "2024-02-15",
+          "completed": true
+        },
+        {
+          "name": "UI/UX 디자인 완료",
+          "date": "2024-03-31",
+          "completed": true
+        },
+        {
+          "name": "프론트엔드 개발 완료",
+          "date": "2024-06-30",
+          "completed": false
+        },
+        {
+          "name": "백엔드 API 개발 완료",
+          "date": "2024-07-15",
+          "completed": false
+        },
+        {
+          "name": "통합 테스트 완료",
+          "date": "2024-08-15",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "name": "클라우드 인프라 마이그레이션",
+      "description": "기존 온프레미스 시스템을 클라우드로 이전",
+      "departmentId": 5,
+      "managerId": 104,
+      "memberIds": [103, 104, 112, 113, 114],
+      "startDate": "2024-02-01",
+      "endDate": "2024-09-30",
+      "budget": 60000000,
+      "status": "진행중",
+      "priority": "높음",
+      "technologies": ["AWS", "Docker", "Kubernetes", "Terraform"],
+      "milestones": [
+        {
+          "name": "현황 분석 완료",
+          "date": "2024-02-28",
+          "completed": true
+        },
+        {
+          "name": "마이그레이션 계획 수립",
+          "date": "2024-03-31",
+          "completed": true
+        },
+        {
+          "name": "테스트 환경 구축",
+          "date": "2024-05-31",
+          "completed": false
+        },
+        {
+          "name": "단계적 마이그레이션",
+          "date": "2024-08-31",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "name": "모바일 앱 리뉴얼",
+      "description": "기존 모바일 앱의 사용성 개선 및 기능 추가",
+      "departmentId": 3,
+      "managerId": 102,
+      "memberIds": [102, 110, 111, 115],
+      "startDate": "2024-03-01",
+      "endDate": "2024-07-31",
+      "budget": 40000000,
+      "status": "진행중",
+      "priority": "중간",
+      "technologies": ["React Native", "TypeScript", "Firebase"],
+      "milestones": [
+        {
+          "name": "사용자 피드백 분석",
+          "date": "2024-03-15",
+          "completed": true
+        },
+        {
+          "name": "새로운 UI 디자인",
+          "date": "2024-04-30",
+          "completed": true
+        },
+        {
+          "name": "기능 개발 완료",
+          "date": "2024-06-30",
+          "completed": false
+        },
+        {
+          "name": "베타 테스트",
+          "date": "2024-07-15",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "name": "보안 시스템 강화",
+      "description": "전사 보안 정책 수립 및 보안 시스템 구축",
+      "departmentId": 5,
+      "managerId": 104,
+      "memberIds": [104, 113, 114],
+      "startDate": "2024-04-01",
+      "endDate": "2024-10-31",
+      "budget": 50000000,
+      "status": "계획중",
+      "priority": "높음",
+      "technologies": ["보안솔루션", "방화벽", "침입탐지", "암호화"],
+      "milestones": [
+        {
+          "name": "보안 현황 진단",
+          "date": "2024-04-30",
+          "completed": false
+        },
+        {
+          "name": "보안 정책 수립",
+          "date": "2024-06-30",
+          "completed": false
+        },
+        {
+          "name": "보안 시스템 구축",
+          "date": "2024-09-30",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "name": "국내 마케팅 캠페인",
+      "description": "신제품 출시를 위한 국내 마케팅 전략 실행",
+      "departmentId": 7,
+      "managerId": 106,
+      "memberIds": [106],
+      "startDate": "2024-05-01",
+      "endDate": "2024-08-31",
+      "budget": 25000000,
+      "status": "계획중",
+      "priority": "중간",
+      "technologies": ["마케팅자동화", "CRM", "소셜미디어"],
+      "milestones": [
+        {
+          "name": "시장 조사 완료",
+          "date": "2024-05-31",
+          "completed": false
+        },
+        {
+          "name": "캠페인 기획 완료",
+          "date": "2024-06-30",
+          "completed": false
+        },
+        {
+          "name": "캠페인 실행",
+          "date": "2024-08-31",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 206,
+      "name": "해외 시장 진출",
+      "description": "동남아시아 시장 진출을 위한 전략 수립 및 실행",
+      "departmentId": 8,
+      "managerId": 107,
+      "memberIds": [107],
+      "startDate": "2024-06-01",
+      "endDate": "2024-12-31",
+      "budget": 45000000,
+      "status": "계획중",
+      "priority": "높음",
+      "technologies": ["현지화", "국제결제", "다국어지원"],
+      "milestones": [
+        {
+          "name": "시장 조사 및 분석",
+          "date": "2024-07-31",
+          "completed": false
+        },
+        {
+          "name": "현지 파트너십 구축",
+          "date": "2024-09-30",
+          "completed": false
+        },
+        {
+          "name": "서비스 현지화",
+          "date": "2024-11-30",
+          "completed": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 기초 - 간단한 계산기</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript 기초 토이프로젝트</h1>
+        <h2>간단한 계산기</h2>
+        
+        <div class="calculator">
+            <div class="display">
+                <input type="text" id="display" readonly>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="clearDisplay()" class="btn clear">C</button>
+                <button onclick="deleteLast()" class="btn delete">⌫</button>
+                <button onclick="appendToDisplay('/')" class="btn operator">÷</button>
+                <button onclick="appendToDisplay('*')" class="btn operator">×</button>
+                
+                <button onclick="appendToDisplay('7')" class="btn number">7</button>
+                <button onclick="appendToDisplay('8')" class="btn number">8</button>
+                <button onclick="appendToDisplay('9')" class="btn number">9</button>
+                <button onclick="appendToDisplay('-')" class="btn operator">-</button>
+                
+                <button onclick="appendToDisplay('4')" class="btn number">4</button>
+                <button onclick="appendToDisplay('5')" class="btn number">5</button>
+                <button onclick="appendToDisplay('6')" class="btn number">6</button>
+                <button onclick="appendToDisplay('+')" class="btn operator">+</button>
+                
+                <button onclick="appendToDisplay('1')" class="btn number">1</button>
+                <button onclick="appendToDisplay('2')" class="btn number">2</button>
+                <button onclick="appendToDisplay('3')" class="btn number">3</button>
+                <button onclick="calculate()" class="btn equals" rowspan="2">=</button>
+                
+                <button onclick="appendToDisplay('0')" class="btn number zero">0</button>
+                <button onclick="appendToDisplay('.')" class="btn number">.</button>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h3>이 프로젝트에서 배우는 JavaScript 기초 개념들:</h3>
+            <ul>
+                <li><strong>변수 (Variables):</strong> let, const를 사용한 데이터 저장</li>
+                <li><strong>함수 (Functions):</strong> 계산기 기능을 위한 함수 정의와 호출</li>
+                <li><strong>DOM 조작:</strong> HTML 요소 선택과 내용 변경</li>
+                <li><strong>이벤트 처리:</strong> 버튼 클릭 이벤트 처리</li>
+                <li><strong>조건문:</strong> if/else를 사용한 입력 검증</li>
+                <li><strong>문자열 조작:</strong> 문자열 연결과 변환</li>
+                <li><strong>오류 처리:</strong> try/catch를 사용한 예외 처리</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

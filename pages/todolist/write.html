@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 작성 - TodoList</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 할 일 작성</h1>
+            <nav>
+                <a href="./list.html" class="nav-link">목록보기</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="write-section">
+                <form id="todo-form">
+                    <div class="form-group">
+                        <label for="todo-title">할 일</label>
+                        <input type="text" id="todo-title" placeholder="할 일을 입력하세요" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">추가하기</button>
+                        <button type="button" id="clear-btn" class="btn btn-secondary">지우기</button>
+                    </div>
+                </form>
+                
+                <div id="status" class="status hidden"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/todolist.js"></script>
+</body>
+</html>

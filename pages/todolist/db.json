@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "장보기",
+      "completed": false,
+      "createdAt": "2025-01-20T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "운동하기",
+      "completed": true,
+      "createdAt": "2025-01-20T11:00:00.000Z"
+    }
+  ]
+}

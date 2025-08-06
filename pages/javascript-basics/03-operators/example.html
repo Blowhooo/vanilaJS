@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 연산자 - 예시</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/example.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 연산자 - 완성 예시</h2>
+                        <p class="int-sec__desc">
+                            다양한 연산자를 활용한 완성된 예시를 체험해보세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">✅ 산술 연산자로 고급 계산기</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 비교 연산자로 데이터 검증</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 논리 연산자로 복합 조건 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">실제 활용 사례를 확인해보세요!</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">고급 계산기</h3>
+                                <p class="int-sec__desc">모든 산술 연산자를 활용한 완성된 계산기</p>
+                                
+                                <div class="advanced-calculator">
+                                    <div class="calc-display">
+                                        <input type="text" id="calcDisplay" readonly>
+                                    </div>
+                                    <div class="calc-buttons">
+                                        <button onclick="clearCalc()" class="calc-btn clear">C</button>
+                                        <button onclick="backspace()" class="calc-btn">⌫</button>
+                                        <button onclick="appendCalc('/')" class="calc-btn operator">÷</button>
+                                        <button onclick="appendCalc('*')" class="calc-btn operator">×</button>
+                                        
+                                        <button onclick="appendCalc('7')" class="calc-btn">7</button>
+                                        <button onclick="appendCalc('8')" class="calc-btn">8</button>
+                                        <button onclick="appendCalc('9')" class="calc-btn">9</button>
+                                        <button onclick="appendCalc('-')" class="calc-btn operator">-</button>
+                                        
+                                        <button onclick="appendCalc('4')" class="calc-btn">4</button>
+                                        <button onclick="appendCalc('5')" class="calc-btn">5</button>
+                                        <button onclick="appendCalc('6')" class="calc-btn">6</button>
+                                        <button onclick="appendCalc('+')" class="calc-btn operator">+</button>
+                                        
+                                        <button onclick="appendCalc('1')" class="calc-btn">1</button>
+                                        <button onclick="appendCalc('2')" class="calc-btn">2</button>
+                                        <button onclick="appendCalc('3')" class="calc-btn">3</button>
+                                        <button onclick="calculateResult()" class="calc-btn equals" rowspan="2">=</button>
+                                        
+                                        <button onclick="appendCalc('0')" class="calc-btn zero">0</button>
+                                        <button onclick="appendCalc('.')" class="calc-btn">.</button>
+                                        <button onclick="appendCalc('%')" class="calc-btn operator">%</button>
+                                        
+                                        <button onclick="powerOperation()" class="calc-btn operator">x²</button>
+                                        <button onclick="sqrtOperation()" class="calc-btn operator">√</button>
+                                        <button onclick="appendCalc('**')" class="calc-btn operator">^</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실시간 비교 도구</h3>
+                                <p class="int-sec__desc">다양한 데이터 타입의 비교 연산 확인</p>
+                                
+                                <div class="comparison-demo">
+                                    <div class="input-group">
+                                        <label>값 1:</label>
+                                        <input type="text" id="demoValue1" oninput="liveCompare()" placeholder="값을 입력하세요">
+                                        <span class="type-info" id="type1"></span>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>값 2:</label>
+                                        <input type="text" id="demoValue2" oninput="liveCompare()" placeholder="값을 입력하세요">
+                                        <span class="type-info" id="type2"></span>
+                                    </div>
+                                    <div class="comparison-results" id="comparisonDemo"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">조건부 접근 제어</h3>
+                                <p class="int-sec__desc">논리 연산자를 활용한 실제 사용 사례</p>
+                                
+                                <div class="access-control">
+                                    <div class="user-info">
+                                        <label>
+                                            나이: <input type="number" id="userAge" oninput="checkAccess()" min="0" max="120" value="25">
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="hasLicense" onchange="checkAccess()"> 운전면허 소지
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="hasExperience" onchange="checkAccess()"> 운전 경험 있음
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="isVIP" onchange="checkAccess()"> VIP 회원
+                                        </label>
+                                    </div>
+                                    <div class="access-results" id="accessResults"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">연산자 우선순위 테스트</h3>
+                                <p class="int-sec__desc">복잡한 연산식의 계산 순서 이해하기</p>
+                                
+                                <div class="precedence-test">
+                                    <div class="test-expressions">
+                                        <button onclick="testPrecedence('2 + 3 * 4')" class="test-btn">2 + 3 × 4</button>
+                                        <button onclick="testPrecedence('(2 + 3) * 4')" class="test-btn">(2 + 3) × 4</button>
+                                        <button onclick="testPrecedence('10 / 2 + 3')" class="test-btn">10 ÷ 2 + 3</button>
+                                        <button onclick="testPrecedence('2 ** 3 ** 2')" class="test-btn">2 ** 3 ** 2</button>
+                                        <button onclick="testPrecedence('true && false || true')" class="test-btn">true && false || true</button>
+                                    </div>
+                                    <div class="precedence-result" id="precedenceResult"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

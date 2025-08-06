@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 변수 - 실습</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 변수 실습</h2>
+                        <p class="int-sec__desc">
+                            실무에서 자주 사용하는 변수 패턴을 익혀보자
+                        </p>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 1: 쇼핑몰 장바구니</h3>
+                                <p class="int-sec__desc">상품 정보와 수량 변경을 처리해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceShoppingCart()">장바구니 실행</button>
+                                            <div id="shoppingCartResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 2: 사용자 정보 관리</h3>
+                                <p class="int-sec__desc">const 객체의 속성을 변경해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceUserInfo()">정보 관리 실행</button>
+                                            <div id="userInfoResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 3: 할인 계산기</h3>
+                                <p class="int-sec__desc">상수를 활용한 가격 계산을 해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceDiscount()">할인 계산</button>
+                                            <div id="discountResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

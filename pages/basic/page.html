@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 기초 계산기 - 실습</title>
+    <link rel="stylesheet" href="../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../src/styles/global.css">
+    <link rel="stylesheet" href="../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../index.html" class="header__link">JS</a></h1>
+                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 기초 계산기 실습</h2>
+                        <p class="int-sec__desc">
+                            JavaScript 기초 문법을 종합적으로 활용한 계산기를 만들어보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">변수 선언과 함수 정의</li>
+                            <li class="int-sec__desc int-sec__desc--item">DOM 조작과 이벤트 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item">조건문과 오류 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">직접 코드를 수정하여 기능 추가해보기</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 1: 기본 계산기 구현</h3>
+                                <p class="int-sec__desc">사칙연산이 가능한 계산기를 만들어보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 숫자 입력 기능</li>
+                                            <li>• 사칙연산 (+, -, ×, ÷) 기능</li>
+                                            <li>• 계산 결과 출력</li>
+                                            <li>• 초기화(Clear) 기능</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div id="calculatorContainer">
+                                                <div class="calculator">
+                                                    <div class="display">
+                                                        <input type="text" id="display" readonly>
+                                                    </div>
+                                                    
+                                                    <div class="buttons">
+                                                        <button onclick="clearDisplay()" class="btn-calc clear">C</button>
+                                                        <button onclick="deleteLast()" class="btn-calc delete">⌫</button>
+                                                        <button onclick="appendToDisplay('/')" class="btn-calc operator">÷</button>
+                                                        <button onclick="appendToDisplay('*')" class="btn-calc operator">×</button>
+                                                        
+                                                        <button onclick="appendToDisplay('7')" class="btn-calc number">7</button>
+                                                        <button onclick="appendToDisplay('8')" class="btn-calc number">8</button>
+                                                        <button onclick="appendToDisplay('9')" class="btn-calc number">9</button>
+                                                        <button onclick="appendToDisplay('-')" class="btn-calc operator">-</button>
+                                                        
+                                                        <button onclick="appendToDisplay('4')" class="btn-calc number">4</button>
+                                                        <button onclick="appendToDisplay('5')" class="btn-calc number">5</button>
+                                                        <button onclick="appendToDisplay('6')" class="btn-calc number">6</button>
+                                                        <button onclick="appendToDisplay('+')" class="btn-calc operator">+</button>
+                                                        
+                                                        <button onclick="appendToDisplay('1')" class="btn-calc number">1</button>
+                                                        <button onclick="appendToDisplay('2')" class="btn-calc number">2</button>
+                                                        <button onclick="appendToDisplay('3')" class="btn-calc number">3</button>
+                                                        <button onclick="calculate()" class="btn-calc equals">=</button>
+                                                        
+                                                        <button onclick="appendToDisplay('0')" class="btn-calc number zero">0</button>
+                                                        <button onclick="appendToDisplay('.')" class="btn-calc number">.</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 2: 기능 확장하기</h3>
+                                <p class="int-sec__desc">추가 기능을 구현해서 계산기를 더욱 실용적으로 만들어보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">도전 과제</h4>
+                                        <ul class="requirements">
+                                            <li>• 키보드 입력 지원 추가</li>
+                                            <li>• 연산 히스토리 기능</li>
+                                            <li>• 메모리 저장/불러오기 기능</li>
+                                            <li>• 과학 계산기 기능 (제곱, 제곱근 등)</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="showAdvancedFeatures()">고급 기능 확인</button>
+                                            <div id="advancedResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">학습 포인트</h3>
+                                <p class="int-sec__desc">이 프로젝트에서 다루는 JavaScript 기초 개념들</p>
+                                <div class="concept-grid">
+                                    <div class="concept-item">
+                                        <h4>변수 (Variables)</h4>
+                                        <p>let, const를 사용한 데이터 저장</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>함수 (Functions)</h4>
+                                        <p>계산기 기능을 위한 함수 정의와 호출</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>DOM 조작</h4>
+                                        <p>HTML 요소 선택과 내용 변경</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>이벤트 처리</h4>
+                                        <p>버튼 클릭 이벤트 처리</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>조건문</h4>
+                                        <p>if/else를 사용한 입력 검증</p>
+                                    </div>
+                                    <div class="concept-item">
+                                        <h4>오류 처리</h4>
+                                        <p>try/catch를 사용한 예외 처리</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

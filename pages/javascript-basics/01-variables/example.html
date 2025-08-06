@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 변수 - Variables</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 변수 (Variables)</h2>
+                        <p class="int-sec__desc">
+                            JavaScript에서 데이터를 저장하는 변수의 종류와 특성을 알아보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">var, let, const의 차이점과 사용법</li>
+                            <li class="int-sec__desc int-sec__desc--item">스코프(Scope)의 개념과 종류</li>
+                            <li class="int-sec__desc int-sec__desc--item">변수 명명 규칙과 베스트 프랙티스</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">호이스팅(Hoisting) 현상</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">var, let, const의 차이점</h3>
+                                <p class="int-sec__desc">각 키워드의 특성과 스코프 차이를 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">변수 선언 방법 비교</h4>
+                                        <button type="button" class="btn btn--small" onclick="runVariableExample()">예제 실행</button>
+                                        <div id="variableOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">변수 명명 규칙</h3>
+                                <p class="int-sec__desc">올바른 변수명 작성법과 피해야 할 패턴들을 살펴보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">명명 규칙 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runNamingExample()">예제 실행</button>
+                                        <div id="namingOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">스코프 (Scope) 예제</h3>
+                                <p class="int-sec__desc">전역, 함수, 블록 스코프의 동작 방식을 이해해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">스코프 동작 확인</h4>
+                                        <button type="button" class="btn btn--small" onclick="runScopeExample()">예제 실행</button>
+                                        <div id="scopeOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">에러 테스트</h3>
+                                <p class="int-sec__desc">변수 선언 시 발생할 수 있는 실제 에러들을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">실제 에러 확인</h4>
+                                        <button type="button" class="btn btn--small" onclick="runErrorExample()">에러 테스트</button>
+                                        <div id="errorOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

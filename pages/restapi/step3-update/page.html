@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS - REST API UPDATE 실습</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">REST API UPDATE 실습</h2>
+                        <p class="int-sec__desc">
+                            JSON Server와 연동하여 데이터 수정(UPDATE)을 직접 구현해보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">PUT vs PATCH 메서드 이해하고 구현하기</li>
+                            <li class="int-sec__desc int-sec__desc--item">기존 데이터 조회 후 안전하게 수정하기</li>
+                            <li class="int-sec__desc int-sec__desc--item">변경사항 감지 및 검증 로직 구현하기</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">실무에서 사용하는 고급 업데이트 패턴 익히기</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 서버 상태 확인 -->
+                    <div class="server-check">
+                        <h3>🔧 시작하기 전에</h3>
+                        <p>JSON Server가 실행 중인지 확인하세요:</p>
+                        <code>json-server --watch data/db.json --port 3001</code>
+                        <button type="button" class="btn btn--small" id="check-server">서버 상태 확인</button>
+                        <div id="server-status" class="status status--hidden"></div>
+                    </div>
+                    
+                    <div class="main__container">
+
+                        <!-- 실습 1: 기본 PUT 수정 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 1: 기본 PUT 수정</h3>
+                                <p class="int-sec__desc">PUT 메서드로 전체 리소스를 교체하는 방식을 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• API URL: <code>http://localhost:3001/posts/{id}</code></li>
+                                            <li>• PUT 메서드, JSON 형태로 전체 데이터 전송</li>
+                                            <li>• id, title, body, userId 모든 필드 포함</li>
+                                            <li>• 응답 데이터를 화면에 표시</li>
+                                            <li>• 적절한 에러 처리 구현</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <input type="number" id="put-post-id" class="frm-input frm-input--full input-spacing" placeholder="수정할 게시글 ID" min="1">
+                                            <input type="text" id="put-title" class="frm-input frm-input--full input-spacing" placeholder="새로운 제목">
+                                            <textarea id="put-body" class="frm-input frm-input--full input-spacing" placeholder="새로운 내용" rows="3"></textarea>
+                                            <input type="number" id="put-user-id" class="frm-input frm-input--full input-spacing" placeholder="작성자 ID (1-10)" min="1" max="10">
+                                            <button type="button" class="btn btn--small" id="update-put">PUT으로 수정하기</button>
+                                            <div id="put-status" class="status status--hidden"></div>
+                                            <div id="put-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 2: PATCH 부분 수정 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 2: PATCH 부분 수정</h3>
+                                <p class="int-sec__desc">PATCH 메서드로 특정 필드만 부분 수정하는 방식을 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• PATCH 메서드, 수정할 필드만 JSON으로 전송</li>
+                                            <li>• 체크박스로 수정할 필드 선택 기능</li>
+                                            <li>• 선택된 필드만 업데이트 데이터에 포함</li>
+                                            <li>• PUT과 PATCH의 차이점 이해</li>
+                                            <li>• 부분 업데이트 결과 표시</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <input type="number" id="patch-post-id" class="frm-input frm-input--full input-spacing" placeholder="수정할 게시글 ID" min="1">
+                                            <div class="checkbox-group">
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="patch-title-check"> 제목 수정
+                                                </label>
+                                                <input type="text" id="patch-title" class="frm-input frm-input--full input-spacing" placeholder="새로운 제목" disabled>
+                                                <label class="checkbox-label">
+                                                    <input type="checkbox" id="patch-body-check"> 내용 수정
+                                                </label>
+                                                <textarea id="patch-body" class="frm-input frm-input--full input-spacing" placeholder="새로운 내용" rows="3" disabled></textarea>
+                                            </div>
+                                            <button type="button" class="btn btn--small" id="update-patch">PATCH로 부분 수정</button>
+                                            <div id="patch-status" class="status status--hidden"></div>
+                                            <div id="patch-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 3: 기존 데이터 로드 후 수정 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 3: 기존 데이터 로드 후 수정</h3>
+                                <p class="int-sec__desc">GET으로 기존 데이터를 먼저 불러온 후 수정하는 안전한 패턴을 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• GET 요청으로 기존 게시글 데이터 불러오기</li>
+                                            <li>• 불러온 데이터를 폼에 자동으로 채우기</li>
+                                            <li>• 사용자가 원하는 부분만 수정할 수 있도록 구현</li>
+                                            <li>• 변경사항이 없으면 업데이트하지 않기</li>
+                                            <li>• 수정 전후 데이터 비교 표시</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="load-section">
+                                                <input type="number" id="load-post-id" class="frm-input frm-input--full input-spacing" placeholder="불러올 게시글 ID" min="1">
+                                                <button type="button" class="btn btn--small" id="load-post">게시글 불러오기</button>
+                                            </div>
+                                            <div id="edit-form" class="edit-form" style="display: none;">
+                                                <h5>게시글 편집</h5>
+                                                <input type="text" id="edit-title" class="frm-input frm-input--full input-spacing" placeholder="제목">
+                                                <textarea id="edit-body" class="frm-input frm-input--full input-spacing" placeholder="내용" rows="4"></textarea>
+                                                <div class="form-buttons">
+                                                    <button type="button" class="btn btn--small" id="save-changes">변경사항 저장</button>
+                                                    <button type="button" class="btn btn--small" id="cancel-edit">취소</button>
+                                                </div>
+                                            </div>
+                                            <div id="load-edit-status" class="status status--hidden"></div>
+                                            <div id="load-edit-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 4: 실시간 변경사항 감지 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 4: 실시간 변경사항 감지</h3>
+                                <p class="int-sec__desc">사용자가 입력하는 동안 실시간으로 변경사항을 감지하고 표시해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 게시글 로드 후 원본 데이터와 현재 입력값 실시간 비교</li>
+                                            <li>• 변경된 필드를 시각적으로 하이라이트</li>
+                                            <li>• 변경사항 개수와 내용을 요약해서 표시</li>
+                                            <li>• 변경사항이 없으면 저장 버튼 비활성화</li>
+                                            <li>• input/textarea 이벤트를 활용한 실시간 처리</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="compare-section">
+                                                <input type="number" id="compare-post-id" class="frm-input frm-input--full input-spacing" placeholder="게시글 ID" min="1">
+                                                <button type="button" class="btn btn--small" id="load-for-compare">데이터 로드</button>
+                                            </div>
+                                            <div id="compare-form" class="compare-form" style="display: none;">
+                                                <div class="compare-container">
+                                                    <div class="original-section">
+                                                        <h5>원본 데이터</h5>
+                                                        <div id="original-display" class="original-display"></div>
+                                                    </div>
+                                                    <div class="edit-section">
+                                                        <h5>편집 중</h5>
+                                                        <input type="text" id="compare-title" class="frm-input frm-input--full input-spacing" placeholder="제목">
+                                                        <textarea id="compare-body" class="frm-input frm-input--full input-spacing" placeholder="내용" rows="4"></textarea>
+                                                        <div id="changes-summary" class="changes-summary"></div>
+                                                        <button type="button" class="btn btn--small" id="apply-changes" disabled>변경사항 적용</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="compare-status" class="status status--hidden"></div>
+                                            <div id="compare-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 5: 폼 검증과 미리보기 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 5: 폼 검증과 미리보기</h3>
+                                <p class="int-sec__desc">입력 검증과 실시간 미리보기 기능을 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 실시간 입력 검증 (제목 5글자 이상, 내용 10글자 이상)</li>
+                                            <li>• 글자 수 카운터 표시</li>
+                                            <li>• 검증 결과에 따른 시각적 피드백</li>
+                                            <li>• 실시간 미리보기 화면</li>
+                                            <li>• 검증 통과 시에만 저장 버튼 활성화</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="validation-section">
+                                                <input type="number" id="validate-post-id" class="frm-input frm-input--full input-spacing" placeholder="게시글 ID" min="1">
+                                                <button type="button" class="btn btn--small" id="load-for-validate">불러오기</button>
+                                            </div>
+                                            <div id="validation-form" class="validation-form" style="display: none;">
+                                                <div class="validation-container">
+                                                    <div class="input-section">
+                                                        <h5>편집</h5>
+                                                        <input type="text" id="validate-title" class="frm-input frm-input--full input-spacing" placeholder="제목 (5글자 이상)">
+                                                        <div id="title-validation" class="validation-message"></div>
+                                                        <textarea id="validate-body" class="frm-input frm-input--full input-spacing" placeholder="내용 (10글자 이상)" rows="4"></textarea>
+                                                        <div id="body-validation" class="validation-message"></div>
+                                                        <div id="char-counter" class="char-counter"></div>
+                                                        <button type="button" class="btn btn--small" id="save-validated" disabled>저장</button>
+                                                    </div>
+                                                    <div class="preview-section">
+                                                        <h5>미리보기</h5>
+                                                        <div id="live-preview" class="live-preview">
+                                                            <div class="preview-title">제목을 입력하세요</div>
+                                                            <div class="preview-body">내용을 입력하세요</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="validation-status" class="status status--hidden"></div>
+                                            <div id="validation-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 6: 여러 게시글 일괄 수정 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 6: 여러 게시글 일괄 수정</h3>
+                                <p class="int-sec__desc">선택된 여러 게시글을 한번에 수정하는 배치 업데이트를 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• GET으로 게시글 목록 불러오기</li>
+                                            <li>• 체크박스로 수정할 게시글 선택</li>
+                                            <li>• 일괄 수정 옵션 선택 (제목 변경, 내용 앞에 텍스트 추가 등)</li>
+                                            <li>• Promise.all을 사용한 병렬 처리</li>
+                                            <li>• 진행 상황과 결과 표시</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" id="load-batch-posts">게시글 목록 불러오기</button>
+                                            <div id="batch-posts-container" class="batch-posts-container" style="display: none;">
+                                                <div id="batch-posts-list" class="batch-posts-list"></div>
+                                                <div class="batch-options">
+                                                    <h5>일괄 수정 옵션</h5>
+                                                    <label class="checkbox-label">
+                                                        <input type="checkbox" id="batch-title-option"> 제목 일괄 변경
+                                                    </label>
+                                                    <input type="text" id="batch-new-title" class="frm-input frm-input--full input-spacing" placeholder="새로운 제목" disabled>
+                                                    <label class="checkbox-label">
+                                                        <input type="checkbox" id="batch-prefix-option"> 내용 앞에 텍스트 추가
+                                                    </label>
+                                                    <input type="text" id="batch-prefix-text" class="frm-input frm-input--full input-spacing" placeholder="추가할 텍스트" disabled>
+                                                    <button type="button" class="btn btn--small" id="apply-batch-update" disabled>일괄 수정 적용</button>
+                                                </div>
+                                            </div>
+                                            <div id="batch-status" class="status status--hidden"></div>
+                                            <div id="batch-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 7: 에러 처리 및 재시도 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 7: 에러 처리 및 재시도</h3>
+                                <p class="int-sec__desc">다양한 에러 상황을 처리하고 재시도 로직을 구현해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 404 에러 (존재하지 않는 게시글) 처리</li>
+                                            <li>• 네트워크 에러 발생 시 자동 재시도</li>
+                                            <li>• 서버 에러 (500) 대응</li>
+                                            <li>• 사용자에게 적절한 에러 메시지 표시</li>
+                                            <li>• 재시도 횟수 제한 및 지수 백오프 구현</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="error-test-buttons">
+                                                <button type="button" class="btn btn--small" id="test-404-error">404 에러 테스트</button>
+                                                <button type="button" class="btn btn--small" id="test-network-retry">네트워크 재시도 테스트</button>
+                                                <button type="button" class="btn btn--small" id="test-server-error">서버 에러 테스트</button>
+                                                <button type="button" class="btn btn--small" id="test-validation-error">검증 에러 테스트</button>
+                                            </div>
+                                            <div class="retry-section">
+                                                <h5>재시도 로직 구현</h5>
+                                                <input type="number" id="retry-post-id" class="frm-input frm-input--full input-spacing" placeholder="수정할 게시글 ID" min="1">
+                                                <input type="text" id="retry-title" class="frm-input frm-input--full input-spacing" placeholder="새로운 제목">
+                                                <button type="button" class="btn btn--small" id="update-with-retry">재시도 로직으로 수정</button>
+                                            </div>
+                                            <div id="error-status" class="status status--hidden"></div>
+                                            <div id="error-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 8: 종합 실습 - 완전한 게시글 편집기 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 8: 종합 실습 - 완전한 게시글 편집기</h3>
+                                <p class="int-sec__desc">지금까지 배운 모든 기능을 통합하여 실제 사용할 수 있는 편집기를 만들어보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">종합 요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 게시글 불러오기, 새 게시글 작성 모드</li>
+                                            <li>• 자동 저장 기능 (30초마다)</li>
+                                            <li>• 실시간 검증 및 미리보기</li>
+                                            <li>• 변경사항 추적 및 저장 상태 표시</li>
+                                            <li>• 에러 처리 및 사용자 친화적 메시지</li>
+                                            <li>• 페이지 이탈 시 변경사항 경고</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="advanced-editor">
+                                                <div class="editor-header">
+                                                    <h5>고급 게시글 편집기</h5>
+                                                    <div class="editor-controls">
+                                                        <input type="number" id="final-post-id" class="frm-input frm-input--small" placeholder="게시글 ID" min="1">
+                                                        <button type="button" class="btn btn--small" id="final-load">불러오기</button>
+                                                        <button type="button" class="btn btn--small" id="final-new">새 게시글</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div id="final-editor-form" class="final-editor-form" style="display: none;">
+                                                    <div class="editor-toolbar">
+                                                        <button type="button" class="btn btn--small" id="final-save">저장</button>
+                                                        <button type="button" class="btn btn--small" id="final-draft">임시저장</button>
+                                                        <button type="button" class="btn btn--small" id="final-preview">미리보기</button>
+                                                        <span id="final-save-status" class="save-status">저장됨</span>
+                                                    </div>
+                                                    
+                                                    <div class="editor-content">
+                                                        <input type="text" id="final-title" class="frm-input frm-input--full input-spacing" placeholder="게시글 제목">
+                                                        <textarea id="final-body" class="frm-input frm-input--full editor-textarea" placeholder="게시글 내용을 입력하세요..." rows="8"></textarea>
+                                                        
+                                                        <div class="editor-footer">
+                                                            <div class="editor-info">
+                                                                <span>글자 수: <span id="final-char-count">0</span></span>
+                                                                <span>|</span>
+                                                                <span>마지막 저장: <span id="final-last-saved">없음</span></span>
+                                                            </div>
+                                                            <div class="editor-options">
+                                                                <label class="checkbox-label">
+                                                                    <input type="checkbox" id="final-auto-save"> 자동 저장 (30초)
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="final-status" class="status status--hidden"></div>
+                                            <div id="final-result" class="practice-result"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 학습 팁 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">💡 학습 팁 & 디버깅 가이드</h3>
+                                <div class="tips-section">
+                                    <div class="tip-card">
+                                        <h4>🔍 PUT vs PATCH 차이점</h4>
+                                        <ul>
+                                            <li><strong>PUT:</strong> 전체 리소스 교체 (모든 필드 포함)</li>
+                                            <li><strong>PATCH:</strong> 부분 업데이트 (수정할 필드만)</li>
+                                            <li>실무에서는 PATCH를 더 많이 사용</li>
+                                            <li>데이터 크기와 네트워크 효율성 고려</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="tip-card">
+                                        <h4>📝 일반적인 업데이트 패턴</h4>
+                                        <ul>
+                                            <li>GET으로 기존 데이터 조회 → 폼에 로드</li>
+                                            <li>사용자 입력 → 실시간 검증</li>
+                                            <li>변경사항 감지 → 저장 버튼 활성화</li>
+                                            <li>PUT/PATCH로 업데이트 → 결과 표시</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="tip-card">
+                                        <h4>🚀 실무 고급 기능</h4>
+                                        <ul>
+                                            <li>낙관적 업데이트 (UI 먼저 업데이트)</li>
+                                            <li>자동 저장 및 임시저장</li>
+                                            <li>동시 편집 충돌 감지</li>
+                                            <li>버전 관리 및 되돌리기</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="tip-card">
+                                        <h4>⚠️ 주의사항 및 에러 처리</h4>
+                                        <ul>
+                                            <li>404: 존재하지 않는 리소스</li>
+                                            <li>409: 동시 수정 충돌</li>
+                                            <li>422: 유효성 검증 실패</li>
+                                            <li>네트워크 오류 시 재시도 로직</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

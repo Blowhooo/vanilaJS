@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 타입 - 실습</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 타입 실습</h2>
+                        <p class="int-sec__desc">
+                            실무에서 자주 마주치는 타입 변환 상황을 연습해보자
+                        </p>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 1: 폼 입력값 검증</h3>
+                                <p class="int-sec__desc">HTML 폼에서 받은 데이터를 검증하고 변환해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceFormValidation()">폼 검증 실행</button>
+                                            <div id="formValidationResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 2: API 응답 처리</h3>
+                                <p class="int-sec__desc">서버에서 받은 데이터를 적절한 타입으로 변환해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceAPIResponse()">API 데이터 처리</button>
+                                            <div id="apiResponseResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 3: 장바구니 계산</h3>
+                                <p class="int-sec__desc">문자열로 저장된 가격을 숫자로 변환해 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceCartCalculation()">가격 계산</button>
+                                            <div id="cartCalculationResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

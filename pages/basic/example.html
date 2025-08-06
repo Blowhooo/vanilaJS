@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 기초 계산기 - 예시</title>
+    <link rel="stylesheet" href="../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../src/styles/global.css">
+    <link rel="stylesheet" href="../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/example.css">    
+    <script src="../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 기초 계산기 - 완성 예시</h2>
+                        <p class="int-sec__desc">
+                            완성된 계산기를 먼저 체험해보고, 어떤 기능들이 구현되어 있는지 확인해보세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">✅ 사칙연산 계산 기능</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 키보드 입력 지원</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 오류 처리 및 검증</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">개발자 도구를 열어서 콘솔 메시지도 확인해보세요!</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">완성된 계산기</h3>
+                                <p class="int-sec__desc">버튼 클릭 또는 키보드로 계산해보세요.</p>
+                                
+                                <div class="calculator-example">
+                                    <div class="calculator">
+                                        <div class="display">
+                                            <input type="text" id="display" readonly>
+                                        </div>
+                                        
+                                        <div class="buttons">
+                                            <button onclick="clearDisplay()" class="btn-calc clear">C</button>
+                                            <button onclick="deleteLast()" class="btn-calc delete">⌫</button>
+                                            <button onclick="appendToDisplay('/')" class="btn-calc operator">÷</button>
+                                            <button onclick="appendToDisplay('*')" class="btn-calc operator">×</button>
+                                            
+                                            <button onclick="appendToDisplay('7')" class="btn-calc number">7</button>
+                                            <button onclick="appendToDisplay('8')" class="btn-calc number">8</button>
+                                            <button onclick="appendToDisplay('9')" class="btn-calc number">9</button>
+                                            <button onclick="appendToDisplay('-')" class="btn-calc operator">-</button>
+                                            
+                                            <button onclick="appendToDisplay('4')" class="btn-calc number">4</button>
+                                            <button onclick="appendToDisplay('5')" class="btn-calc number">5</button>
+                                            <button onclick="appendToDisplay('6')" class="btn-calc number">6</button>
+                                            <button onclick="appendToDisplay('+')" class="btn-calc operator">+</button>
+                                            
+                                            <button onclick="appendToDisplay('1')" class="btn-calc number">1</button>
+                                            <button onclick="appendToDisplay('2')" class="btn-calc number">2</button>
+                                            <button onclick="appendToDisplay('3')" class="btn-calc number">3</button>
+                                            <button onclick="calculate()" class="btn-calc equals">=</button>
+                                            
+                                            <button onclick="appendToDisplay('0')" class="btn-calc number zero">0</button>
+                                            <button onclick="appendToDisplay('.')" class="btn-calc number">.</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">키보드 단축키</h3>
+                                <p class="int-sec__desc">마우스 없이도 키보드만으로 계산할 수 있습니다.</p>
+                                
+                                <div class="shortcuts-grid">
+                                    <div class="shortcut-item">
+                                        <kbd>0-9</kbd>
+                                        <span>숫자 입력</span>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <kbd>+ - * /</kbd>
+                                        <span>연산자 입력</span>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <kbd>Enter</kbd>
+                                        <span>계산 실행</span>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <kbd>Escape</kbd>
+                                        <span>초기화</span>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <kbd>Backspace</kbd>
+                                        <span>마지막 문자 삭제</span>
+                                    </div>
+                                    <div class="shortcut-item">
+                                        <kbd>.</kbd>
+                                        <span>소수점 입력</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">구현된 기능들</h3>
+                                <p class="int-sec__desc">이 계산기에서 사용된 JavaScript 기능들을 확인해보세요.</p>
+                                
+                                <div class="features-grid">
+                                    <div class="feature-item">
+                                        <h4>🔢 기본 계산</h4>
+                                        <p>사칙연산과 소수점 계산</p>
+                                        <small>덧셈, 뺄셈, 곱셈, 나눗셈</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>⌨️ 키보드 지원</h4>
+                                        <p>키보드 이벤트 처리</p>
+                                        <small>addEventListener, keydown</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>🛡️ 입력 검증</h4>
+                                        <p>잘못된 입력 방지</p>
+                                        <small>정규표현식, 조건문</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>❌ 오류 처리</h4>
+                                        <p>예외 상황 처리</p>
+                                        <small>try-catch, alert</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>🎯 DOM 조작</h4>
+                                        <p>화면 요소 제어</p>
+                                        <small>getElementById, innerHTML</small>
+                                    </div>
+                                    <div class="feature-item">
+                                        <h4>🔄 상태 관리</h4>
+                                        <p>계산기 상태 추적</p>
+                                        <small>변수, 플래그 관리</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">디버깅 도구</h3>
+                                <p class="int-sec__desc">개발자 도구를 활용해 계산기의 내부 동작을 확인해보세요.</p>
+                                
+                                <div class="debug-tools">
+                                    <button type="button" class="btn btn--small" onclick="debugCurrentState()">현재 상태 확인</button>
+                                    <button type="button" class="btn btn--small" onclick="testCalculation()">계산 테스트</button>
+                                    <button type="button" class="btn btn--small" onclick="showEventLog()">이벤트 로그</button>
+                                </div>
+                                <div id="debugResult" class="debug-result"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

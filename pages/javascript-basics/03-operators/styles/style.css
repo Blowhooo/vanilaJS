@@ -1,0 +1,144 @@
+/* JavaScript 연산자 실습용 CSS */
+
+.calculator-simple {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.calculator-simple input,
+.calculator-simple select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.calculator-simple input:focus,
+.calculator-simple select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.comparison-tool {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.comparison-tool input,
+.comparison-tool select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    min-width: 120px;
+}
+
+.type-analysis {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.logic-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logic-tool label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logic-tool input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.logic-results {
+    background: #e7f3ff;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.logic-exp {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.conditions-status {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.assignment-steps {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.step-number {
+    display: inline-block;
+    background: #ffc107;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.final-values {
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    margin-top: 10px;
+}
+
+#arithmeticResult,
+#comparisonResult,
+#logicResult,
+#assignmentResult {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    min-height: 80px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .calculator-simple,
+    .comparison-tool {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .calculator-simple input,
+    .calculator-simple select,
+    .comparison-tool input,
+    .comparison-tool select {
+        width: 100%;
+    }
+}

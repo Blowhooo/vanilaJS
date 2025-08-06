@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록 - TodoList</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 할 일 목록</h1>
+            <nav>
+                <a href="./write.html" class="nav-link">새 할 일</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="list-section">
+                <div class="section-header">
+                    <h3>내 할 일</h3>
+                    <button id="refresh-btn" class="btn btn-small">새로고침</button>
+                </div>
+                
+                <div id="status" class="status hidden"></div>
+                <div id="todos-list" class="todos-list">
+                    <div class="loading">할 일을 불러오는 중...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/todolist.js"></script>
+</body>
+</html>

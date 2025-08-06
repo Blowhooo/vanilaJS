@@ -1,0 +1,114 @@
+/* Variables 페이지 전용 스타일 */
+
+.result-box {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.result-box h5 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 5px;
+}
+
+.result-box h6 {
+    color: #555;
+    margin: 15px 0 10px 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.result-box p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.success {
+    color: #28a745 !important;
+    font-weight: 600;
+}
+
+.error {
+    color: #dc3545 !important;
+    font-weight: 600;
+}
+
+.warning {
+    color: #ffc107 !important;
+    font-weight: 600;
+}
+
+.info {
+    color: #6c757d !important;
+    font-style: italic;
+}
+
+.requirements {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0;
+}
+
+.requirements li {
+    padding: 5px 0;
+    color: #555;
+}
+
+.test__area {
+    margin-top: 15px;
+}
+
+.test__area pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* 아이콘 스타일 */
+.test__area pre .success::before,
+.result-box .success::before {
+    content: '✅ ';
+}
+
+.test__area pre .error::before,
+.result-box .error::before {
+    content: '❌ ';
+}
+
+.test__area pre .warning::before,
+.result-box .warning::before {
+    content: '⚠️ ';
+}
+
+.test__area pre .info::before,
+.result-box .info::before {
+    content: 'ℹ️ ';
+}
+
+/* 코드 하이라이트 스타일 */
+.test__area pre strong {
+    color: #007acc;
+    font-weight: 600;
+}
+
+/* 스코프 섹션 스타일 */
+.test__area pre:has(📍) {
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+}
+
+/* 들여쓰기 스타일 */
+.result-box p[style*="nbsp"] {
+    margin-left: 20px;
+}

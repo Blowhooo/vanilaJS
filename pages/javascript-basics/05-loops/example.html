@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 반복문 - Loops</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 반복문 (Loops)</h2>
+                        <p class="int-sec__desc">
+                            반복적인 작업을 효율적으로 처리하는 반복문을 알아보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">for, while, do-while 문의 사용법</li>
+                            <li class="int-sec__desc int-sec__desc--item">for...in, for...of 문의 차이점</li>
+                            <li class="int-sec__desc int-sec__desc--item">break, continue를 통한 흐름 제어</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">무한 루프 방지와 성능 최적화</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">for 문</h3>
+                                <p class="int-sec__desc">가장 기본적인 반복문인 for 문의 다양한 사용법을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">for 문 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runForLoopExamples()">예제 실행</button>
+                                        <div id="forLoopOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">while 및 do-while 문</h3>
+                                <p class="int-sec__desc">조건을 기반으로 한 반복문들을 알아보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">while 문 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runWhileLoopExamples()">예제 실행</button>
+                                        <div id="whileLoopOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">for...in 및 for...of 문</h3>
+                                <p class="int-sec__desc">객체와 배열을 순회하는 특별한 반복문들을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">for...in/of 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runForInOfExamples()">예제 실행</button>
+                                        <div id="forInOfOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">break 및 continue</h3>
+                                <p class="int-sec__desc">반복문의 흐름을 제어하는 break와 continue를 사용해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">흐름 제어 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runBreakContinueExamples()">예제 실행</button>
+                                        <div id="breakContinueOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">인터랙티브 예제</h3>
+                                <p class="int-sec__desc">직접 값을 입력하여 반복문의 동작을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">구구단 생성기</h4>
+                                        <div class="form-row form-row--mb">
+                                            <input type="number" id="multipleInput" class="frm-input frm-input--small" placeholder="2-9" min="2" max="9">
+                                            <button type="button" class="btn btn--small" onclick="generateMultiplicationTable()">구구단 생성</button>
+                                        </div>
+                                        <div id="multiplicationOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

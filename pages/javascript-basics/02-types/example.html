@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 타입 - Types</title>
+    <link rel="stylesheet" href="../../../src/styles/fonts.css">    
+    <link rel="stylesheet" href="../../../src/styles/global.css">
+    <link rel="stylesheet" href="../../../src/styles/layout.css">
+    <link rel="stylesheet" href="../../../src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="../../../src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="../../../index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 타입 (Types)</h2>
+                        <p class="int-sec__desc">
+                            JavaScript의 다양한 데이터 타입과 특성을 알아보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">원시 타입과 참조 타입의 차이</li>
+                            <li class="int-sec__desc int-sec__desc--item">typeof 연산자와 타입 확인 방법</li>
+                            <li class="int-sec__desc int-sec__desc--item">타입 변환과 형 변환</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">Truthy와 Falsy 값</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">원시 타입 (Primitive Types)</h3>
+                                <p class="int-sec__desc">Number, String, Boolean, Undefined, Null, Symbol 타입을 살펴보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">원시 타입 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runPrimitiveTypes()">예제 실행</button>
+                                        <div id="primitiveOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">참조 타입 (Reference Types)</h3>
+                                <p class="int-sec__desc">Object, Array, Function, Date 등의 참조 타입을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">참조 타입 예제</h4>
+                                        <button type="button" class="btn btn--small" onclick="runReferenceTypes()">예제 실행</button>
+                                        <div id="referenceOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">타입 확인 및 변환</h3>
+                                <p class="int-sec__desc">다양한 타입 확인 방법과 타입 변환 규칙을 알아보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">타입 체킹과 형 변환</h4>
+                                        <button type="button" class="btn btn--small" onclick="runTypeChecking()">예제 실행</button>
+                                        <div id="typeOutput" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
