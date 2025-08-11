@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 중급 연산자 - 실습</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
+                        <a href="../03-operators/example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 연산자 추가 실습</h2>
+                        <p class="int-sec__desc">
+                            앞서 배운 연산자를 다양한 상황에 적용해보세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">✅ 삼항 연산자로 조건 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 논리 연산자로 복합 조건</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 비교 연산자로 범위 체크</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">재미있는 예제로 연습해보세요!</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 1: 학생 성적 계산기</h3>
+                                <p class="int-sec__desc">삼항 연산자로 등급을 판정하고 장학금 대상을 선정해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceGradeCalculator()">성적 계산</button>
+                                            <div id="gradeCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 2: 나이별 혜택 계산기</h3>
+                                <p class="int-sec__desc">나이에 따른 할인과 특별 혜택을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceAgeCalculator()">혜택 확인</button>
+                                            <div id="ageCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 3: 운동 칼로리 계산기</h3>
+                                <p class="int-sec__desc">운동별 칼로리 소모량을 계산하고 목표 달성을 체크해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceCalorieCalculator()">칼로리 계산</button>
+                                            <div id="calorieCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 4: 주차 요금 계산기</h3>
+                                <p class="int-sec__desc">차량 종류와 시간에 따른 주차 요금을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceParkingCalculator()">요금 계산</button>
+                                            <div id="parkingCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 5: 온도 변환기</h3>
+                                <p class="int-sec__desc">섭씨, 화씨, 켈빈 온도를 변환하고 상태를 표시해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceTemperatureConverter()">온도 변환</button>
+                                            <div id="temperatureConverterResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 6: BMI 건강 지수 계산기</h3>
+                                <p class="int-sec__desc">체질량 지수를 계산하고 건강 상태를 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceBMICalculator()">BMI 계산</button>
+                                            <div id="bmiCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Intermediate JavaScript Operators</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

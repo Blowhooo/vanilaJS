@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 연산자 심화 - 실습</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
+                        <a href="../03-operators/example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 연산자 심화 실습</h2>
+                        <p class="int-sec__desc">
+                            실생활 예제를 통해 연산자를 더 깊이 이해해보세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">✅ 복잡한 조건 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 다단계 계산 로직</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 실용적인 알고리즘</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">실제 서비스에서 사용되는 계산법!</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 1: 영화관 예약 시스템</h3>
+                                <p class="int-sec__desc">시간대, 요일, 상영 타입에 따른 가격을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceMovieReservation()">예약 계산</button>
+                                            <div id="movieReservationResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 2: 택시 요금 계산기</h3>
+                                <p class="int-sec__desc">거리, 시간, 심야/시외 할증을 적용한 택시 요금을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceTaxiFareCalculator()">요금 계산</button>
+                                            <div id="taxiFareResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 3: 전기 요금 계산기</h3>
+                                <p class="int-sec__desc">누진제가 적용된 전기 요금을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceElectricityBillCalculator()">요금 계산</button>
+                                            <div id="electricityBillResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 4: 데이터 요금제 추천</h3>
+                                <p class="int-sec__desc">사용 패턴을 분석하여 최적의 요금제를 추천해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceDataPlanCalculator()">요금제 추천</button>
+                                            <div id="dataPlanResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 5: 학점 계산기 (GPA)</h3>
+                                <p class="int-sec__desc">과목별 학점과 성적으로 평균 학점을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceGPACalculator()">학점 계산</button>
+                                            <div id="gpaCalculatorResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실습 6: 복리 투자 계산기</h3>
+                                <p class="int-sec__desc">복리 효과를 적용한 투자 수익을 계산해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <button type="button" class="btn btn--small" onclick="practiceCompoundInterestCalculator()">수익 계산</button>
+                                            <div id="compoundInterestResult"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">JavaScript Operators - Advanced</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* 03-1-operators 고급 스타일 */
+
+.permission-controls,
+.form-inputs,
+.pricing-inputs,
+.cache-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.permission-controls label,
+.pricing-inputs label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.permission-controls input[type="checkbox"],
+.pricing-inputs input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.form-inputs input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-inputs input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+.pricing-inputs select,
+.pricing-inputs input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.cache-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.result-box {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.result-box h5 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.result-box h6 {
+    color: #666;
+    margin: 15px 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.result-box p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.result-box .info {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.result-box .warning {
+    background: #fff3e0;
+    color: #f57c00;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.result-box .error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.result-box .success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.type-info {
+    font-size: 12px;
+    color: #999;
+    margin-left: 5px;
+}
+
+.comparison-results {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+pre {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}

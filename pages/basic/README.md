@@ -44,11 +44,21 @@ JavaScript의 기본 개념들을 학습하기 위한 간단한 계산기 프로
 ## 파일 구조
 ```
 basic/
-├── index.html      # HTML 구조
-├── style.css       # CSS 스타일링
-├── script.js       # JavaScript 로직
+├── example.html    # 완성된 예시 페이지
+├── page.html       # 실습 페이지
+├── js/
+│   ├── example.js  # 예시 JavaScript
+│   └── script.js   # 실습 JavaScript
+├── styles/
+│   └── style.css   # 프로젝트 스타일시트
 └── README.md       # 프로젝트 설명서
 ```
+
+### 📌 스타일시트 규칙
+- **공통 스타일**: `/src/styles/` 폴더의 전역 스타일 사용
+- **프로젝트별 스타일**: `./styles/style.css` 사용
+  - example.html과 page.html 모두 동일하게 `./styles/style.css`를 참조
+  - 프로젝트 내에서만 사용되는 특별한 스타일 정의
 
 ## 기능 소개
 
