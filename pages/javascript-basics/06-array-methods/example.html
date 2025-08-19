@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 배열 메서드 - Array Methods</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/example.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
+                        <a href="./page.html" class="btn btn--small">실습하기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 배열 메서드 (Array Methods)</h2>
+                        <p class="int-sec__desc">
+                            JavaScript의 강력한 배열 메서드를 활용하여 데이터를 효율적으로 처리하는 방법을 알아보자
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">forEach, map, filter, find, reduce 등 핵심 메서드</li>
+                            <li class="int-sec__desc int-sec__desc--item">메서드별 반환값과 원본 배열 변경 여부</li>
+                            <li class="int-sec__desc int-sec__desc--item">메서드 체이닝을 통한 복잡한 데이터 처리</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">함수형 프로그래밍과 불변성 원칙</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">forEach() 메서드</h3>
+                                <p class="int-sec__desc">배열의 각 요소에 대해 함수를 실행합니다. 반환값은 undefined입니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">forEach 예제</h4>
+                                        <button type="button" class="btn btn--small" id="forEach-btn">예제 실행</button>
+                                        <div id="forEach-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">map() 메서드</h3>
+                                <p class="int-sec__desc">배열의 각 요소를 변환하여 새로운 배열을 생성합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">map 예제</h4>
+                                        <button type="button" class="btn btn--small" id="map-btn">예제 실행</button>
+                                        <div id="map-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">filter() 메서드</h3>
+                                <p class="int-sec__desc">조건을 만족하는 요소만 추출하여 새로운 배열을 생성합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">filter 예제</h4>
+                                        <button type="button" class="btn btn--small" id="filter-btn">예제 실행</button>
+                                        <div id="filter-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">find() 메서드</h3>
+                                <p class="int-sec__desc">조건을 만족하는 첫 번째 요소를 찾습니다. 없으면 undefined를 반환합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">find & findIndex 예제</h4>
+                                        <button type="button" class="btn btn--small" id="find-btn">예제 실행</button>
+                                        <div id="find-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">reduce() 메서드</h3>
+                                <p class="int-sec__desc">배열을 하나의 값으로 축약합니다. 가장 강력하고 유연한 메서드입니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">reduce 예제</h4>
+                                        <button type="button" class="btn btn--small" id="reduce-btn">예제 실행</button>
+                                        <div id="reduce-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">some() & every() 메서드</h3>
+                                <p class="int-sec__desc">조건을 검사하여 boolean 값을 반환합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">some & every 예제</h4>
+                                        <button type="button" class="btn btn--small" id="some-every-btn">예제 실행</button>
+                                        <div id="some-every-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">메서드 체이닝</h3>
+                                <p class="int-sec__desc">여러 배열 메서드를 연결하여 복잡한 데이터 처리를 수행합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">체이닝 예제</h4>
+                                        <button type="button" class="btn btn--small" id="chaining-btn">예제 실행</button>
+                                        <div id="chaining-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">실전 예제</h3>
+                                <p class="int-sec__desc">장바구니 시스템을 통해 배열 메서드의 실제 활용법을 확인해보세요.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">장바구니 계산 시스템</h4>
+                                        <button type="button" class="btn btn--small" id="practical-btn">예제 실행</button>
+                                        <div id="practical-result" class="test__area"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

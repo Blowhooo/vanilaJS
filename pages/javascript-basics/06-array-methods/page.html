@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS - 배열 메서드</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/" class="header__link">JS</a></h1>
+                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">배열 메서드 (Array Methods)</h2>
+                        <p class="int-sec__desc">
+                            JavaScript의 강력한 배열 메서드를 활용하여 데이터를 효율적으로 처리하는 방법을 학습합니다.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">forEach, map, filter, find, reduce 등 핵심 메서드 이해</li>
+                            <li class="int-sec__desc int-sec__desc--item">실무에서 자주 사용되는 데이터 처리 패턴 학습</li>
+                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">메서드 체이닝을 통한 복잡한 데이터 처리</span></li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <!-- 과제 1: 학생 성적 통계 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 1: 학생 성적 통계 시스템</h3>
+                                <p class="int-sec__desc">배열 메서드를 활용하여 학생 데이터를 분석하고 통계를 계산합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• reduce를 사용하여 평균 성적 계산</li>
+                                            <li>• filter를 사용하여 우수 학생 필터링</li>
+                                            <li>• map과 reduce를 조합하여 전공별 통계 생성</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div id="student-stats"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 과제 2: 상품 필터링 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 2: 온라인 쇼핑몰 상품 관리</h3>
+                                <p class="int-sec__desc">filter, map 메서드를 사용하여 동적 상품 필터링 시스템을 구현합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• 카테고리별 상품 필터링</li>
+                                            <li>• 가격 범위로 상품 검색</li>
+                                            <li>• 검색어로 상품명 필터링</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="filters-container">
+                                                <div class="form-row">
+                                                    <select id="categoryFilter" class="frm-input frm-input--small">
+                                                        <option value="all">전체 카테고리</option>
+                                                    </select>
+                                                    <select id="priceFilter" class="frm-input frm-input--small">
+                                                        <option value="all">전체 가격</option>
+                                                        <option value="0-50000">5만원 이하</option>
+                                                        <option value="50000-200000">5만원~20만원</option>
+                                                        <option value="200000-500000">20만원~50만원</option>
+                                                        <option value="500000-">50만원 이상</option>
+                                                    </select>
+                                                    <input type="text" id="searchInput" class="frm-input frm-input--small" placeholder="상품명 검색">
+                                                </div>
+                                            </div>
+                                            <div id="products-display"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 과제 3: 장바구니 시스템 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 3: 장바구니 총액 계산</h3>
+                                <p class="int-sec__desc">reduce와 find 메서드를 활용하여 장바구니 기능을 구현합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">요구사항</h4>
+                                        <ul class="requirements">
+                                            <li>• find로 상품 정보 조회</li>
+                                            <li>• reduce로 총액 계산</li>
+                                            <li>• map으로 장바구니 아이템 표시</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div id="cart-display"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 과제 4: 메서드 체이닝 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">과제 4: 메서드 체이닝 실습</h3>
+                                <p class="int-sec__desc">여러 배열 메서드를 연결하여 복잡한 데이터 처리를 수행합니다.</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">실습 내용</h4>
+                                        <ul class="requirements">
+                                            <li>• filter → map → reduce 체이닝</li>
+                                            <li>• 조건부 필터링과 변환</li>
+                                            <li>• 최종 결과 집계</li>
+                                        </ul>
+                                        <div class="test__area">
+                                            <div class="form-row form-row--mb">
+                                                <button type="button" id="chain-example-btn" class="btn">체이닝 예제 실행</button>
+                                            </div>
+                                            <div id="chain-result" class="status status--hidden"></div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="foote__cprt">Vanilla JavaScript</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
