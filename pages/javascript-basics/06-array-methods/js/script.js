@@ -51,8 +51,7 @@ function learn_forEach() {
     console.log('\n과일 목록:');
     fruits.forEach(function(fruit) {
         // TODO: 여기에 과일 이름을 출력하는 코드 작성
-        // 예: console.log('- ' + ___);
-        
+        // 예: console.log('- ' + ___);        
     });
     
     // 📝 TODO 2: 숫자와 인덱스 함께 출력하기

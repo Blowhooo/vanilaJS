@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript 조건문 - 실습</title>
+    <title>JavaScript 조건문 - 학습</title>
     <link rel="stylesheet" href="/src/styles/fonts.css">    
     <link rel="stylesheet" href="/src/styles/global.css">
     <link rel="stylesheet" href="/src/styles/layout.css">
@@ -26,53 +26,153 @@
             <main id="main" class="main">
                 <div class="inner">
                     <div class="int-sec">
-                        <h2 class="int-sec__tit">JavaScript 조건문 실습</h2>
+                        <h2 class="int-sec__tit">JavaScript 조건문 학습</h2>
                         <p class="int-sec__desc">
-                            실무에서 자주 사용하는 조건 처리 패턴을 익혀보자
+                            콘솔을 열고 조건문의 다양한 패턴을 학습해보세요!<br>
+                            <strong>F12</strong>를 눌러 개발자 도구를 연 후, <strong>Console</strong> 탭에서 실습합니다.
                         </p>
                     </div>
                     <div class="main__container">
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 1: 로그인 상태 체크</h3>
-                                <p class="int-sec__desc">사용자 로그인 검증 로직을 구현해보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practiceLoginCheck()">로그인 체크</button>
-                                            <div id="loginCheckResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">📚 학습 가이드</h3>
+                                <div class="guide-box">
+                                    <h4>🎯 기초 학습 함수</h4>
+                                    <ul>
+                                        <li><code>learn_basic_if()</code> - if문 기초 학습</li>
+                                        <li><code>learn_if_else()</code> - if-else문 학습</li>
+                                        <li><code>learn_else_if()</code> - else if문 학습</li>
+                                        <li><code>learn_complex_conditions()</code> - 복합 조건 (&&, ||)</li>
+                                        <li><code>learn_switch()</code> - switch문 학습</li>
+                                        <li><code>learn_ternary()</code> - 삼항 연산자 학습</li>
+                                    </ul>
+                                    
+                                    <h4>💡 실전 예제 함수</h4>
+                                    <ul>
+                                        <li><code>practice_login_system()</code> - 로그인 시스템 구현</li>
+                                        <li><code>practice_shopping_cart()</code> - 쇼핑몰 장바구니</li>
+                                        <li><code>practice_game_character()</code> - 게임 캐릭터 상태</li>
+                                    </ul>
+                                    
+                                    <h4>📊 테스트 데이터</h4>
+                                    <ul>
+                                        <li><code>testUsers</code> - 사용자 데이터 확인</li>
+                                        <li><code>products</code> - 상품 데이터 확인</li>
+                                        <li><code>scores</code> - 점수 데이터 확인</li>
+                                    </ul>
+                                    
+                                    <h4>🔧 도움말</h4>
+                                    <ul>
+                                        <li><code>showHelp()</code> - 전체 명령어 보기</li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
 
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 2: 상품 재고 관리</h3>
-                                <p class="int-sec__desc">재고 수량에 따른 상태 메시지를 표시해보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practiceInventoryCheck()">재고 확인</button>
-                                            <div id="inventoryCheckResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">💻 실습 방법</h3>
+                                <div class="practice-guide">
+                                    <ol>
+                                        <li>
+                                            <strong>콘솔 열기:</strong> F12를 눌러 개발자 도구를 엽니다
+                                        </li>
+                                        <li>
+                                            <strong>Console 탭 선택:</strong> 상단 메뉴에서 Console 탭을 클릭합니다
+                                        </li>
+                                        <li>
+                                            <strong>함수 실행:</strong> 위의 함수명을 입력하고 Enter를 누릅니다
+                                            <pre><code>learn_basic_if()</code></pre>
+                                        </li>
+                                        <li>
+                                            <strong>결과 확인:</strong> 콘솔에 출력되는 결과를 확인합니다
+                                        </li>
+                                        <li>
+                                            <strong>코드 수정:</strong> script.js 파일의 TODO 부분을 완성해보세요
+                                        </li>
+                                        <li>
+                                            <strong>정답 확인:</strong> reference-script.js 파일에서 정답을 확인할 수 있습니다
+                                        </li>
+                                    </ol>
                                 </div>
                             </div>
                         </section>
 
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 3: 회원 등급 판정</h3>
-                                <p class="int-sec__desc">구매액과 가입 기간으로 회원 등급을 판정해보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practiceMemberGrade()">등급 판정</button>
-                                            <div id="memberGradeResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">📖 조건문 개념</h3>
+                                <div class="concept-box">
+                                    <h4>if문</h4>
+                                    <pre><code>if (조건) {
+    // 조건이 true일 때 실행
+}</code></pre>
+                                    
+                                    <h4>if-else문</h4>
+                                    <pre><code>if (조건) {
+    // 조건이 true일 때
+} else {
+    // 조건이 false일 때
+}</code></pre>
+                                    
+                                    <h4>else if문</h4>
+                                    <pre><code>if (조건1) {
+    // 조건1이 true일 때
+} else if (조건2) {
+    // 조건2가 true일 때
+} else {
+    // 모든 조건이 false일 때
+}</code></pre>
+                                    
+                                    <h4>복합 조건</h4>
+                                    <pre><code>// AND 연산자 (&&)
+if (조건1 && 조건2) {
+    // 두 조건 모두 true일 때
+}
+
+// OR 연산자 (||)
+if (조건1 || 조건2) {
+    // 하나라도 true일 때
+}</code></pre>
+                                    
+                                    <h4>switch문</h4>
+                                    <pre><code>switch(변수) {
+    case 값1:
+        // 처리
+        break;
+    case 값2:
+        // 처리
+        break;
+    default:
+        // 기본 처리
+}</code></pre>
+                                    
+                                    <h4>삼항 연산자</h4>
+                                    <pre><code>const 결과 = 조건 ? 참일때값 : 거짓일때값;</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🎮 학습 팁</h3>
+                                <div class="tips-box">
+                                    <ul>
+                                        <li>
+                                            <strong>순차적 학습:</strong> 기초 함수부터 차례대로 실행해보세요
+                                        </li>
+                                        <li>
+                                            <strong>코드 수정:</strong> script.js의 TODO 부분을 직접 완성해보세요
+                                        </li>
+                                        <li>
+                                            <strong>결과 비교:</strong> 여러분의 코드와 reference-script.js를 비교해보세요
+                                        </li>
+                                        <li>
+                                            <strong>실험:</strong> 조건을 바꿔가며 다양한 경우를 테스트해보세요
+                                        </li>
+                                        <li>
+                                            <strong>응용:</strong> 실전 예제를 참고하여 자신만의 조건문을 만들어보세요
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
@@ -81,10 +181,97 @@
             </main>
             <footer id="footer" class="footer">
                 <div class="inner">
-                    <p class="foote__cprt">Vanilla JavaScript</p>
+                    <p class="footer__cprt">Vanilla JavaScript - Conditionals Practice</p>
                 </div>
             </footer>
         </div>
     </div>
+    
+    <style>
+        .guide-box, .practice-guide, .concept-box, .tips-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .guide-box h4, .concept-box h4 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .guide-box h4:first-child, .concept-box h4:first-child {
+            margin-top: 0;
+        }
+        
+        .guide-box ul, .tips-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .guide-box li, .tips-box li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .guide-box li:last-child, .tips-box li:last-child {
+            border-bottom: none;
+        }
+        
+        .guide-box code, .concept-box code {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e83e8c;
+        }
+        
+        .practice-guide ol {
+            padding-left: 20px;
+        }
+        
+        .practice-guide li {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .practice-guide pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .concept-box pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .concept-box pre code {
+            background: transparent;
+            color: #abb2bf;
+            padding: 0;
+        }
+        
+        .tips-box strong {
+            color: #495057;
+        }
+        
+        .main__sec {
+            margin-bottom: 40px;
+        }
+        
+        .int-sec__st {
+            font-size: 1.5em;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+    </style>
 </body>
 </html>
