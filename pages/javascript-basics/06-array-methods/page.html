@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla JS - 배열 메서드</title>
+    <title>초심자를 위한 배열 메서드 학습</title>
     <link rel="stylesheet" href="/src/styles/fonts.css">    
     <link rel="stylesheet" href="/src/styles/global.css">
     <link rel="stylesheet" href="/src/styles/layout.css">
@@ -19,120 +19,182 @@
                 <div class="header__fix">
                     <div class="header__inner inner">
                         <h1 class="header__logo"><a href="/" class="header__link">JS</a></h1>
-                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
+                        <button onclick="toggleReference()" class="btn btn--small btn--primary">답안 보기</button>
+                        <button onclick="showConsole()" class="btn btn--small btn--secondary">콘솔 열기</button>
                     </div>
                 </div>
             </header>
             <main id="main" class="main">
                 <div class="inner">
                     <div class="int-sec">
-                        <h2 class="int-sec__tit">배열 메서드 (Array Methods)</h2>
+                        <h2 class="int-sec__tit">🌟 초심자를 위한 배열 메서드 학습</h2>
                         <p class="int-sec__desc">
-                            JavaScript의 강력한 배열 메서드를 활용하여 데이터를 효율적으로 처리하는 방법을 학습합니다.
+                            JavaScript 배열 메서드를 처음 배우는 분들을 위한 단계별 학습 페이지입니다.
+                            <br>콘솔에서 직접 함수를 실행하며 배워보세요!
                         </p>
                         <ul class="int-sec__list">
-                            <li class="int-sec__desc int-sec__desc--item">forEach, map, filter, find, reduce 등 핵심 메서드 이해</li>
-                            <li class="int-sec__desc int-sec__desc--item">실무에서 자주 사용되는 데이터 처리 패턴 학습</li>
-                            <li class="int-sec__desc int-sec__desc--item"><span class="danger">메서드 체이닝을 통한 복잡한 데이터 처리</span></li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ forEach, map, filter, find, reduce 기초 학습</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 실시간으로 결과 확인 가능</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 힌트와 진행도 체크 기능 제공</li>
                         </ul>
                     </div>
+                    
+                    <!-- 학습 가이드 -->
                     <div class="main__container">
-                        <!-- 과제 1: 학생 성적 통계 -->
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">과제 1: 학생 성적 통계 시스템</h3>
-                                <p class="int-sec__desc">배열 메서드를 활용하여 학생 데이터를 분석하고 통계를 계산합니다.</p>
+                                <h3 class="int-sec__st">📚 학습 가이드</h3>
                                 <div class="test">
                                     <section class="test__sec">
-                                        <h4 class="test__sbj">요구사항</h4>
-                                        <ul class="requirements">
-                                            <li>• reduce를 사용하여 평균 성적 계산</li>
-                                            <li>• filter를 사용하여 우수 학생 필터링</li>
-                                            <li>• map과 reduce를 조합하여 전공별 통계 생성</li>
-                                        </ul>
+                                        <h4 class="test__sbj">시작하기</h4>
                                         <div class="test__area">
-                                            <div id="student-stats"></div>
+                                            <ol class="guide-list">
+                                                <li>1. F12 또는 우클릭 → 검사 → Console 탭을 엽니다</li>
+                                                <li>2. 콘솔에서 <code>showHelp()</code>를 입력하면 도움말이 나타납니다</li>
+                                                <li>3. 각 함수를 실행하며 배열 메서드를 학습합니다</li>
+                                                <li>4. 막히면 <code>showAnswerHint()</code>로 힌트를 확인합니다</li>
+                                                <li>5. <code>checkProgress()</code>로 진행도를 확인합니다</li>
+                                            </ol>
+                                            <div class="form-row form-row--mb">
+                                                <button type="button" onclick="runQuickStart()" class="btn btn--primary">빠른 시작</button>
+                                                <button type="button" onclick="checkProgress()" class="btn">진행도 확인</button>
+                                            </div>
                                         </div>
                                     </section>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- 과제 2: 상품 필터링 -->
+                        <!-- 기초 메서드 학습 -->
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">과제 2: 온라인 쇼핑몰 상품 관리</h3>
-                                <p class="int-sec__desc">filter, map 메서드를 사용하여 동적 상품 필터링 시스템을 구현합니다.</p>
+                                <h3 class="int-sec__st">🎯 Level 1: 기초 메서드</h3>
+                                <p class="int-sec__desc">가장 기본적인 배열 메서드부터 시작해보세요!</p>
                                 <div class="test">
                                     <section class="test__sec">
-                                        <h4 class="test__sbj">요구사항</h4>
-                                        <ul class="requirements">
-                                            <li>• 카테고리별 상품 필터링</li>
-                                            <li>• 가격 범위로 상품 검색</li>
-                                            <li>• 검색어로 상품명 필터링</li>
-                                        </ul>
+                                        <h4 class="test__sbj">학습할 메서드</h4>
                                         <div class="test__area">
-                                            <div class="filters-container">
-                                                <div class="form-row">
-                                                    <select id="categoryFilter" class="frm-input frm-input--small">
-                                                        <option value="all">전체 카테고리</option>
-                                                    </select>
-                                                    <select id="priceFilter" class="frm-input frm-input--small">
-                                                        <option value="all">전체 가격</option>
-                                                        <option value="0-50000">5만원 이하</option>
-                                                        <option value="50000-200000">5만원~20만원</option>
-                                                        <option value="200000-500000">20만원~50만원</option>
-                                                        <option value="500000-">50만원 이상</option>
-                                                    </select>
-                                                    <input type="text" id="searchInput" class="frm-input frm-input--small" placeholder="상품명 검색">
+                                            <div class="method-cards">
+                                                <div class="method-card">
+                                                    <h5>forEach()</h5>
+                                                    <p>배열의 각 요소를 순회</p>
+                                                    <button onclick="learn_forEach()" class="btn btn--small">실행</button>
+                                                </div>
+                                                <div class="method-card">
+                                                    <h5>map()</h5>
+                                                    <p>배열을 변환하여 새 배열 생성</p>
+                                                    <button onclick="learn_map()" class="btn btn--small">실행</button>
+                                                </div>
+                                                <div class="method-card">
+                                                    <h5>filter()</h5>
+                                                    <p>조건에 맞는 요소만 선택</p>
+                                                    <button onclick="learn_filter()" class="btn btn--small">실행</button>
+                                                </div>
+                                                <div class="method-card">
+                                                    <h5>find()</h5>
+                                                    <p>조건에 맞는 첫 번째 요소 찾기</p>
+                                                    <button onclick="learn_find()" class="btn btn--small">실행</button>
                                                 </div>
                                             </div>
-                                            <div id="products-display"></div>
                                         </div>
+                                        <div class="console-output" id="basic-output"></div>
                                     </section>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- 과제 3: 장바구니 시스템 -->
+                        <!-- 심화 메서드 학습 -->
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">과제 3: 장바구니 총액 계산</h3>
-                                <p class="int-sec__desc">reduce와 find 메서드를 활용하여 장바구니 기능을 구현합니다.</p>
+                                <h3 class="int-sec__st">📚 Level 2: 심화 메서드</h3>
+                                <p class="int-sec__desc">조금 더 복잡하지만 강력한 메서드들입니다!</p>
                                 <div class="test">
                                     <section class="test__sec">
-                                        <h4 class="test__sbj">요구사항</h4>
-                                        <ul class="requirements">
-                                            <li>• find로 상품 정보 조회</li>
-                                            <li>• reduce로 총액 계산</li>
-                                            <li>• map으로 장바구니 아이템 표시</li>
-                                        </ul>
+                                        <h4 class="test__sbj">학습할 메서드</h4>
                                         <div class="test__area">
-                                            <div id="cart-display"></div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- 과제 4: 메서드 체이닝 -->
-                        <section class="main__sec">
-                            <div class="int-sec">
-                                <h3 class="int-sec__st">과제 4: 메서드 체이닝 실습</h3>
-                                <p class="int-sec__desc">여러 배열 메서드를 연결하여 복잡한 데이터 처리를 수행합니다.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <h4 class="test__sbj">실습 내용</h4>
-                                        <ul class="requirements">
-                                            <li>• filter → map → reduce 체이닝</li>
-                                            <li>• 조건부 필터링과 변환</li>
-                                            <li>• 최종 결과 집계</li>
-                                        </ul>
-                                        <div class="test__area">
-                                            <div class="form-row form-row--mb">
-                                                <button type="button" id="chain-example-btn" class="btn">체이닝 예제 실행</button>
+                                            <div class="method-cards">
+                                                <div class="method-card">
+                                                    <h5>reduce()</h5>
+                                                    <p>배열을 하나의 값으로 누적</p>
+                                                    <button onclick="learn_reduce()" class="btn btn--small">실행</button>
+                                                </div>
+                                                <div class="method-card">
+                                                    <h5>some() & every()</h5>
+                                                    <p>조건 확인 (일부/전체)</p>
+                                                    <button onclick="learn_some_every()" class="btn btn--small">실행</button>
+                                                </div>
                                             </div>
-                                            <div id="chain-result" class="status status--hidden"></div>
+                                        </div>
+                                        <div class="console-output" id="advanced-output"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 실습 프로젝트 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">💡 Level 3: 실습 프로젝트</h3>
+                                <p class="int-sec__desc">배운 메서드들을 활용한 미니 프로젝트입니다!</p>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <h4 class="test__sbj">프로젝트 목록</h4>
+                                        <div class="test__area">
+                                            <div class="project-cards">
+                                                <div class="project-card">
+                                                    <h5>📊 성적 처리 시스템</h5>
+                                                    <p>학생 성적을 분석하고 통계를 계산합니다</p>
+                                                    <ul>
+                                                        <li>• 평균 점수 계산</li>
+                                                        <li>• 우수 학생 필터링</li>
+                                                        <li>• 성적 등급 부여</li>
+                                                    </ul>
+                                                    <button onclick="practice_grades()" class="btn btn--small btn--primary">실행</button>
+                                                </div>
+                                                <div class="project-card">
+                                                    <h5>🛒 쇼핑 카트</h5>
+                                                    <p>간단한 장바구니 기능을 구현합니다</p>
+                                                    <ul>
+                                                        <li>• 상품 가격 계산</li>
+                                                        <li>• 총액 합산</li>
+                                                        <li>• 고가 상품 필터링</li>
+                                                    </ul>
+                                                    <button onclick="practice_shopping()" class="btn btn--small btn--primary">실행</button>
+                                                </div>
+                                                <div class="project-card">
+                                                    <h5>⛓️ 메서드 체이닝</h5>
+                                                    <p>여러 메서드를 연결하여 사용합니다</p>
+                                                    <ul>
+                                                        <li>• filter + map 조합</li>
+                                                        <li>• filter + reduce 조합</li>
+                                                        <li>• 3개 이상 체이닝</li>
+                                                    </ul>
+                                                    <button onclick="practice_chaining()" class="btn btn--small btn--primary">실행</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 진행 상태 -->
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">📊 학습 진행 상태</h3>
+                                <div class="test">
+                                    <section class="test__sec">
+                                        <div class="test__area">
+                                            <div id="progress-display" class="progress-container">
+                                                <div class="progress-bar">
+                                                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                                                </div>
+                                                <p id="progress-text" class="progress-text">아직 시작하지 않았습니다</p>
+                                                <div class="form-row form-row--mb">
+                                                    <button onclick="checkProgress()" class="btn">진행도 업데이트</button>
+                                                    <button onclick="showAnswerHint()" class="btn btn--secondary">힌트 보기</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </section>
                                 </div>
@@ -143,10 +205,230 @@
             </main>
             <footer id="footer" class="footer">
                 <div class="inner">
-                    <p class="foote__cprt">Vanilla JavaScript</p>
+                    <p class="footer__cprt">초심자를 위한 JavaScript 배열 메서드 학습</p>
                 </div>
             </footer>
         </div>
     </div>
+    
+    <style>
+        /* 추가 스타일 */
+        .guide-list {
+            margin: 20px 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .guide-list li {
+            margin: 10px 0;
+        }
+        
+        .guide-list code {
+            background: #f1f3f5;
+            padding: 2px 8px;
+            border-radius: 3px;
+            color: #e74c3c;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .method-cards, .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-card, .project-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .project-card {
+            text-align: left;
+        }
+        
+        .method-card h5, .project-card h5 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #495057;
+        }
+        
+        .method-card p, .project-card p {
+            margin: 0 0 15px 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .project-card ul {
+            margin: 10px 0;
+            padding: 0;
+            list-style: none;
+            font-size: 13px;
+            color: #6c757d;
+        }
+        
+        .project-card li {
+            margin: 5px 0;
+        }
+        
+        .console-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .console-output.active {
+            display: block;
+        }
+        
+        .progress-container {
+            padding: 20px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #495057;
+            margin-bottom: 20px;
+        }
+    </style>
+    
+    <script>
+        // 빠른 시작
+        function runQuickStart() {
+            console.clear();
+            console.log('%c🚀 빠른 시작!', 'color: #4CAF50; font-size: 20px; font-weight: bold;');
+            console.log('\n다음 함수들을 순서대로 실행해보세요:\n');
+            console.log('1. learn_forEach()  - 가장 기본적인 배열 순회');
+            console.log('2. learn_map()      - 배열 변환하기');
+            console.log('3. learn_filter()   - 조건에 맞는 요소 찾기');
+            console.log('4. learn_find()     - 첫 번째 요소 찾기');
+            console.log('\n준비되면 practice_grades()로 실습해보세요!');
+        }
+        
+        // 콘솔 열기 가이드
+        function showConsole() {
+            alert('콘솔 열기:\n\n1. F12 키를 누르거나\n2. 우클릭 → 검사 클릭\n3. Console 탭 선택\n\n콘솔이 열리면 showHelp()를 입력해보세요!');
+        }
+        
+        // 참고 코드 토글
+        function toggleReference() {
+            const currentScript = document.querySelector('script[src*="script.js"]');
+            const referenceScript = document.querySelector('script[src*="reference-script.js"]');
+            
+            if (currentScript) {
+                if (confirm('답안을 확인하시겠습니까?\n(페이지가 새로고침됩니다)')) {
+                    currentScript.src = './js/reference-script.js';
+                    localStorage.setItem('scriptMode', 'reference');
+                    location.reload();
+                }
+            } else {
+                if (confirm('연습 모드로 돌아가시겠습니까?\n(페이지가 새로고침됩니다)')) {
+                    location.href = location.href.split('?')[0];
+                    localStorage.setItem('scriptMode', 'practice');
+                    location.reload();
+                }
+            }
+        }
+        
+        // 페이지 로드 시 스크립트 모드 확인
+        window.addEventListener('DOMContentLoaded', () => {
+            const mode = localStorage.getItem('scriptMode') || 'practice';
+            
+            if (mode === 'reference') {
+                const script = document.querySelector('script[src*="script.js"]');
+                if (script) {
+                    script.src = './js/reference-script.js';
+                }
+                console.log('%c📖 답안 모드입니다!', 'color: #ff6b6b; font-size: 16px; font-weight: bold;');
+            } else {
+                console.log('%c✏️ 연습 모드입니다!', 'color: #51cf66; font-size: 16px; font-weight: bold;');
+                console.log('TODO 부분을 채워가며 연습해보세요!');
+            }
+            
+            // 진행도 업데이트
+            setTimeout(updateProgressDisplay, 100);
+        });
+        
+        // 진행도 표시 업데이트
+        function updateProgressDisplay() {
+            if (typeof checkProgress === 'function') {
+                // 콘솔 출력 임시 차단
+                const originalLog = console.log;
+                let progressInfo = { completed: 0, total: 9 };
+                
+                console.log = function(msg) {
+                    if (msg && msg.includes('완료:')) {
+                        const match = msg.match(/(\d+)\/(\d+)/);
+                        if (match) {
+                            progressInfo.completed = parseInt(match[1]);
+                            progressInfo.total = parseInt(match[2]);
+                        }
+                    }
+                };
+                
+                checkProgress();
+                console.log = originalLog;
+                
+                // UI 업데이트
+                const percent = Math.round((progressInfo.completed / progressInfo.total) * 100);
+                const progressFill = document.getElementById('progress-fill');
+                const progressText = document.getElementById('progress-text');
+                
+                if (progressFill) {
+                    progressFill.style.width = percent + '%';
+                    if (percent > 0) {
+                        progressFill.textContent = percent + '%';
+                    }
+                }
+                
+                if (progressText) {
+                    if (percent === 100) {
+                        progressText.textContent = '🎉 축하합니다! 모든 학습을 완료했습니다!';
+                    } else if (percent >= 70) {
+                        progressText.textContent = '👍 잘하고 있어요! 조금만 더 하면 완료!';
+                    } else if (percent >= 30) {
+                        progressText.textContent = '💪 계속 진행 중! 화이팅!';
+                    } else if (percent > 0) {
+                        progressText.textContent = '🚀 좋은 시작입니다!';
+                    } else {
+                        progressText.textContent = '아직 시작하지 않았습니다';
+                    }
+                }
+            }
+        }
+        
+        // 전역 함수로 노출
+        window.updateProgressDisplay = updateProgressDisplay;
+    </script>
 </body>
 </html>
