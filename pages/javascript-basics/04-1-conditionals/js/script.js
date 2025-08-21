@@ -439,281 +439,175 @@ function learn_chaining_conditions() {
 }
 
 // ===========================
-// 실무 프로젝트 1: 권한 시스템
-// ===========================
-
-function project_permission_system() {
-    console.log('\n🔐 권한 관리 시스템 프로젝트\n' + '='.repeat(40));
-    
-    class PermissionManager {
-        constructor(permissions) {
-            this.permissions = permissions;
-        }
-        
-        checkPermission(role, action) {
-            // TODO: role이 permissions에 존재하는지 확인
-            if (/* TODO */) {
-                return { allowed: false, reason: '알 수 없는 역할' };
-            }
-            
-            // TODO: 해당 role이 action을 수행할 수 있는지 확인
-            const allowed = /* TODO */;
-            
-            if (!allowed) {
-                // admin이 할 수 있는 작업인지 체크
-                if (role !== 'admin' && this.permissions.admin.includes(action)) {
-                    return { allowed: false, reason: '권한 부족 (관리자 권한 필요)' };
-                }
-                return { allowed: false, reason: '해당 작업 권한 없음' };
-            }
-            
-            return { allowed: true, reason: '권한 확인됨' };
-        }
-        
-        canUserPerform(user, action, resource) {
-            // TODO: 복합 조건 체크 구현
-            
-            // 1. user가 없거나 비활성이면 false
-            if (/* TODO */) {
-                return { allowed: false, reason: '활성 사용자 아님' };
-            }
-            
-            // 2. getUserRole로 역할 가져오기
-            const role = /* TODO */;
-            
-            // 3. checkPermission으로 권한 체크
-            const permissionCheck = /* TODO */;
-            
-            if (!permissionCheck.allowed) {
-                return permissionCheck;
-            }
-            
-            // 추가 비즈니스 규칙
-            // TODO: delete 액션이고 resource.protected가 true면 거부
-            if (/* TODO */) {
-                return { allowed: false, reason: '보호된 리소스' };
-            }
-            
-            // TODO: write 액션이고 user.points가 100 미만이면 거부
-            if (/* TODO */) {
-                return { allowed: false, reason: '포인트 부족 (최소 100 필요)' };
-            }
-            
-            return { allowed: true, reason: '모든 조건 충족' };
-        }
-        
-        getUserRole(user) {
-            // TODO: user.type을 role로 매핑
-            const roleMapping = {
-                premium: 'editor',
-                regular: 'viewer',
-                new: 'guest'
-            };
-            
-            return /* TODO: roleMapping에서 가져오거나 기본값 'guest' */;
-        }
-    }
-    
-    const pm = new PermissionManager(advancedData.permissions);
-    
-    // 테스트 시나리오
-    const scenarios = [
-        { user: advancedData.users[0], action: 'write', resource: { protected: false } },
-        { user: advancedData.users[1], action: 'delete', resource: { protected: false } },
-        { user: advancedData.users[3], action: 'read', resource: { protected: false } },
-        { user: advancedData.users[2], action: 'write', resource: { protected: true } }
-    ];
-    
-    scenarios.forEach((scenario, i) => {
-        const result = pm.canUserPerform(scenario.user, scenario.action, scenario.resource);
-        console.log(`\n시나리오 ${i + 1}:`);
-        console.log(`사용자: ${scenario.user ? scenario.user.name : 'null'}`);
-        console.log(`작업: ${scenario.action}`);
-        console.log(`결과: ${result.allowed ? '✅' : '❌'} ${result.reason}`);
-    });
-}
-
-// ===========================
-// 실무 프로젝트 2: 폼 검증 엔진
+// 실무 프로젝트: 폼 검증 엔진
 // ===========================
 
 function project_validation_engine() {
-    console.log('\n📝 폼 검증 엔진 프로젝트\n' + '='.repeat(40));
+    console.log('\n📝 간단한 폼 검증 프로젝트\n' + '='.repeat(40));
+    console.log('💡 사용자 입력을 검증하는 간단한 시스템을 만들어봅시다!');
+    console.log('📖 TODO 부분을 직접 구현해보세요!\n');
     
-    const validationRules = {
-        email: {
-            required: true,
-            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: '올바른 이메일 형식이 아닙니다'
-        },
-        password: {
-            required: true,
-            minLength: 8,
-            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-            message: '비밀번호는 대소문자와 숫자를 포함해야 합니다'
-        },
-        age: {
-            required: true,
-            min: 1,
-            max: 150,
-            type: 'number'
-        },
-        phone: {
-            pattern: /^010-\d{4}-\d{4}$/,
-            message: '010-XXXX-XXXX 형식으로 입력하세요'
-        }
-    };
-    
-    function validateForm(formData) {
-        const errors = {};
-        const results = {};
+    // TODO: 간단한 유효성 검사 함수를 완성하세요
+    function validateUserInput(userData) {
+        console.log('\n입력 데이터:', userData);
+        console.log('-'.repeat(40));
         
-        for (const [field, value] of Object.entries(formData)) {
-            const rules = validationRules[field];
-            if (!rules) continue;
+        let isValid = true;
+        const errors = [];
+        
+        // 1. 이름 검증 (필수, 2글자 이상)
+        // TODO: userData.name이 없으면 '❌ 이름을 입력해주세요' 에러 추가
+        if (!userData.name) {
+            // TODO: errors 배열에 에러 메시지 추가
+            // TODO: isValid를 false로 설정
             
-            const fieldErrors = [];
-            
-            // TODO: 각 규칙별 검증 구현
-            
-            // 1. Required 체크
-            if (rules.required && !value) {
-                fieldErrors.push(/* TODO: 필수 입력 메시지 */);
-            }
-            
-            // 2. Type 체크 (숫자 타입)
-            if (value && rules.type === 'number' && /* TODO: 숫자가 아닌지 체크 */) {
-                fieldErrors.push(`${field}은(는) 숫자여야 합니다`);
-            }
-            
-            // 3. Min 체크
-            if (value && rules.min !== undefined && /* TODO: 최솟값 체크 */) {
-                fieldErrors.push(/* TODO: 최솟값 에러 메시지 */);
-            }
-            
-            // 4. Max 체크
-            // TODO: 구현
-            
-            
-            // 5. MinLength 체크
-            // TODO: 구현
-            
-            
-            // 6. Pattern 체크
-            if (value && rules.pattern && /* TODO: 패턴 불일치 체크 */) {
-                fieldErrors.push(rules.message || `${field} 형식이 올바르지 않습니다`);
-            }
-            
-            // 에러 또는 성공 결과 저장
-            if (fieldErrors.length > 0) {
-                errors[field] = fieldErrors;
-            } else if (value) {
-                results[field] = '✅ 유효';
-            }
+        } else if (userData.name.length < 2) {
+            // TODO: 이름이 2글자 미만일 때 처리
+            errors.push('❌ 이름은 2글자 이상이어야 합니다');
+            isValid = false;
+        } else {
+            console.log('✅ 이름: ' + userData.name);
         }
         
-        return {
-            isValid: /* TODO: 에러가 없으면 true */,
-            errors,
-            results
-        };
+        // 2. 나이 검증 (숫자, 1~120)
+        // TODO: 나이 검증 로직 구현
+        if (!userData.age) {
+            // TODO: 나이가 없을 때 에러 처리
+            
+        } else if (/* TODO: 나이가 숫자가 아닌지 체크 */) {
+            errors.push('❌ 나이는 숫자여야 합니다');
+            isValid = false;
+        } else if (/* TODO: 나이가 1~120 범위를 벗어나는지 체크 */) {
+            // TODO: 범위 벗어남 에러 처리
+            
+        } else {
+            console.log('✅ 나이: ' + userData.age + '세');
+        }
+        
+        // 3. 이메일 검증 (@ 포함 여부만 체크)
+        // TODO: 이메일 검증 구현
+        // 힌트: includes('@')를 사용하여 @ 포함 여부 체크
+        
+        
+        // 4. 회원 타입 검증 (premium, regular, new 중 하나)
+        const validTypes = ['premium', 'regular', 'new'];
+        // TODO: userData.type이 validTypes에 포함되는지 체크
+        // 힌트: includes() 메서드 사용
+        
+        
+        // 5. 약관 동의 검증
+        // TODO: userData.agree가 true가 아니면 에러
+        if (userData.agree !== true) {
+            // TODO: 약관 동의 에러 처리
+            
+        } else {
+            console.log('✅ 약관 동의: 완료');
+        }
+        
+        // 결과 출력
+        console.log('\n' + '='.repeat(40));
+        if (isValid) {
+            console.log('🎉 모든 검증 통과! 회원가입 가능합니다.');
+            
+            // TODO: 회원 타입별 환영 메시지 출력
+            // premium: '⭐ 프리미엄 회원이 되신 것을 환영합니다!'
+            // regular: '👍 일반 회원이 되신 것을 환영합니다!'
+            // new: '🎁 신규 회원 혜택을 확인해보세요!'
+            
+        } else {
+            console.log('⚠️ 검증 실패! 다음 항목을 확인해주세요:');
+            errors.forEach(error => console.log('  ' + error));
+        }
+        
+        return isValid;
     }
     
-    // 테스트 케이스
-    const testForms = [
-        {
-            email: 'test@example.com',
-            password: 'Test1234',
-            age: 25,
-            phone: '010-1234-5678'
-        },
-        {
-            email: 'invalid-email',
-            password: 'weak',
-            age: 200,
-            phone: '01012345678'
-        },
-        {
-            email: '',
-            password: '',
-            age: '',
-            phone: ''
-        }
-    ];
-    
-    testForms.forEach((form, i) => {
-        console.log(`\n테스트 폼 ${i + 1}:`);
-        const validation = validateForm(form);
-        console.log('유효성:', validation.isValid ? '✅ 통과' : '❌ 실패');
-        
-        if (!validation.isValid) {
-            console.log('에러:');
-            for (const [field, errors] of Object.entries(validation.errors)) {
-                errors.forEach(error => console.log(`  - ${error}`));
-            }
-        }
-        
-        if (Object.keys(validation.results).length > 0) {
-            console.log('성공:');
-            for (const [field, result] of Object.entries(validation.results)) {
-                console.log(`  - ${field}: ${result}`);
-            }
-        }
+    // 테스트 케이스들 (수정 불필요)
+    console.log('\n📌 테스트 1: 올바른 데이터');
+    validateUserInput({
+        name: '김철수',
+        age: 25,
+        email: 'test@example.com',
+        type: 'premium',
+        agree: true
     });
-}
-
-// ===========================
-// 도전 과제: 상태 머신 구현
-// ===========================
-
-function challenge_state_machine() {
-    console.log('\n🎮 상태 머신 구현 도전\n' + '='.repeat(40));
-    console.log('주문 상태 머신을 구현해보세요!');
-    console.log(`
-구현해야 할 기능:
-1. 상태 전이 검증
-2. 액션 실행
-3. 상태 이력 관리
-4. 롤백 기능
-
-힌트:
-- orderStateMachine 객체를 참고하세요
-- 현재 상태에서 가능한 다음 상태만 허용
-- 상태 변경 시 이벤트 로깅
-    `);
     
-    // TODO: StateMachine 클래스 구현
-    class StateMachine {
-        constructor(config) {
-            // TODO: 초기 설정
-            this.states = /* TODO */;
-            this.initialState = /* TODO */;
-            this.currentState = /* TODO */;
-            this.history = [];
-        }
+    console.log('\n📌 테스트 2: 잘못된 데이터');
+    validateUserInput({
+        name: '이',
+        age: 150,
+        email: 'bad-email',
+        type: 'gold',
+        agree: false
+    });
+    
+    console.log('\n📌 테스트 3: 빈 데이터');
+    validateUserInput({
+        name: '',
+        age: '',
+        email: '',
+        type: '',
+        agree: false
+    });
+    
+    // 추가 도전 과제
+    console.log('\n' + '='.repeat(40));
+    console.log('🎯 도전 과제: 회원 등급별 혜택 계산');
+    console.log('='.repeat(40));
+    
+    // TODO: processRegistration 함수 완성하기
+    function processRegistration(userData) {
+        // 먼저 유효성 검사
+        const isValid = validateUserInput(userData);
         
-        transition(action) {
-            // TODO: 현재 상태에서 action이 가능한지 확인
-            // TODO: 가능하면 상태 전이 및 이력 저장
-            // TODO: 불가능하면 에러 메시지 반환
+        if (isValid) {
+            console.log('\n📊 회원 등록 처리 중...');
             
-        }
-        
-        rollback() {
-            // TODO: 이전 상태로 롤백
+            // TODO: 회원 타입별 혜택 계산
+            let discount = 0;
+            let welcomePoints = 0;
             
-        }
-        
-        reset() {
-            // TODO: 초기 상태로 리셋
+            // TODO: userData.type에 따라 할인율과 포인트 설정
+            // premium: 할인 20%, 포인트 5000
+            // regular: 할인 5%, 포인트 1000
+            // new: 할인 10%, 포인트 3000
             
+            
+            console.log(`\n🎁 ${userData.name}님의 혜택:`);
+            console.log(`  - 할인율: ${discount}%`);
+            console.log(`  - 환영 포인트: ${welcomePoints}점`);
+            console.log(`  - 회원 등급: ${userData.type}`);
+            
+            return {
+                success: true,
+                user: userData.name,
+                benefits: {
+                    discount,
+                    points: welcomePoints
+                }
+            };
+        } else {
+            return {
+                success: false,
+                message: '회원가입 실패 - 입력 정보를 확인해주세요'
+            };
         }
     }
     
-    // 테스트 코드 (이미 제공)
-    console.log('\n💡 StateMachine 클래스를 구현하고 테스트해보세요!');
-    console.log('참고: reference-script.js에 완전한 구현이 있습니다.');
+    // 테스트 실행 (수정 불필요)
+    console.log('\n실제 회원가입 처리 예제:');
+    const result = processRegistration({
+        name: '박지민',
+        age: 30,
+        email: 'jimin@example.com',
+        type: 'premium',
+        agree: true
+    });
+    
+    console.log('\n처리 결과:', result);
 }
+
+
 
 // ===========================
 // 유틸리티 함수
@@ -733,11 +627,9 @@ function showAdvancedHelp() {
 ║  • learn_chaining_conditions()           ║
 ║                                          ║
 ║  💼 프로젝트                             ║
-║  • project_permission_system()           ║
 ║  • project_validation_engine()           ║
 ║                                          ║
 ║  🧩 도전 과제                            ║
-║  • challenge_state_machine()             ║
 ║                                          ║
 ║  📊 데이터                               ║
 ║  • advancedData - 사용자/상품 데이터     ║

@@ -409,699 +409,192 @@ function learn_chaining_conditions() {
 // 실무 프로젝트
 // ===========================
 
-function project_permission_system() {
-    console.log('\n🔐 권한 관리 시스템 프로젝트\n' + '='.repeat(40));
-    
-    class PermissionManager {
-        constructor(permissions) {
-            this.permissions = permissions;
-        }
-        
-        checkPermission(role, action) {
-            // role이 존재하는지 확인
-            if (!this.permissions[role]) {
-                return { allowed: false, reason: '알 수 없는 역할' };
-            }
-            
-            // action이 허용되는지 확인
-            const allowed = this.permissions[role].includes(action);
-            
-            if (!allowed) {
-                // 상위 권한 체크 (admin은 모든 권한)
-                if (role !== 'admin' && this.permissions.admin.includes(action)) {
-                    return { allowed: false, reason: '권한 부족 (관리자 권한 필요)' };
-                }
-                return { allowed: false, reason: '해당 작업 권한 없음' };
-            }
-            
-            return { allowed: true, reason: '권한 확인됨' };
-        }
-        
-        canUserPerform(user, action, resource) {
-            // 복합 조건 체크
-            if (!user || !user.isActive) {
-                return { allowed: false, reason: '활성 사용자 아님' };
-            }
-            
-            const role = this.getUserRole(user);
-            const permissionCheck = this.checkPermission(role, action);
-            
-            if (!permissionCheck.allowed) {
-                return permissionCheck;
-            }
-            
-            // 추가 비즈니스 규칙
-            if (action === 'delete' && resource && resource.protected) {
-                return { allowed: false, reason: '보호된 리소스' };
-            }
-            
-            if (action === 'write' && user.points < 100) {
-                return { allowed: false, reason: '포인트 부족 (최소 100 필요)' };
-            }
-            
-            return { allowed: true, reason: '모든 조건 충족' };
-        }
-        
-        getUserRole(user) {
-            // 사용자 타입을 역할로 매핑
-            const roleMapping = {
-                premium: 'editor',
-                regular: 'viewer',
-                new: 'guest'
-            };
-            
-            return roleMapping[user.type] || 'guest';
-        }
-    }
-    
-    const pm = new PermissionManager(advancedData.permissions);
-    
-    // 테스트 시나리오
-    const scenarios = [
-        { user: advancedData.users[0], action: 'write', resource: { protected: false } },
-        { user: advancedData.users[1], action: 'delete', resource: { protected: false } },
-        { user: advancedData.users[3], action: 'read', resource: { protected: false } },
-        { user: advancedData.users[2], action: 'write', resource: { protected: true } }
-    ];
-    
-    scenarios.forEach((scenario, i) => {
-        const result = pm.canUserPerform(scenario.user, scenario.action, scenario.resource);
-        console.log(`\n시나리오 ${i + 1}:`);
-        console.log(`사용자: ${scenario.user ? scenario.user.name : 'null'}`);
-        console.log(`작업: ${scenario.action}`);
-        console.log(`결과: ${result.allowed ? '✅' : '❌'} ${result.reason}`);
-    });
-}
+
 
 function project_validation_engine() {
-    console.log('\n📝 폼 검증 엔진 프로젝트\n' + '='.repeat(40));
+    console.log('\n📝 간단한 폼 검증 프로젝트\n' + '='.repeat(40));
+    console.log('💡 사용자 입력을 검증하는 간단한 시스템을 만들어봅시다!');
     
-    const validationRules = {
-        email: {
-            required: true,
-            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: '올바른 이메일 형식이 아닙니다'
-        },
-        password: {
-            required: true,
-            minLength: 8,
-            pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-            message: '비밀번호는 대소문자와 숫자를 포함해야 합니다'
-        },
-        age: {
-            required: true,
-            min: 1,
-            max: 150,
-            type: 'number'
-        },
-        phone: {
-            pattern: /^010-\d{4}-\d{4}$/,
-            message: '010-XXXX-XXXX 형식으로 입력하세요'
-        }
-    };
-    
-    function validateForm(formData) {
-        const errors = {};
-        const results = {};
+    // 간단한 유효성 검사 함수
+    function validateUserInput(userData) {
+        console.log('\n입력 데이터:', userData);
+        console.log('-'.repeat(40));
         
-        for (const [field, value] of Object.entries(formData)) {
-            const rules = validationRules[field];
-            if (!rules) continue;
-            
-            const fieldErrors = [];
-            
-            // Required 체크
-            if (rules.required && !value) {
-                fieldErrors.push(`${field}은(는) 필수 입력입니다`);
-            }
-            
-            // Type 체크
-            if (value && rules.type === 'number' && isNaN(value)) {
-                fieldErrors.push(`${field}은(는) 숫자여야 합니다`);
-            }
-            
-            // Min/Max 체크
-            if (value && rules.min !== undefined && value < rules.min) {
-                fieldErrors.push(`${field}은(는) ${rules.min} 이상이어야 합니다`);
-            }
-            
-            if (value && rules.max !== undefined && value > rules.max) {
-                fieldErrors.push(`${field}은(는) ${rules.max} 이하여야 합니다`);
-            }
-            
-            // Length 체크
-            if (value && rules.minLength && value.length < rules.minLength) {
-                fieldErrors.push(`${field}은(는) ${rules.minLength}자 이상이어야 합니다`);
-            }
-            
-            // Pattern 체크
-            if (value && rules.pattern && !rules.pattern.test(value)) {
-                fieldErrors.push(rules.message || `${field} 형식이 올바르지 않습니다`);
-            }
-            
-            if (fieldErrors.length > 0) {
-                errors[field] = fieldErrors;
-            } else if (value) {
-                results[field] = '✅ 유효';
-            }
-        }
+        let isValid = true;
+        const errors = [];
         
-        return {
-            isValid: Object.keys(errors).length === 0,
-            errors,
-            results
-        };
-    }
-    
-    // 테스트 케이스
-    const testForms = [
-        {
-            email: 'test@example.com',
-            password: 'Test1234',
-            age: 25,
-            phone: '010-1234-5678'
-        },
-        {
-            email: 'invalid-email',
-            password: 'weak',
-            age: 200,
-            phone: '01012345678'
-        },
-        {
-            email: '',
-            password: '',
-            age: '',
-            phone: ''
-        }
-    ];
-    
-    testForms.forEach((form, i) => {
-        console.log(`\n테스트 폼 ${i + 1}:`);
-        const validation = validateForm(form);
-        console.log('유효성:', validation.isValid ? '✅ 통과' : '❌ 실패');
-        
-        if (!validation.isValid) {
-            console.log('에러:');
-            for (const [field, errors] of Object.entries(validation.errors)) {
-                errors.forEach(error => console.log(`  - ${error}`));
-            }
-        }
-        
-        if (Object.keys(validation.results).length > 0) {
-            console.log('성공:');
-            for (const [field, result] of Object.entries(validation.results)) {
-                console.log(`  - ${field}: ${result}`);
-            }
-        }
-    });
-}
-
-// ===========================
-// 추가 프로젝트 - 가격 계산기
-// ===========================
-
-function project_pricing_calculator() {
-    console.log('\n💰 가격 계산기 프로젝트\n' + '='.repeat(40));
-    
-    function calculatePrice(user, products, coupon = null) {
-        let subtotal = 0;
-        let discountAmount = 0;
-        const breakdown = [];
-        
-        // 상품별 가격 계산
-        products.forEach(item => {
-            const product = advancedData.products.find(p => p.id === item.productId);
-            if (!product) return;
-            
-            const itemTotal = product.price * item.quantity;
-            subtotal += itemTotal;
-            
-            breakdown.push({
-                name: product.name,
-                unitPrice: product.price,
-                quantity: item.quantity,
-                total: itemTotal
-            });
-        });
-        
-        // 회원 등급 할인
-        const userDiscount = businessRules.discountRules[user.type] || 0;
-        const userDiscountAmount = subtotal * userDiscount;
-        discountAmount += userDiscountAmount;
-        
-        // 쿠폰 할인
-        let couponDiscountAmount = 0;
-        if (coupon) {
-            if (coupon.type === 'percentage') {
-                couponDiscountAmount = subtotal * (coupon.value / 100);
-            } else if (coupon.type === 'fixed') {
-                couponDiscountAmount = Math.min(coupon.value, subtotal);
-            }
-            
-            // 쿠폰 최대 할인 금액 제한
-            if (coupon.maxDiscount) {
-                couponDiscountAmount = Math.min(couponDiscountAmount, coupon.maxDiscount);
-            }
-            
-            discountAmount += couponDiscountAmount;
-        }
-        
-        // 포인트 사용
-        let pointsUsed = 0;
-        if (user.points >= businessRules.minPoints) {
-            pointsUsed = Math.min(user.points, subtotal - discountAmount);
-        }
-        
-        // 최종 가격
-        const finalPrice = subtotal - discountAmount - pointsUsed;
-        const shipping = finalPrice >= businessRules.freeShipping ? 0 : 3000;
-        
-        return {
-            breakdown,
-            subtotal,
-            userDiscount: {
-                rate: `${userDiscount * 100}%`,
-                amount: userDiscountAmount
-            },
-            couponDiscount: couponDiscountAmount,
-            pointsUsed,
-            shipping,
-            finalPrice: finalPrice + shipping,
-            saved: discountAmount + pointsUsed
-        };
-    }
-    
-    // 테스트
-    const testOrders = [
-        {
-            user: advancedData.users[0],
-            products: [
-                { productId: 101, quantity: 1 },
-                { productId: 103, quantity: 2 }
-            ],
-            coupon: { type: 'percentage', value: 10, maxDiscount: 50000 }
-        },
-        {
-            user: advancedData.users[1],
-            products: [
-                { productId: 104, quantity: 3 }
-            ],
-            coupon: null
-        }
-    ];
-    
-    testOrders.forEach((order, i) => {
-        console.log(`\n주문 ${i + 1} - ${order.user.name}:`);
-        const result = calculatePrice(order.user, order.products, order.coupon);
-        console.log('상품 내역:', result.breakdown);
-        console.log('소계:', result.subtotal.toLocaleString() + '원');
-        console.log('회원 할인:', result.userDiscount.amount.toLocaleString() + '원');
-        if (order.coupon) {
-            console.log('쿠폰 할인:', result.couponDiscount.toLocaleString() + '원');
-        }
-        console.log('포인트 사용:', result.pointsUsed.toLocaleString() + '원');
-        console.log('배송비:', result.shipping.toLocaleString() + '원');
-        console.log('최종 가격:', result.finalPrice.toLocaleString() + '원');
-        console.log('총 절약액:', result.saved.toLocaleString() + '원');
-    });
-}
-
-// ===========================
-// 추가 프로젝트 - 추천 시스템
-// ===========================
-
-function project_recommendation_system() {
-    console.log('\n🎯 추천 시스템 프로젝트\n' + '='.repeat(40));
-    
-    function getRecommendations(user) {
-        const recommendations = [];
-        
-        advancedData.products.forEach(product => {
-            let score = 0;
-            const reasons = [];
-            
-            // 1. 가격 적합성
-            if (user.type === 'premium') {
-                if (product.price > 100000) {
-                    score += 30;
-                    reasons.push('프리미엄 상품');
-                }
-            } else if (user.type === 'regular') {
-                if (product.price >= 30000 && product.price <= 100000) {
-                    score += 25;
-                    reasons.push('적정 가격대');
-                }
-            } else {
-                if (product.price < 50000) {
-                    score += 20;
-                    reasons.push('합리적 가격');
-                }
-            }
-            
-            // 2. 재고 상황
-            if (product.stock > 0 && product.stock <= 5) {
-                score += 15;
-                reasons.push('곧 품절');
-            } else if (product.stock === 0) {
-                score = -100; // 재고 없음은 추천하지 않음
-            }
-            
-            // 3. 나이별 선호도
-            if (user.age < 30) {
-                if (product.category === 'electronics') {
-                    score += 20;
-                    reasons.push('연령대 인기');
-                }
-            } else if (user.age >= 30 && user.age < 50) {
-                if (product.category === 'clothing') {
-                    score += 15;
-                    reasons.push('선호 카테고리');
-                }
-            } else {
-                if (product.category === 'books') {
-                    score += 20;
-                    reasons.push('추천 카테고리');
-                }
-            }
-            
-            // 4. 포인트 사용 가능
-            if (user.points >= product.price * 0.3) {
-                score += 10;
-                reasons.push('포인트 사용 가능');
-            }
-            
-            if (score > 0) {
-                recommendations.push({
-                    product: product.name,
-                    category: product.category,
-                    price: product.price,
-                    stock: product.stock,
-                    score,
-                    reasons,
-                    priority: score >= 50 ? '⭐ 강력 추천' : 
-                             score >= 30 ? '👍 추천' : 
-                             '💡 고려해보세요'
-                });
-            }
-        });
-        
-        // 점수순 정렬
-        recommendations.sort((a, b) => b.score - a.score);
-        
-        return recommendations;
-    }
-    
-    // 모든 사용자에 대해 추천 생성
-    advancedData.users.forEach(user => {
-        console.log(`\n${user.name}님 (${user.age}세, ${user.type})을 위한 추천:`);
-        const recommendations = getRecommendations(user);
-        
-        if (recommendations.length === 0) {
-            console.log('추천할 상품이 없습니다.');
+        // 1. 이름 검증 (필수, 2글자 이상)
+        if (!userData.name) {
+            errors.push('❌ 이름을 입력해주세요');
+            isValid = false;
+        } else if (userData.name.length < 2) {
+            errors.push('❌ 이름은 2글자 이상이어야 합니다');
+            isValid = false;
         } else {
-            recommendations.forEach((rec, i) => {
-                if (i < 3) { // 상위 3개만 표시
-                    console.log(`${i + 1}. ${rec.priority} ${rec.product}`);
-                    console.log(`   가격: ${rec.price.toLocaleString()}원`);
-                    console.log(`   이유: ${rec.reasons.join(', ')}`);
-                }
-            });
-        }
-    });
-}
-
-// ===========================
-// 도전 과제
-// ===========================
-
-function challenge_state_machine() {
-    console.log('\n🎮 상태 머신 구현 도전\n' + '='.repeat(40));
-    console.log('주문 상태 머신을 구현해보세요!');
-    console.log(`
-구현해야 할 기능:
-1. 상태 전이 검증
-2. 액션 실행
-3. 상태 이력 관리
-4. 롤백 기능
-
-힌트:
-- orderStateMachine 객체를 참고하세요
-- 현재 상태에서 가능한 다음 상태만 허용
-- 상태 변경 시 이벤트 로깅
-    `);
-    
-    // 도전 과제 예시 구현
-    class StateMachine {
-        constructor(config) {
-            this.states = config.states;
-            this.initialState = config.initialState;
-            this.currentState = this.initialState;
-            this.history = [];
+            console.log('✅ 이름: ' + userData.name);
         }
         
-        transition(action) {
-            const state = this.states[this.currentState];
-            if (!state) {
-                return { success: false, error: '유효하지 않은 상태' };
+        // 2. 나이 검증 (숫자, 1~120)
+        if (!userData.age) {
+            errors.push('❌ 나이를 입력해주세요');
+            isValid = false;
+        } else if (isNaN(userData.age)) {
+            errors.push('❌ 나이는 숫자여야 합니다');
+            isValid = false;
+        } else if (userData.age < 1 || userData.age > 120) {
+            errors.push('❌ 나이는 1~120 사이여야 합니다');
+            isValid = false;
+        } else {
+            console.log('✅ 나이: ' + userData.age + '세');
+        }
+        
+        // 3. 이메일 검증 (@ 포함 여부만 체크)
+        if (!userData.email) {
+            errors.push('❌ 이메일을 입력해주세요');
+            isValid = false;
+        } else if (!userData.email.includes('@')) {
+            errors.push('❌ 올바른 이메일 형식이 아닙니다 (@가 필요합니다)');
+            isValid = false;
+        } else {
+            console.log('✅ 이메일: ' + userData.email);
+        }
+        
+        // 4. 회원 타입 검증 (premium, regular, new 중 하나)
+        const validTypes = ['premium', 'regular', 'new'];
+        if (!userData.type) {
+            errors.push('❌ 회원 타입을 선택해주세요');
+            isValid = false;
+        } else if (!validTypes.includes(userData.type)) {
+            errors.push('❌ 올바른 회원 타입이 아닙니다 (premium/regular/new)');
+            isValid = false;
+        } else {
+            console.log('✅ 회원 타입: ' + userData.type);
+        }
+        
+        // 5. 약관 동의 검증
+        if (userData.agree !== true) {
+            errors.push('❌ 약관에 동의해주세요');
+            isValid = false;
+        } else {
+            console.log('✅ 약관 동의: 완료');
+        }
+        
+        // 결과 출력
+        console.log('\n' + '='.repeat(40));
+        if (isValid) {
+            console.log('🎉 모든 검증 통과! 회원가입 가능합니다.');
+            
+            // 회원 타입별 환영 메시지
+            if (userData.type === 'premium') {
+                console.log('⭐ 프리미엄 회원이 되신 것을 환영합니다!');
+            } else if (userData.type === 'regular') {
+                console.log('👍 일반 회원이 되신 것을 환영합니다!');
+            } else if (userData.type === 'new') {
+                console.log('🎁 신규 회원 혜택을 확인해보세요!');
+            }
+        } else {
+            console.log('⚠️ 검증 실패! 다음 항목을 확인해주세요:');
+            errors.forEach(error => console.log('  ' + error));
+        }
+        
+        return isValid;
+    }
+    
+    // 테스트 케이스들
+    console.log('\n📌 테스트 1: 올바른 데이터');
+    validateUserInput({
+        name: '김철수',
+        age: 25,
+        email: 'test@example.com',
+        type: 'premium',
+        agree: true
+    });
+    
+    console.log('\n📌 테스트 2: 잘못된 데이터');
+    validateUserInput({
+        name: '이',
+        age: 150,
+        email: 'bad-email',
+        type: 'gold',
+        agree: false
+    });
+    
+    console.log('\n📌 테스트 3: 빈 데이터');
+    validateUserInput({
+        name: '',
+        age: '',
+        email: '',
+        type: '',
+        agree: false
+    });
+    
+    // 실전 활용 예제
+    console.log('\n' + '='.repeat(40));
+    console.log('💡 실전 활용 예제: 회원 등급별 할인 적용');
+    console.log('='.repeat(40));
+    
+    function processRegistration(userData) {
+        // 먼저 유효성 검사
+        const isValid = validateUserInput(userData);
+        
+        if (isValid) {
+            console.log('\n📊 회원 등록 처리 중...');
+            
+            // 회원 타입별 혜택 계산
+            let discount = 0;
+            let welcomePoints = 0;
+            
+            if (userData.type === 'premium') {
+                discount = 20;
+                welcomePoints = 5000;
+            } else if (userData.type === 'regular') {
+                discount = 5;
+                welcomePoints = 1000;
+            } else if (userData.type === 'new') {
+                discount = 10;
+                welcomePoints = 3000;
             }
             
-            const nextState = state.actions[action];
-            if (!nextState) {
-                return { 
-                    success: false, 
-                    error: `'${this.currentState}' 상태에서 '${action}' 액션 불가`,
-                    availableActions: Object.keys(state.actions)
-                };
-            }
-            
-            // 상태 전이
-            const previousState = this.currentState;
-            this.currentState = nextState;
-            
-            // 이력 저장
-            this.history.push({
-                from: previousState,
-                to: nextState,
-                action,
-                timestamp: new Date()
-            });
+            console.log(`\n🎁 ${userData.name}님의 혜택:`);
+            console.log(`  - 할인율: ${discount}%`);
+            console.log(`  - 환영 포인트: ${welcomePoints}점`);
+            console.log(`  - 회원 등급: ${userData.type}`);
             
             return {
                 success: true,
-                from: previousState,
-                to: nextState,
-                action
+                user: userData.name,
+                benefits: {
+                    discount,
+                    points: welcomePoints
+                }
             };
-        }
-        
-        rollback() {
-            if (this.history.length === 0) {
-                return { success: false, error: '롤백할 이력이 없습니다' };
-            }
-            
-            const lastTransition = this.history.pop();
-            this.currentState = lastTransition.from;
-            
-            return {
-                success: true,
-                rolled_back_to: lastTransition.from,
-                from: lastTransition.to
-            };
-        }
-        
-        reset() {
-            this.currentState = this.initialState;
-            this.history = [];
-        }
-    }
-    
-    // 테스트
-    const orderMachine = new StateMachine({
-        initialState: 'pending',
-        states: {
-            pending: {
-                actions: {
-                    confirm: 'confirmed',
-                    cancel: 'cancelled'
-                }
-            },
-            confirmed: {
-                actions: {
-                    ship: 'shipped',
-                    cancel: 'cancelled'
-                }
-            },
-            shipped: {
-                actions: {
-                    deliver: 'delivered'
-                }
-            },
-            delivered: {
-                actions: {}
-            },
-            cancelled: {
-                actions: {}
-            }
-        }
-    });
-    
-    console.log('\n상태 머신 테스트:');
-    console.log('초기 상태:', orderMachine.currentState);
-    
-    // 일련의 전이 테스트
-    const actions = ['confirm', 'ship', 'deliver'];
-    actions.forEach(action => {
-        const result = orderMachine.transition(action);
-        if (result.success) {
-            console.log(`✅ ${result.from} → ${result.to} (${action})`);
         } else {
-            console.log(`❌ ${result.error}`);
-        }
-    });
-    
-    console.log('\n최종 상태:', orderMachine.currentState);
-    console.log('이력:', orderMachine.history);
-}
-
-function challenge_rule_engine() {
-    console.log('\n⚙️ 비즈니스 룰 엔진 도전\n' + '='.repeat(40));
-    
-    // 룰 엔진 구현
-    class RuleEngine {
-        constructor() {
-            this.rules = [];
-        }
-        
-        addRule(name, condition, action) {
-            this.rules.push({ name, condition, action });
-        }
-        
-        evaluate(context) {
-            const results = [];
-            
-            this.rules.forEach(rule => {
-                if (rule.condition(context)) {
-                    const actionResult = rule.action(context);
-                    results.push({
-                        rule: rule.name,
-                        applied: true,
-                        result: actionResult
-                    });
-                }
-            });
-            
-            return results;
+            return {
+                success: false,
+                message: '회원가입 실패 - 입력 정보를 확인해주세요'
+            };
         }
     }
     
-    // 룰 엔진 설정
-    const engine = new RuleEngine();
-    
-    // 할인 규칙들
-    engine.addRule(
-        '프리미엄 회원 할인',
-        (ctx) => ctx.user.type === 'premium',
-        (ctx) => ({ discount: 0.2, message: '프리미엄 20% 할인 적용' })
-    );
-    
-    engine.addRule(
-        '대량 구매 할인',
-        (ctx) => ctx.quantity >= 10,
-        (ctx) => ({ discount: 0.1, message: '10개 이상 구매 10% 할인' })
-    );
-    
-    engine.addRule(
-        '첫 구매 할인',
-        (ctx) => ctx.user.type === 'new',
-        (ctx) => ({ discount: 0.15, message: '첫 구매 15% 할인' })
-    );
-    
-    engine.addRule(
-        '무료 배송',
-        (ctx) => ctx.totalPrice >= 50000,
-        (ctx) => ({ freeShipping: true, message: '5만원 이상 무료배송' })
-    );
-    
-    // 테스트
-    const testContexts = [
-        {
-            user: advancedData.users[0],
-            quantity: 12,
-            totalPrice: 60000
-        },
-        {
-            user: advancedData.users[3],
-            quantity: 2,
-            totalPrice: 30000
-        }
-    ];
-    
-    testContexts.forEach((context, i) => {
-        console.log(`\n테스트 ${i + 1} - ${context.user.name}:`);
-        const results = engine.evaluate(context);
-        results.forEach(result => {
-            console.log(`✅ ${result.rule}: ${result.result.message}`);
-        });
+    console.log('\n실제 회원가입 처리 예제:');
+    const result = processRegistration({
+        name: '박지민',
+        age: 30,
+        email: 'jimin@example.com',
+        type: 'premium',
+        agree: true
     });
+    
+    console.log('\n처리 결과:', result);
 }
 
-function challenge_decision_tree() {
-    console.log('\n🌳 결정 트리 알고리즘 도전\n' + '='.repeat(40));
-    
-    // 결정 트리 노드
-    class DecisionNode {
-        constructor(question, trueNode = null, falseNode = null, result = null) {
-            this.question = question;
-            this.trueNode = trueNode;
-            this.falseNode = falseNode;
-            this.result = result;
-        }
-        
-        evaluate(context) {
-            // 리프 노드인 경우
-            if (this.result !== null) {
-                return this.result;
-            }
-            
-            // 질문 평가
-            if (this.question(context)) {
-                return this.trueNode.evaluate(context);
-            } else {
-                return this.falseNode.evaluate(context);
-            }
-        }
-    }
-    
-    // 상품 추천 결정 트리 구축
-    const tree = new DecisionNode(
-        (ctx) => ctx.user.type === 'premium',
-        // premium인 경우
-        new DecisionNode(
-            (ctx) => ctx.budget > 1000000,
-            new DecisionNode(null, null, null, '노트북 추천'),
-            new DecisionNode(null, null, null, '마우스 추천')
-        ),
-        // premium이 아닌 경우
-        new DecisionNode(
-            (ctx) => ctx.user.age < 30,
-            new DecisionNode(null, null, null, '전자제품 추천'),
-            new DecisionNode(null, null, null, '책 추천')
-        )
-    );
-    
-    // 테스트
-    const testCases = [
-        { user: advancedData.users[0], budget: 2000000 },
-        { user: advancedData.users[1], budget: 50000 },
-        { user: advancedData.users[4], budget: 100000 }
-    ];
-    
-    testCases.forEach((testCase, i) => {
-        const recommendation = tree.evaluate(testCase);
-        console.log(`${testCase.user.name} (${testCase.user.type}, 예산: ${testCase.budget.toLocaleString()}원)`);
-        console.log(`→ ${recommendation}\n`);
-    });
-}
+
+
+
+
+
+
+
 
 // ===========================
 // 유틸리티 함수
@@ -1121,15 +614,7 @@ function showAdvancedHelp() {
 ║  • learn_chaining_conditions()           ║
 ║                                          ║
 ║  💼 프로젝트                             ║
-║  • project_permission_system()           ║
 ║  • project_validation_engine()           ║
-║  • project_pricing_calculator()          ║
-║  • project_recommendation_system()       ║
-║                                          ║
-║  🧩 도전 과제                            ║
-║  • challenge_state_machine()             ║
-║  • challenge_rule_engine()               ║
-║  • challenge_decision_tree()             ║
 ║                                          ║
 ║  📊 데이터                               ║
 ║  • advancedData - 사용자/상품 데이터     ║
