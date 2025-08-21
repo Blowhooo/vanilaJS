@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 고급 조건문 - 학습</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
+                        <a href="../04-conditionals/example.html" class="btn btn--small">예시보기</a>                        
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">JavaScript 고급 조건문 학습</h2>
+                        <p class="int-sec__desc">
+                            실무에서 자주 사용하는 복잡한 조건문 패턴을 학습해보세요!<br>
+                            <strong>F12</strong>를 눌러 개발자 도구를 연 후, <strong>Console</strong> 탭에서 실습합니다.
+                        </p>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🚀 고급 학습 가이드</h3>
+                                <div class="guide-box">
+                                    <h4>🎓 고급 패턴 학습</h4>
+                                    <ul>
+                                        <li><code>learn_nested_conditions()</code> - 중첩 조건문 마스터</li>
+                                        <li><code>learn_guard_clauses()</code> - Guard Clause 패턴</li>
+                                        <li><code>learn_short_circuit()</code> - 단축 평가 활용</li>
+                                        <li><code>learn_object_conditions()</code> - 객체 기반 조건 처리</li>
+                                        <li><code>learn_chaining_conditions()</code> - 조건 체이닝</li>
+                                    </ul>
+                                    
+                                    <h4>💼 실무 프로젝트</h4>
+                                    <ul>
+                                        <li><code>project_permission_system()</code> - 권한 관리 시스템</li>
+                                        <li><code>project_validation_engine()</code> - 폼 검증 엔진</li>
+                                        <li><code>project_pricing_calculator()</code> - 가격 계산기</li>
+                                        <li><code>project_recommendation_system()</code> - 추천 시스템</li>
+                                    </ul>
+                                    
+                                    <h4>🧩 도전 과제</h4>
+                                    <ul>
+                                        <li><code>challenge_state_machine()</code> - 상태 머신 구현</li>
+                                        <li><code>challenge_rule_engine()</code> - 비즈니스 룰 엔진</li>
+                                        <li><code>challenge_decision_tree()</code> - 결정 트리 알고리즘</li>
+                                    </ul>
+                                    
+                                    <h4>📊 실습 데이터</h4>
+                                    <ul>
+                                        <li><code>advancedData</code> - 복합 데이터 구조</li>
+                                        <li><code>businessRules</code> - 비즈니스 규칙</li>
+                                        <li><code>performanceMetrics</code> - 성능 지표</li>
+                                    </ul>
+                                    
+                                    <h4>🔧 유틸리티</h4>
+                                    <ul>
+                                        <li><code>showAdvancedHelp()</code> - 고급 도움말</li>
+                                        <li><code>runPerformanceTest()</code> - 성능 테스트</li>
+                                        <li><code>analyzeConditions()</code> - 조건문 분석</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">📚 고급 개념</h3>
+                                <div class="concept-box">
+                                    <h4>Guard Clause Pattern</h4>
+                                    <pre><code>function process(data) {
+    if (!data) return null;
+    if (!data.isValid) return false;
+    if (data.type !== 'expected') return;
+    
+    // 핵심 로직
+    return processData(data);
+}</code></pre>
+                                    
+                                    <h4>Short Circuit Evaluation</h4>
+                                    <pre><code>// AND (&&) - 첫 번째 falsy 값 반환
+const result = value && value.property;
+
+// OR (||) - 첫 번째 truthy 값 반환
+const fallback = userInput || defaultValue;
+
+// Nullish Coalescing (??)
+const safe = value ?? fallbackValue;</code></pre>
+                                    
+                                    <h4>Object Lookup Pattern</h4>
+                                    <pre><code>const handlers = {
+    'type1': () => handleType1(),
+    'type2': () => handleType2(),
+    'default': () => handleDefault()
+};
+
+const handler = handlers[type] || handlers.default;
+handler();</code></pre>
+                                    
+                                    <h4>Strategy Pattern</h4>
+                                    <pre><code>const strategies = {
+    premium: (price) => price * 0.8,
+    regular: (price) => price * 0.95,
+    new: (price) => price * 0.9
+};
+
+const discount = strategies[userType](price);</code></pre>
+                                    
+                                    <h4>Complex Nested Conditions</h4>
+                                    <pre><code>if (user.isActive) {
+    if (user.hasPermission) {
+        if (resource.isAvailable) {
+            // 모든 조건 충족
+        }
+    }
+}
+
+// Better approach:
+const canAccess = user.isActive 
+    && user.hasPermission 
+    && resource.isAvailable;</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">⚡ 성능 최적화 팁</h3>
+                                <div class="tips-box">
+                                    <ul>
+                                        <li>
+                                            <strong>조건 순서 최적화:</strong> 가장 빨리 실패할 조건을 먼저 체크
+                                        </li>
+                                        <li>
+                                            <strong>Early Return:</strong> 불필요한 중첩을 피하고 조기 반환 활용
+                                        </li>
+                                        <li>
+                                            <strong>캐싱:</strong> 반복적인 계산 결과는 변수에 저장
+                                        </li>
+                                        <li>
+                                            <strong>Object Lookup:</strong> 많은 if-else 대신 객체 매핑 사용
+                                        </li>
+                                        <li>
+                                            <strong>단축 평가:</strong> && 와 || 연산자의 특성 활용
+                                        </li>
+                                        <li>
+                                            <strong>Optional Chaining:</strong> ?. 연산자로 안전한 프로퍼티 접근
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🎯 학습 목표</h3>
+                                <div class="objectives-box">
+                                    <h4>이 과정을 완료하면:</h4>
+                                    <ol>
+                                        <li>복잡한 비즈니스 로직을 조건문으로 구현할 수 있습니다</li>
+                                        <li>코드의 가독성과 유지보수성을 높이는 패턴을 익힙니다</li>
+                                        <li>성능을 고려한 조건문 작성이 가능해집니다</li>
+                                        <li>실무에서 자주 사용되는 고급 패턴을 마스터합니다</li>
+                                        <li>다양한 상황에 적절한 조건문 패턴을 선택할 수 있습니다</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="footer__cprt">Vanilla JavaScript - Advanced Conditionals Practice</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
