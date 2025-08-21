@@ -241,7 +241,7 @@ function practice_shopping_cart() {
     
     let subtotal = 0;
     
-    // TODO: cart 반복문으로 각 상품의 총 가격 계산하고 subtotal에 누적
+    // TODO: cart 반복문으로 각 상품의 총 가격 계산하고 출력, subtotal에 누적
     
     console.log('================');
     console.log(`소계: ${subtotal.toLocaleString()}원`);
@@ -250,13 +250,13 @@ function practice_shopping_cart() {
     let discountRate = 0;
     let discountAmount = 0;
     
-    // TODO: user.grade에 따른 할인율 설정
+    // TODO: 회원 여부와 등급에 따른 할인 적용
     
     
-    // TODO: subtotal 금액에 따른 추가 할인
+    // TODO: 금액대별 추가 할인 적용
     
     
-    // TODO: 최종 금액에 따른 배송비 계산
+    // TODO: 할인 후 금액에 따른 배송비 결정
     let shippingFee = 0;
     
     
@@ -264,6 +264,13 @@ function practice_shopping_cart() {
     const total = subtotal - discountAmount + shippingFee;
     console.log('================');
     console.log(`최종 결제금액: ${total.toLocaleString()}원`);
+    
+    // TODO: 포인트 사용 안내
+    
+    
+    // TODO: 결제 가능 여부 판단
+    console.log('\n=== 결제 가능 여부 ===');
+    
 }
 
 // ==========================================
@@ -309,7 +316,11 @@ function practice_game_character() {
     // TODO: 스킬 사용 가능 조건 확인
     
     
-    // TODO: HP 상태에 따른 행동 추천
+    // TODO: 아이템 사용 가능 여부
+
+    // TODO: 도망 가능 여부
+
+    // TODO: 추천 행동
     
 }
 
