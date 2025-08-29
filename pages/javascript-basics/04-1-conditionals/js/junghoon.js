@@ -11,6 +11,7 @@ function project_validation_engine() {
         let isValid = true;
         const errors = [];
         
+
         // 1. 이름 검증 (필수, 2글자 이상)
         if (!userData.name){
             errors.push('이름을 입력해주시기 바랍니다.')
@@ -35,6 +36,7 @@ function project_validation_engine() {
         } else {
             console.log('나이 : ' + userData.age)
         }
+        
         
         // 3. 이메일 검증 (@ 포함 여부만 체크)
         if (!userData.email){

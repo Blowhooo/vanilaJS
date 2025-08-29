@@ -48,14 +48,20 @@ function learn_basic_if() {
     
     // 예제 2: 재고 확인
     console.log('\n재고 확인:');
-    // TODO: products를 반복문 돌리기
-    // TODO: 각 product의 name과 stock 출력
-    // TODO: stock이 0이면 "  ⚠️ 품절입니다!" 출력
+    products.forEach(product => {
+        console.log(`${product.name}: ${product.stock}개`);
+        // TODO: product.stock이 0이면 "  ⚠️ 품절입니다!" 출력
+        
+    });
     
     // 예제 3: 합격 여부 (60점 이상)
     console.log('\n점수별 합격 여부:');
-    // TODO: scores 배열 반복문 작성
-    // TODO: 각 점수 출력하고 60점 기준으로 합격/불합격 판정
+    scores.forEach(score => {
+        console.log(`점수: ${score}`);
+        // TODO: score가 60 이상이면 "  ✅ 합격!" 출력
+        // TODO: score가 60 미만이면 "  ❌ 불합격" 출력
+        
+    });
 }
 
 // ==========================================
@@ -68,16 +74,29 @@ function learn_if_else() {
     
     // 예제 1: 짝수/홀수 판별
     console.log('숫자 판별:');
-    // TODO: 1부터 5까지 반복문 작성
-    // TODO: 각 숫자가 짝수인지 홀수인지 판별해서 출력
+    for (let i = 1; i <= 5; i++) {
+        // TODO: i가 짝수면 "i는 짝수입니다." 출력
+        // TODO: i가 홀수면 "i는 홀수입니다." 출력
+        // 힌트: i % 2 === 0이면 짝수
+        
+    }
     
     // 예제 2: 할인 적용
     console.log('\n할인 적용 (10만원 이상 10% 할인):');
-    // TODO: products 반복문으로 10만원 이상 상품에 10% 할인 적용
+    products.forEach(product => {
+        // TODO: product.price가 100000 이상이면
+        //       할인가격(원가의 90%)을 계산하고 출력
+        // TODO: 그렇지 않으면 "할인 없음" 출력
+        
+    });
     
     // 예제 3: 로그인 가능 여부
     console.log('\n계정 상태:');
-    // TODO: testUsers 반복문으로 각 유저의 isActive 상태 확인
+    testUsers.forEach(user => {
+        // TODO: user.isActive가 true면 "활성 계정 ✅" 출력
+        // TODO: 그렇지 않으면 "비활성 계정 ❌" 출력
+        
+    });
 }
 
 // ==========================================
@@ -90,17 +109,36 @@ function learn_else_if() {
     
     // 예제 1: 성적 등급
     console.log('성적 등급 판정:');
-    // TODO: scores 반복문으로 각 점수를 A-F 등급으로 변환
-    // TODO: 등급 기준은 10점 단위
+    scores.forEach(score => {
+        let grade;
+        // TODO: 90점 이상 A, 80점 이상 B, 70점 이상 C, 60점 이상 D, 그 외 F
+        
+        
+        console.log(`${score}점: ${grade}등급`);
+    });
     
     // 예제 2: 재고 상태 메시지
     console.log('\n재고 상태:');
-    // TODO: products 반복문으로 재고량에 따른 상태 메시지 출력
-    // TODO: 0개, 3개 이하, 10개 이하, 그 이상으로 구분
+    products.forEach(product => {
+        let status;
+        // TODO: stock이 0이면 "품절 😢"
+        // TODO: stock이 3 이하면 "품절임박! 서두르세요! ⚠️"
+        // TODO: stock이 10 이하면 "재고 소량 📦"
+        // TODO: 그 외는 "재고 충분 ✅"
+        
+        
+        console.log(`${product.name}: ${product.stock}개 - ${status}`);
+    });
     
     // 예제 3: 나이대별 분류
     console.log('\n나이대 분류:');
-    // TODO: testUsers 반복문으로 각 유저를 나이대별로 분류
+    testUsers.forEach(user => {
+        let ageGroup;
+        // TODO: 20 미만 "10대", 30 미만 "20대", 40 미만 "30대", 그 외 "40대 이상"
+        
+        
+        console.log(`${user.username || '게스트'} (${user.age}세): ${ageGroup}`);
+    });
 }
 
 // ==========================================
@@ -113,17 +151,28 @@ function learn_complex_conditions() {
     
     // 예제 1: AND 조건 (&&) - 둘 다 참이어야 함
     console.log('로그인 검증 (아이디와 비밀번호 모두 필요):');
-    // TODO: testUsers 반복문으로 username과 password 둘 다 있는지 확인
+    testUsers.forEach(user => {
+        // TODO: username과 password가 모두 있으면 "로그인 가능" 출력
+        // TODO: 하나라도 없으면 "로그인 정보 불완전" 출력
+        
+    });
     
     // 예제 2: OR 조건 (||) - 하나라도 참이면 됨
     console.log('\n특별 할인 대상 (고가상품 또는 재고부족):');
-    // TODO: products 반복문 돌리기
-    // TODO: price가 500000 이상이거나 stock이 3 이하면 "특별할인 대상!" 출력
-    // TODO: 그렇지 않으면 "일반 상품" 출력
+    products.forEach(product => {
+        // TODO: price가 500000 이상이거나 stock이 3 이하면 "특별할인 대상!" 출력
+        // TODO: 그렇지 않으면 "일반 상품" 출력
+        
+    });
     
     // 예제 3: 복합 조건
     console.log('\n성인 활성 사용자 찾기:');
-    // TODO: testUsers 반복문으로 세 가지 조건 모두 만족하는 유저 찾기
+    testUsers.forEach(user => {
+        // TODO: age가 19 이상이고, isActive가 true이고, username이 있으면
+        //       "성인 활성 사용자" 출력
+        // TODO: 그렇지 않으면 조건에 맞지 않는 이유 출력
+        
+    });
 }
 
 // ==========================================
@@ -137,12 +186,27 @@ function learn_switch() {
     // 예제 1: 카테고리별 아이콘
     console.log('카테고리별 아이콘:');
     const categories = ['전자제품', '액세서리', '의류', '식품'];
-    // TODO: categories 반복문과 switch문으로 각 카테고리에 맞는 아이콘 할당
+    categories.forEach(category => {
+        let icon;
+        // TODO: switch문을 사용하여
+        // '전자제품' → '💻', '액세서리' → '🎧', 
+        // '의류' → '👕', '식품' → '🍔', 기본값 → '📦'
+        
+        
+        console.log(`${category}: ${icon}`);
+    });
     
     // 예제 2: 요일별 할인
     console.log('\n요일별 할인율:');
     const days = ['월', '화', '수', '목', '금', '토', '일'];
-    // TODO: days 반복문과 switch문으로 요일별 할인율 설정
+    days.forEach(day => {
+        let discount;
+        // TODO: switch문을 사용하여
+        // 월,화: 5%, 수: 10%, 목,금: 7%, 토,일: 15%, 기본값: 0%
+        
+        
+        console.log(`${day}요일: ${discount} 할인`);
+    });
 }
 
 // ==========================================
@@ -155,11 +219,21 @@ function learn_ternary() {
     
     // 예제 1: 기본 사용법
     console.log('재고 상태 (삼항 연산자):');
-    // TODO: products 반복문과 삼항 연산자로 재고 상태 표시
+    products.forEach(product => {
+        // TODO: 삼항 연산자를 사용하여
+        // stock이 0보다 크면 '구매가능', 아니면 '품절'
+        const status = ''; // 수정하세요
+        console.log(`${product.name}: ${status}`);
+    });
     
     // 예제 2: 값 할당
     console.log('\n나이별 입장료:');
-    // TODO: testUsers 반복문과 삼항 연산자로 나이별 입장료 계산
+    testUsers.forEach(user => {
+        // TODO: 삼항 연산자를 사용하여
+        // age가 19 미만이면 5000, 아니면 10000
+        const price = 0; // 수정하세요
+        console.log(`${user.username || '게스트'} (${user.age}세): ${price}원`);
+    });
 }
 
 // ==========================================
@@ -180,6 +254,7 @@ function practice_login_system() {
         
         
         // TODO: 3. testUsers에서 username과 일치하는 사용자 찾기
+        // 힌트: find 메서드 사용
         const user = null; // 수정하세요
         
         // TODO: 4. user가 없으면 "존재하지 않는 아이디입니다." 출력하고 false 반환
@@ -241,13 +316,13 @@ function practice_shopping_cart() {
     
     let subtotal = 0;
     
-    // TODO: cart 반복문으로 각 상품의 총 가격 계산하고 출력, subtotal에 누적
-
+    // 각 상품 계산
     cart.forEach(item => {
-        const totalAmount = item.price * item.quantity;
-        subtotal += totalAmount
-        console.log(`${item.product}: ${item.price}원 + ${item.quantity}개 = ${item.quantity}원`)
-    })
+        // TODO: item.price * item.quantity로 itemTotal 계산
+        // TODO: itemTotal을 subtotal에 더하기
+        // TODO: 각 상품 정보 출력 (toLocaleString() 사용)
+        
+    });
     
     console.log('================');
     console.log(`소계: ${subtotal.toLocaleString()}원`);
@@ -256,67 +331,45 @@ function practice_shopping_cart() {
     let discountRate = 0;
     let discountAmount = 0;
     
-    // TODO: 회원 여부와 등급에 따른 할인 적용
-    if (user.grade === 'VIP'){
-        discountRate = 0.15;
-    } else if (user.grade === 'GOLD'){
-        discountRate = 0.10;
-    } else if (user.grade === 'SILVER'){
-        discountRate = 0.05;
-    } else {
-        discountRate = 0.03;
-    }
+    // TODO: 1. 회원 등급별 할인율 설정 (user.isMember 확인)
+    // TODO: user.grade가 'VIP'면 discountRate = 0.15
+    // TODO: user.grade가 'GOLD'면 discountRate = 0.10
+    // TODO: user.grade가 'SILVER'면 discountRate = 0.05
+    // TODO: 그 외 discountRate = 0.03
+    // TODO: discountAmount = subtotal * discountRate로 계산
+    // TODO: 회원 할인 정보 출력
     
-    discountAmount += subtotal * discountRate
     
-    // TODO: 금액대별 추가 할인 적용
-
-    if (subtotal >= 1000000) {
-        const extraDiscount = 0.05;
-        discountAmount += subtotal * extraDiscount
-        console.log(`100만원 이상 구매시 ${extraDiscount} 추가 할인으로 총 ${discountAmount} 할인`)
-    } else if (subtotal >= 500000){
-        const extraDiscount = 0.03;
-        discountAmount += subtotal * extraDiscount
-        console.log(`50만원 이상 구매시 ${extraDiscount} 추가 할인으로 총 ${discountAmount} 할인`)
-    }
+    // TODO: 2. 금액대별 추가 할인
+    // TODO: subtotal이 1000000 이상이면 5% 추가 할인
+    // TODO: subtotal이 500000 이상이면 3% 추가 할인
+    // TODO: extraDiscount를 discountAmount에 더하고 정보 출력
     
-    // TODO: 할인 후 금액에 따른 배송비 결정
+    
+    // TODO: 3. 배송비 계산
+    // TODO: subtotal - discountAmount가 50000 미만이면 shippingFee = 3000
+    // TODO: 그렇지 않으면 shippingFee = 0
+    // TODO: 배송비 정보 출력
     let shippingFee = 0;
     
-    if (subtotal - discountAmount < 50000){
-        shippingFee = 3000;
-        console.log(`할인된 총 가격이 5만원 미만이면 배송비가 ${shippingFee}월 붙습니다.`)
-    } else {
-        shippingFee = 0;
-        console.log('배송비 무료')
-    }
     
     // 최종 금액
     const total = subtotal - discountAmount + shippingFee;
     console.log('================');
     console.log(`최종 결제금액: ${total.toLocaleString()}원`);
     
-    // TODO: 포인트 사용 안내
-    if (user.points >= 10000){
-        console.log('포인트 10,000만이상 보유 및 사용가능')
-    } else if (user.points >= 5000) {
-        console.log('포인트 5,000만이상 보유 및 사용가능')
-    } else {
-        console.log('포인트 5,000만이상 부터 사용가능합니다.')
-    }
+    // TODO: 4. 포인트 사용 가능 여부
+    // TODO: user.points가 0보다 크면 사용 가능 포인트 안내
+    // TODO: usablePoints = Math.min(user.points, total)
+    // TODO: usablePoints가 10000 이상, 5000 이상, 그 미만에 따라 메시지 출력
     
-    // TODO: 결제 가능 여부 판단
+    
+    // TODO: 5. 결제 가능 여부 최종 확인
     console.log('\n=== 결제 가능 여부 ===');
-    if (total <= 0){
-        console.log('결재 금액 오류')
-    } else if (cart.length > 0) {
-        console.log('장바구니가 비어있습니다.')
-    } else if (!user.isMember || total < 30000){
-        console.log('비회원일 경우에 30000만원 이상부터 구매 가능')
-    } else {
-        console.log('구매가능')
-    }
+    // TODO: total이 0 이하면 "결제 금액 오류" 출력
+    // TODO: cart.length가 0이면 "장바구니가 비어있습니다" 출력
+    // TODO: !user.isMember이고 total < 30000이면 "비회원은 3만원 이상 구매 가능" 출력
+    // TODO: 그 외 "결제 가능합니다!" 출력
     
 }
 
@@ -345,113 +398,33 @@ function practice_game_character() {
     console.log(`상태: ${character.status}`);
     console.log('-------------------\n');
     
-    // TODO: HP 퍼센트 계산 후 상태별 메시지 출력
-    const hpPercent = (character.hp / character.maxHp) * 100
-    console.log(hpPercent)
-    if (hpPercent <= 0){
-        console.log('사망하였습니다.')
-    } else if (hpPercent <= 20){
-        console.log('피가 20% 이하입니다. 위헙하오니 물약을 드시와요')
-    } else if (hpPercent <= 50){
-        console.log('피가 50% 이하입니다. 주의하세요.')
-    } else if (hpPercent <= 80){
-        console.log('피가 80% 이하입니다.')
-    } else {
-        console.log('피가 충분합니다.')
-    }
+    // TODO: 1. HP 상태 확인
+    // HP 퍼센트를 계산하고 상태 메시지 출력
+    // 0% 이하: 사망, 20% 이하: 위험, 50% 이하: 주의, 80% 이하: 약간 감소, 그 외: 충분
     
-    // TODO: MP 퍼센트 계산 후 상태 출력
+    
+    // TODO: 2. MP 상태 확인
     // 0%: 스킬 사용 불가, 30% 이하: MP 부족, 그 외: MP 충분
-    const mpPercent = (character.mp / character.maxMp) * 100
-    if (mpPercent <= 0){
-        console.log('마나가 없습니다.')
-    } else if (mpPercent <= 30){
-        console.log('마나가 30% 이하입니다. 마나가 충분하지 않습니다.')
-    } else {
-        console.log('마나가 충분합니다.')
-    }
     
-    // TODO: character.status를 switch문으로 확인
-    switch(character.status) {
-        case 'normal':
-            console.log('정상입니다.');
-            break;
-        case 'poisoned':
-            console.log('독에 중독되었습니다.');
-            break;
-        case 'frozen':
-            console.log('얼었습니다.');
-            break;
-        case 'stunned':
-            console.log('기절했습니다.');
-            break;
-        default:
-            console.log('알 수 없는 상태');
-    }
+    
+    // TODO: 3. 상태이상 확인 (switch문 사용)
+    // normal: 정상, poisoned: 독, frozen: 얼음, stunned: 기절
     
     
     // TODO: 4. 행동 가능 여부 판단
     console.log('\n=== 가능한 행동 ===');
     
-    // TODO: 공격 가능 조건 확인
-
-    if (hpPercent >= 0) {
-        console.log('캐릭터가 사망하였습니다.')
-    } else if (character.status === 'frozen' && character.status === 'stunned'){
-        console.log('빙결/스턴상태로 공격불가')
-    } else {
-        console.log('공격 가능')
-    }
+    // 공격 가능 여부
+    // HP가 0 이하거나 frozen/stunned 상태면 불가
     
-    // TODO: 스킬 사용 가능 조건 확인
-     
-    if (hpPercent >= 0){
-        console.log('캐릭터가 사망하였습니다.')
-    } else if (mpPercent >= 0) {
-        console.log('마나가 부족하여 스킬을 사용할 수 없습니다.')
-    } else if (character.status === 'frozen' && character.status === 'stunned') {
-        console.log('빙결/스턴상태로 스킬 사용불가')
-    } else {
-        console.log('스킬 사용가능')
-    }
     
-    // TODO: 아이템 사용 가능 여부
-
-    if (hpPercent >= 0){
-        console.log('캐릭터가 사망하였습니다.')
-    } else if (character.status === 'frozen') {
-         console.log('빙결상태로 아이템 사용불가')
-    } else {
-        console.log('아이템 사용가능')
-    }
-
-    // TODO: 도망 가능 여부
-
-    if (hpPercent >= 0){
-        console.log('캐릭터가 사망하였습니다.')
-    } else if (!character.inBattle) {
-        console.log('캐릭터가 전투중이 아니어서 도망갈 수 없습니다.')
-    } else if (character.status === 'frozen' && character.status === 'stunned') {
-        console.log('빙결/스턴상태로 도망갈 수 없습니다.')
-    } else if (hpPercent >= 30) {
-        console.log('도망갈 수 있습니다. (HP가 30% 아래면 도망확률 UP)')
-    } else {
-        console.log('도망갈 수 있습니다.')
-    }
-
-    // TODO: 추천 행동
-
-    if (hpPercent >= 0){
-        console.log('캐릭터가 사망하였으니 팀원들을 기다리십시오')
-    } else if (hpPercent >= 30){
-        console.log('HP가 30% 아래입니다. 물약을 드십시오')
-    } else if (!character.status === 'normal'){
-        console.log('상태이상관련 물약을 드세요')
-    } else if (mpPercent >= 30){
-        console.log('마나가 없으니 일반공격을 하세요.')
-    } else {
-        console.log('자유롭게 행동하세요.')
-    }
+    // 스킬 사용 가능 여부
+    // HP가 0 이하거나 MP가 10 미만이거나 frozen/stunned 상태면 불가
+    
+    
+    // TODO: 5. 추천 행동 출력
+    // HP 상태에 따라 적절한 행동 추천
+    
 }
 
 // ==========================================

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 반복문 - 검색어 필터링 시스템</title>
+    <link rel="stylesheet" href="/src/styles/fonts.css">    
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/layout.css">
+    <link rel="stylesheet" href="/src/styles/components.css">
+    <link rel="stylesheet" href="./styles/style.css">    
+    <script src="/src/scripts/layout/header.js" defer></script>
+    <script src="./js/script-1.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <header id="header" class="header">
+                <div class="header__fix">
+                    <div class="header__inner inner">
+                        <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
+                    </div>
+                </div>
+            </header>
+            <main id="main" class="main">
+                <div class="inner">
+                    <div class="int-sec">
+                        <h2 class="int-sec__tit">🔍 JavaScript 반복문 - 간단한 상품 검색</h2>
+                        <p class="int-sec__desc">
+                            반복문을 활용하여 간단한 검색 기능을 구현해봅시다!<br>
+                            <strong class="accent">⚠️ 프로그램은 콘솔에서 실행됩니다</strong><br>
+                            <strong>F12</strong>를 눌러 개발자 도구를 연 후, <strong>Console</strong> 탭에서 결과를 확인하세요.
+                        </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">🔤 대소문자 구분 없는 검색</li>
+                            <li class="int-sec__desc int-sec__desc--item">📊 검색 결과 카운트</li>
+                            <li class="int-sec__desc int-sec__desc--item">📈 성공률 표시</li>
+                        </ul>
+                    </div>
+                    <div class="main__container">
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🎯 프로그램 실행 안내</h3>
+                                <div class="guide-box">
+                                    <p class="warning-msg">📌 <strong>중요:</strong> 프로그램은 자동으로 실행되며, 결과는 콘솔에서 확인할 수 있습니다!</p>
+                                    
+                                    <h4>🚀 현재 실행중인 검색</h4>
+                                    <ul>
+                                        <li><strong>검색어:</strong> "apple" (대소문자 구분 없음)</li>
+                                        <li><strong>검색 대상:</strong> 10개의 전자제품 목록</li>
+                                        <li>콘솔을 열어 검색 결과를 확인하세요</li>
+                                        <li>script-1.js의 <code>searchWord</code> 변수를 수정하여 다른 검색어를 테스트할 수 있습니다</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🔍 간단한 상품 검색 프로그램</h3>
+                                <div class="concept-box">
+                                    <h4>프로그램 설명</h4>
+                                    <p>상품 목록에서 검색어가 포함된 항목을 찾아 필터링하는 검색 시스템입니다.</p>
+                                    
+                                    <h4>주요 기능</h4>
+                                    <ul>
+                                        <li>🔤 <strong>대소문자 무시:</strong> Apple, apple, APPLE 모두 동일하게 처리</li>
+                                        <li>📍 <strong>부분 매칭:</strong> includes() 메서드로 간단하게 검색</li>
+                                        <li>📊 <strong>통계 분석:</strong> 검색 결과 개수와 적중률 계산</li>
+                                        <li>📈 <strong>진행도 표시:</strong> 막대 그래프로 시각화</li>
+                                        <li>💡 <strong>검색 안내:</strong> 결과에 따른 메시지 표시</li>
+                                    </ul>
+                                    
+                                    <h4>프로그램 동작 과정</h4>
+                                    <ul>
+                                        <li>1️⃣ 검색어를 소문자로 변환 (toLowerCase() 사용)</li>
+                                        <li>2️⃣ for문으로 각 상품 순회</li>
+                                        <li>3️⃣ 각 상품명도 소문자로 변환</li>
+                                        <li>4️⃣ includes() 메서드로 포함 여부 확인</li>
+                                        <li>5️⃣ 검색된 상품 카운트 및 출력</li>
+                                    </ul>
+                                    
+                                    <h4>핵심 코드 - 간단한 검색</h4>
+                                    <pre><code>// 각 상품을 하나씩 확인
+for (let i = 0; i < products.length; i++) {
+    let product = products[i];
+    let productLower = product.toLowerCase();
+    
+    // includes() 메서드로 간단하게 검색
+    if (productLower.includes(searchLower)) {
+        foundCount = foundCount + 1;
+        console.log('  ✅ ' + foundCount + '. ' + product);
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">📊 검색 결과 해석하기</h3>
+                                <div class="concept-box">
+                                    <h4>콘솔 출력 내용</h4>
+                                    <p>프로그램이 실행되면 다음과 같은 정보가 콘솔에 표시됩니다:</p>
+                                    
+                                    <h4>1. 검색 정보</h4>
+                                    <ul>
+                                        <li>🔍 원본 검색어와 변환된 검색어</li>
+                                        <li>📌 검색 모드 (대소문자 구분 없음)</li>
+                                    </ul>
+                                    
+                                    <h4>2. 검색 결과 목록</h4>
+                                    <ul>
+                                        <li>✅ 매칭된 각 상품 표시</li>
+                                        <li>^^^ 매칭 위치 시각적 표시</li>
+                                        <li>번호가 매겨진 결과 리스트</li>
+                                    </ul>
+                                    
+                                    <h4>3. 통계 분석</h4>
+                                    <ul>
+                                        <li>전체 상품: 10개</li>
+                                        <li>검색 결과: X개</li>
+                                        <li>적중률: XX%</li>
+                                        <li>진행도 바: [■■■□□□□□□□] 형태의 시각화</li>
+                                    </ul>
+                                    
+                                    <h4>예시 출력</h4>
+                                    <pre><code>🔍 상품 검색
+검색어: apple
+---------------------------------
+📦 검색 결과:
+
+  ✅ 1. Apple iPhone
+  ✅ 2. Apple MacBook
+  ✅ 3. Apple AirPods
+  ✅ 4. Apple Watch
+
+---------------------------------
+📊 결과 요약
+전체 상품: 10개
+검색 결과: 4개
+적중률: 40%
+
+진행도:
+[■■■■□□□□□□]</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">💻 실습 방법</h3>
+                                <div class="practice-guide">
+                                    <div class="alert-box">
+                                        ⚠️ <strong>알림:</strong> 프로그램은 페이지 로드시 자동 실행됩니다!
+                                    </div>
+                                    <ol>
+                                        <li>
+                                            <strong>콘솔 열기:</strong> F12를 눌러 개발자 도구를 엽니다
+                                        </li>
+                                        <li>
+                                            <strong>Console 탭 선택:</strong> 상단 메뉴에서 Console 탭을 클릭합니다
+                                        </li>
+                                        <li>
+                                            <strong>결과 확인:</strong> 검색 결과가 자동으로 표시됩니다
+                                        </li>
+                                        <li>
+                                            <strong>다른 검색어 테스트:</strong>
+                                            <pre><code>// script-1.js 파일 17번째 줄 수정
+let searchWord = "samsung";  // 또는 "laptop", "watch" 등
+
+// 페이지를 새로고침하면 새 검색어로 테스트됩니다</code></pre>
+                                        </li>
+                                        <li>
+                                            <strong>테스트 예시:</strong>
+                                            <ul>
+                                                <li>"samsung" - 삼성 제품들</li>
+                                                <li>"phone" - 폰이 포함된 제품</li>
+                                                <li>"tv" - TV 제품</li>
+                                                <li>"pro" - Pro가 포함된 제품</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">📚 학습된 개념들</h3>
+                                <div class="tips-box">
+                                    <h4>이 프로그램을 통해 배우는 것들:</h4>
+                                    <ul>
+                                        <li>
+                                            <strong>📌 문자열 메서드:</strong> toLowerCase()로 대소문자 통일
+                                        </li>
+                                        <li>
+                                            <strong>📌 배열 순회:</strong> for문으로 배열 요소 하나씩 확인
+                                        </li>
+                                        <li>
+                                            <strong>📌 문자열 검색:</strong> includes() 메서드 활용
+                                        </li>
+                                        <li>
+                                            <strong>📌 카운터 변수:</strong> 검색 결과 개수 세기
+                                        </li>
+                                        <li>
+                                            <strong>📌 조건문:</strong> if문으로 매칭 여부 확인
+                                        </li>
+                                        <li>
+                                            <strong>📌 백분율 계산:</strong> Math.round()로 반올림
+                                        </li>
+                                        <li>
+                                            <strong>📌 시각화:</strong> 텍스트로 막대 그래프 만들기
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="highlight-box">
+                                        💡 <strong>팁:</strong> 이 코드는 입문자를 위해 간단하게 작성되었습니다. 
+                                        toLowerCase()와 includes() 같은 기본 메서드만 사용하여 
+                                        쉽게 이해하고 따라할 수 있도록 했습니다!
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🎯 실전 응용 과제</h3>
+                                <div class="guide-box">
+                                    <h4>코드를 수정해서 도전해보세요!</h4>
+                                    <ul>
+                                        <li>🔍 검색어를 배열로 만들어 여러 개 검색</li>
+                                        <li>📝 상품 가격 추가하고 가격대별 검색</li>
+                                        <li>🚫 특정 단어 제외하기</li>
+                                        <li>⭐ 검색 결과를 알파벳순으로 정렬</li>
+                                        <li>📊 카테고리별로 분류해보기</li>
+                                        <li>🎨 더 예쁜 막대 그래프 만들기</li>
+                                        <li>💾 검색 기록 저장하기</li>
+                                    </ul>
+                                    
+                                    <h4>실무 활용 예시</h4>
+                                    <ul>
+                                        <li>• 쇼핑몰 상품 검색 시스템</li>
+                                        <li>• 도서관 도서 검색 기능</li>
+                                        <li>• 주소록 검색 필터</li>
+                                        <li>• 파일 탐색기 검색</li>
+                                        <li>• 채팅 메시지 검색</li>
+                                        <li>• 코드 에디터 찾기 기능</li>
+                                    </ul>
+                                    
+                                    <div class="highlight-box">
+                                        🎓 <strong>학습 포인트:</strong> 이 간단한 검색 프로그램이 모든 검색 시스템의 기초입니다. 
+                                        여기서 시작해서 점점 더 복잡한 기능들을 추가하면 
+                                        실제 사용 가능한 검색 시스템을 만들 수 있습니다!
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" class="footer">
+                <div class="inner">
+                    <p class="footer__cprt">Vanilla JavaScript - Search Filter System with Loops</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

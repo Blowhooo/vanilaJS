@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript 반복문 - 실습</title>
+    <title>JavaScript 반복문 - 비밀번호 유효성 검사</title>
     <link rel="stylesheet" href="/src/styles/fonts.css">    
     <link rel="stylesheet" href="/src/styles/global.css">
     <link rel="stylesheet" href="/src/styles/layout.css">
@@ -19,60 +19,227 @@
                 <div class="header__fix">
                     <div class="header__inner inner">
                         <h1 class="header__logo"><a href="/index.html" class="header__link">JS</a></h1>
-                        <a href="./example.html" class="btn btn--small">예시보기</a>                        
                     </div>
                 </div>
             </header>
             <main id="main" class="main">
                 <div class="inner">
                     <div class="int-sec">
-                        <h2 class="int-sec__tit">JavaScript 반복문 실습</h2>
+                        <h2 class="int-sec__tit">🔐 JavaScript 반복문 - 비밀번호 유효성 검사</h2>
                         <p class="int-sec__desc">
-                            실무에서 자주 사용하는 반복문 패턴을 익혀보자
+                            반복문을 활용하여 강력한 비밀번호 검증 시스템을 구현해봅시다!<br>
+                            <strong class="accent">⚠️ 프로그램은 콘솔에서 실행됩니다</strong><br>
+                            <strong>F12</strong>를 눌러 개발자 도구를 연 후, <strong>Console</strong> 탭에서 결과를 확인하세요.
                         </p>
+                        <ul class="int-sec__list">
+                            <li class="int-sec__desc int-sec__desc--item">🔍 문자열 순회와 검사</li>
+                            <li class="int-sec__desc int-sec__desc--item">📊 조건별 카운팅과 통계</li>
+                            <li class="int-sec__desc int-sec__desc--item">✅ 실시간 유효성 피드백</li>
+                        </ul>
                     </div>
                     <div class="main__container">
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 1: 상품 목록 출력</h3>
-                                <p class="int-sec__desc">상품 배열을 순회하며 카드 형태로 출력해보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practiceProductList()">상품 목록 출력</button>
-                                            <div id="productListResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">🎯 프로그램 실행 안내</h3>
+                                <div class="guide-box">
+                                    <p class="warning-msg">📌 <strong>중요:</strong> 프로그램은 자동으로 실행되며, 결과는 콘솔에서 확인할 수 있습니다!</p>
+                                    
+                                    <h4>🚀 현재 실행중인 프로그램</h4>
+                                    <ul>
+                                        <li><strong>비밀번호 검사:</strong> "Test123!" 검증 중...</li>
+                                        <li>콘솔을 열어 상세 결과를 확인하세요</li>
+                                        <li>script.js의 <code>password</code> 변수를 수정하여 다른 비밀번호를 테스트할 수 있습니다</li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
 
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 2: 주문 내역 필터링</h3>
-                                <p class="int-sec__desc">주문 상태별로 데이터를 필터링하고 통계를 내보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practiceOrderFilter()">주문 필터링</button>
-                                            <div id="orderFilterResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">🔐 비밀번호 유효성 검사 프로그램</h3>
+                                <div class="concept-box">
+                                    <h4>프로그램 설명</h4>
+                                    <p>입력된 비밀번호가 보안 기준을 충족하는지 종합적으로 검사하는 프로그램입니다.</p>
+                                    
+                                    <h4>검사 항목 (5가지 조건)</h4>
+                                    <ul>
+                                        <li>📏 <strong>길이 검사:</strong> 8자 이상인지 확인</li>
+                                        <li>🔠 <strong>대문자 검사:</strong> A-Z 포함 여부 및 개수 확인</li>
+                                        <li>🔡 <strong>소문자 검사:</strong> a-z 포함 여부 및 개수 확인</li>
+                                        <li>🔢 <strong>숫자 검사:</strong> 0-9 포함 여부 및 개수 확인</li>
+                                        <li>⚡ <strong>특수문자 검사:</strong> !@#$%^&* 등 포함 여부 확인</li>
+                                    </ul>
+                                    
+                                    <h4>프로그램 진행 과정</h4>
+                                    <ul>
+                                        <li>1️⃣ for문으로 문자열 길이 직접 계산</li>
+                                        <li>2️⃣ 각 문자를 순회하며 문자 타입 확인</li>
+                                        <li>3️⃣ ASCII 코드 비교로 대/소문자 구분</li>
+                                        <li>4️⃣ 특수문자 목록과 대조하여 검증</li>
+                                        <li>5️⃣ 진행도 바 생성 및 최종 평가</li>
+                                    </ul>
+                                    
+                                    <h4>핵심 코드 구조</h4>
+                                    <pre><code>// 1. 길이 계산 (for문 활용)
+for (let i = 0; password[i] !== undefined; i++) {
+    passwordLength = passwordLength + 1;
+}
+
+// 2. 대문자 검사 (ASCII 비교)
+for (let i = 0; i < passwordLength; i++) {
+    if (char >= 'A' && char <= 'Z') {
+        hasUpperCase = true;
+        upperCount = upperCount + 1;
+    }
+}
+
+// 3. 특수문자 검사 (이중 반복문)
+for (let i = 0; i < passwordLength; i++) {
+    for (let j = 0; j < specialChars.length; j++) {
+        if (char === specialChars[j]) {
+            hasSpecial = true;
+            break;
+        }
+    }
+}</code></pre>
                                 </div>
                             </div>
                         </section>
 
                         <section class="main__sec">
                             <div class="int-sec">
-                                <h3 class="int-sec__st">실습 3: 페이지네이션 구현</h3>
-                                <p class="int-sec__desc">많은 데이터를 페이지별로 나누어 표시해보세요.</p>
-                                <div class="test">
-                                    <section class="test__sec">
-                                        <div class="test__area">
-                                            <button type="button" class="btn btn--small" onclick="practicePagination()">페이지 구현</button>
-                                            <div id="paginationResult"></div>
-                                        </div>
-                                    </section>
+                                <h3 class="int-sec__st">📊 실행 결과 해석하기</h3>
+                                <div class="concept-box">
+                                    <h4>콘솔 출력 내용</h4>
+                                    <p>프로그램이 실행되면 다음과 같은 정보가 콘솔에 표시됩니다:</p>
+                                    
+                                    <h4>1. 기본 정보</h4>
+                                    <ul>
+                                        <li>🔐 검사할 비밀번호 표시</li>
+                                        <li>📏 비밀번호 길이 (수동 계산)</li>
+                                    </ul>
+                                    
+                                    <h4>2. 개별 검사 결과</h4>
+                                    <ul>
+                                        <li>✅ 통과한 조건: 녹색 체크 표시</li>
+                                        <li>❌ 실패한 조건: 빨간 X 표시</li>
+                                        <li>📊 각 문자 타입별 개수 표시</li>
+                                    </ul>
+                                    
+                                    <h4>3. 종합 평가</h4>
+                                    <ul>
+                                        <li>통과 조건: X/5 형태로 표시</li>
+                                        <li>진행도 바: [■■■□□] 시각적 표현</li>
+                                        <li>최종 메시지: 강력함 또는 보완 필요</li>
+                                        <li>개선 제안: 부족한 부분 구체적 안내</li>
+                                    </ul>
+                                    
+                                    <h4>예시 출력</h4>
+                                    <pre><code>🔐 비밀번호 유효성 검사
+입력된 비밀번호: Test123!
+---------------------------------
+길이: 8자
+✅ 길이 조건 통과!
+✅ 대문자 1개 발견!
+✅ 소문자 3개 발견!
+✅ 숫자 3개 발견!
+✅ 특수문자 1개 발견!
+---------------------------------
+통과 조건: 5/5
+진행도: [■■■■■]
+🎉 강력한 비밀번호입니다!</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">💻 실습 방법</h3>
+                                <div class="practice-guide">
+                                    <div class="alert-box">
+                                        ⚠️ <strong>알림:</strong> 프로그램은 페이지 로드시 자동 실행됩니다!
+                                    </div>
+                                    <ol>
+                                        <li>
+                                            <strong>콘솔 열기:</strong> F12를 눌러 개발자 도구를 엽니다
+                                        </li>
+                                        <li>
+                                            <strong>Console 탭 선택:</strong> 상단 메뉴에서 Console 탭을 클릭합니다
+                                        </li>
+                                        <li>
+                                            <strong>결과 확인:</strong> 비밀번호 검사 결과가 자동으로 표시됩니다
+                                        </li>
+                                        <li>
+                                            <strong>다른 비밀번호 테스트:</strong>
+                                            <pre><code>// script.js 파일 3번째 줄 수정
+let password = "YourPassword123!";
+
+// 페이지를 새로고침하면 새 비밀번호로 테스트됩니다</code></pre>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">📚 학습된 개념들</h3>
+                                <div class="tips-box">
+                                    <h4>이 프로그램을 통해 배우는 것들:</h4>
+                                    <ul>
+                                        <li>
+                                            <strong>📌 for 반복문:</strong> 문자열 길이 계산, 각 문자 순회
+                                        </li>
+                                        <li>
+                                            <strong>📌 문자열 인덱싱:</strong> password[i]로 개별 문자 접근
+                                        </li>
+                                        <li>
+                                            <strong>📌 문자 비교:</strong> ASCII 코드를 활용한 문자 범위 확인
+                                        </li>
+                                        <li>
+                                            <strong>📌 카운터 변수:</strong> 조건별 개수 누적 계산
+                                        </li>
+                                        <li>
+                                            <strong>📌 이중 반복문:</strong> 특수문자 목록과 대조
+                                        </li>
+                                        <li>
+                                            <strong>📌 break 문:</strong> 조건 만족시 반복 중단
+                                        </li>
+                                        <li>
+                                            <strong>📌 논리 연산:</strong> 여러 조건 종합 평가
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="highlight-box">
+                                        💡 <strong>팁:</strong> script.js 파일을 열어서 다양한 비밀번호를 테스트해보세요! 
+                                        "password123", "PASSWORD", "12345678" 등으로 실험해보면 각 조건의 중요성을 이해할 수 있습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="main__sec">
+                            <div class="int-sec">
+                                <h3 class="int-sec__st">🎯 실전 응용 과제</h3>
+                                <div class="guide-box">
+                                    <h4>코드를 수정해서 도전해보세요!</h4>
+                                    <ul>
+                                        <li>🔐 최소 요구사항을 변경 (예: 12자 이상)</li>
+                                        <li>📊 비밀번호 강도를 점수로 표현 (0-100점)</li>
+                                        <li>🚫 연속된 문자/숫자 검사 추가 (abc, 123)</li>
+                                        <li>📝 자주 사용되는 비밀번호 블랙리스트 체크</li>
+                                        <li>🎨 더 상세한 시각화 (문자 타입별 비율 그래프)</li>
+                                        <li>💾 여러 비밀번호 일괄 검사 기능</li>
+                                    </ul>
+                                    
+                                    <h4>실무 활용 예시</h4>
+                                    <ul>
+                                        <li>• 회원가입 폼 유효성 검사</li>
+                                        <li>• 비밀번호 변경 시스템</li>
+                                        <li>• 보안 등급 평가 도구</li>
+                                        <li>• 기업 보안 정책 검증기</li>
+                                        <li>• 비밀번호 생성기와 연동</li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
@@ -81,7 +248,7 @@
             </main>
             <footer id="footer" class="footer">
                 <div class="inner">
-                    <p class="foote__cprt">Vanilla JavaScript</p>
+                    <p class="footer__cprt">Vanilla JavaScript - Password Validation with Loops</p>
                 </div>
             </footer>
         </div>

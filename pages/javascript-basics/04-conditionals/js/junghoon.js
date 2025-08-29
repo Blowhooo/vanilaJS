@@ -347,7 +347,7 @@ function practice_game_character() {
     
     // TODO: HP 퍼센트 계산 후 상태별 메시지 출력
     const hpPercent = (character.hp / character.maxHp) * 100
-    console.log(hpPercent)
+    
     if (hpPercent <= 0){
         console.log('사망하였습니다.')
     } else if (hpPercent <= 20){

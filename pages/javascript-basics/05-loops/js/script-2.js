@@ -46,6 +46,8 @@ for (let i = 0; i < products.length; i++) {
         found = true;
     }
     
+    // 또는 더 간단하게: found = productLower.includes(searchLower);
+    
     // 찾았으면 출력
     if (found) {
         foundCount = foundCount + 1;
